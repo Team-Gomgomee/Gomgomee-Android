@@ -1,4 +1,4 @@
-package com.konkuk.gomgomee.core.util.context
+package com.konkuk.gomgomee.util.context
 
 import android.content.Context
 import android.widget.Toast

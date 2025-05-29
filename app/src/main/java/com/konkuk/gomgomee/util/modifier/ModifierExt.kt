@@ -1,4 +1,4 @@
-package com.konkuk.gomgomee.core.util.modifier
+package com.konkuk.gomgomee.util.modifier
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
