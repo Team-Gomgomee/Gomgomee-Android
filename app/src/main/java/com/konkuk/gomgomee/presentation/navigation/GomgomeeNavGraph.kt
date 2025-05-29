@@ -7,8 +7,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.konkuk.gomgomee.presentation.diagnosis.DiagnosisScreen
 import com.konkuk.gomgomee.presentation.findcare.FindCareScreen
+import com.konkuk.gomgomee.presentation.home.HomeDetailScreen
 import com.konkuk.gomgomee.presentation.home.HomeScreen
 import com.konkuk.gomgomee.presentation.mypage.MyPageScreen
+import com.konkuk.gomgomee.presentation.onboarding.LoginScreen
+import com.konkuk.gomgomee.presentation.onboarding.SignUpScreen
+import com.konkuk.gomgomee.presentation.onboarding.SplashScreen
 
 @Composable
 fun GomgomeeNavGraph(
@@ -17,22 +21,58 @@ fun GomgomeeNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.Home.route
+        startDestination = Route.Splash.route
     ) {
+        composable(route = Route.Splash.route) {
+            SplashScreen(
+                onNavigateToSignUp = {
+                    navController.navigate(Route.SignUp.route)
+                }
+            )
+        }
+
+        composable(route = Route.SignUp.route) {
+            SignUpScreen(
+                onNavigateToLogin = {
+                    navController.navigate(Route.Login.route)
+                }
+            )
+        }
+
+        composable(route = Route.Login.route) {
+            LoginScreen(
+                onNavigateToMain = {
+                    navController.navigate("home") {
+                        popUpTo(Route.Splash.route) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
         composable(route = Route.Home.route) {
-            HomeScreen(modifier = modifier)
+            HomeScreen(
+                onNavigateToHomeDetail = {
+                    navController.navigate(Route.HomeDetail.route)
+                }
+            )
         }
 
         composable(route = Route.Diagnosis.route) {
-            DiagnosisScreen(modifier = modifier)
+            DiagnosisScreen()
         }
 
         composable(route = Route.FindCare.route) {
-            FindCareScreen(modifier = modifier)
+            FindCareScreen()
         }
 
         composable(route = Route.MyPage.route) {
-            MyPageScreen(modifier = modifier)
+            MyPageScreen()
+        }
+
+        composable(route = Route.HomeDetail.route) {
+            HomeDetailScreen()
         }
     }
 }

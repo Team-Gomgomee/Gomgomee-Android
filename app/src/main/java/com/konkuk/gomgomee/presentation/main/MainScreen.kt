@@ -11,27 +11,29 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.presentation.main.component.MainBottomBar
 import com.konkuk.gomgomee.presentation.navigation.BottomNavItem
 import com.konkuk.gomgomee.presentation.navigation.GomgomeeNavGraph
 import com.konkuk.gomgomee.presentation.navigation.Route
+import com.konkuk.gomgomee.ui.theme.Gray100
+import com.konkuk.gomgomee.ui.theme.Green200
+import com.konkuk.gomgomee.ui.theme.Green500
 
 @Composable
 fun MainScreen(
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    val navController = rememberNavController()
-    var selectedRoute by remember { mutableStateOf(Route.Home.route) }
+    val currentBackStackEntry by navController.currentBackStackEntryAsState()
+    var currentRoute = currentBackStackEntry?.destination?.route
 
     val bottomNavItems = listOf(
         BottomNavItem("홈", Route.Home.route, R.drawable.ic_home_selected, R.drawable.ic_home_unselected),
@@ -42,49 +44,51 @@ fun MainScreen(
 
     Scaffold(
         bottomBar = {
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                    .background(Color(0xFFDCEEE0))
-            ) {
-                NavigationBar(
-                    containerColor = Color.Transparent
+            if (currentRoute in bottomNavItems.map { it.route }) {
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                        .background(Green200)
                 ) {
-                    bottomNavItems.forEach { item ->
-                        MainBottomBar(
-                            selected = selectedRoute == item.route,
-                            onClick = {
-                                selectedRoute = item.route
-                                navController.navigate(item.route) {
-                                    launchSingleTop = true
-                                    restoreState = true
-                                    popUpTo(navController.graph.startDestinationId) {
-                                        saveState = true
+                    NavigationBar(
+                        containerColor = Color.Transparent
+                    ) {
+                        bottomNavItems.forEach { item ->
+                            MainBottomBar(
+                                selected = currentRoute == item.route,
+                                onClick = {
+                                    navController.navigate(item.route) {
+                                        popUpTo(route = Route.Home.route) {
+                                            inclusive = false
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
                                     }
-                                }
-                            },
-                            icon = {
-                                Icon(
-                                    painter = painterResource(
-                                        if (item.route == selectedRoute) {
-                                            item.selectedIcon
-                                        } else item.unselectedIcon
-                                    ),
-                                    contentDescription = item.label,
-                                    tint = Color.Unspecified
+                                },
+                                icon = {
+                                    Icon(
+                                        painter = painterResource(
+                                            if (item.route == currentRoute) {
+                                                item.selectedIcon
+                                            } else item.unselectedIcon
+                                        ),
+                                        contentDescription = item.label,
+                                        tint = Color.Unspecified
+                                    )
+                                },
+                                label = {
+                                    Text(
+                                        text = item.label
+                                    )
+                                },
+                                colors = NavigationBarItemDefaults.colors(
+                                    indicatorColor = Color.Transparent,
+                                    selectedTextColor = Green500,
+                                    unselectedTextColor = Gray100
                                 )
-                            },
-                            label = {
-                                Text(
-                                    text = item.label
-                                )
-                            },
-                            colors = NavigationBarItemDefaults.colors(
-                                indicatorColor = Color.Transparent,
-                                selectedTextColor = Color(0xFF43AC5D),
-                                unselectedTextColor = Color(0xFFA5A5A5)
                             )
-                        )
+                        }
                     }
                 }
             }
