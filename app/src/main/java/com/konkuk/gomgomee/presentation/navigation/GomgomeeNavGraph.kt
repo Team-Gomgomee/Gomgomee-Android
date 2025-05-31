@@ -21,7 +21,7 @@ fun GomgomeeNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.Splash.route
+        startDestination = Route.Home.route
     ) {
         composable(route = Route.Splash.route) {
             SplashScreen(
@@ -53,22 +53,26 @@ fun GomgomeeNavGraph(
 
         composable(route = Route.Home.route) {
             HomeScreen(
-                onNavigateToHomeDetail = {
-                    navController.navigate(Route.HomeDetail.route)
-                }
+                modifier = modifier
             )
         }
 
         composable(route = Route.Diagnosis.route) {
-            DiagnosisScreen()
+            DiagnosisScreen(
+                modifier = modifier
+            )
         }
 
         composable(route = Route.FindCare.route) {
-            FindCareScreen()
+            FindCareScreen(
+                modifier = modifier
+            )
         }
 
         composable(route = Route.MyPage.route) {
-            MyPageScreen()
+            MyPageScreen(
+                modifier = modifier
+            )
         }
 
         composable(route = Route.HomeDetail.route) {
