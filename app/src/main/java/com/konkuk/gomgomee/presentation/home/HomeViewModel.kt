@@ -1,0 +1,13 @@
+package com.konkuk.gomgomee.presentation.home
+
+import androidx.lifecycle.ViewModel
+import com.konkuk.gomgomee.data.HomeCardData
+
+class HomeViewModel : ViewModel() {
+    val homeCardItems = listOf(
+        HomeCardData("학습장애란?", "학습장애란 읽기, 쓰기, 추론, 산수계산 등의 능력과 획득 및 사용상의 심각한 곤란을 주 증상으로 하는, 다양한 원인을 배경으로 하는 이질적인 장애군을 총칭하는 용어이다."),
+        HomeCardData("ADHD란?", "주의력 결핍/과잉행동 장애(Attention Deficit/Hyperactivity Disorder)는 아동기에 많이 나타나는 장애로, 지속적으로 주의력이 부족하여 산만하고 과다활동을 보이는 장애를 말한다."),
+        HomeCardData("학습장애란?", "학습장애란 읽기, 쓰기, 추론, 산수계산 등의 능력과 획득 및 사용상의 심각한 곤란을 주 증상으로 하는, 다양한 원인을 배경으로 하는 이질적인 장애군을 총칭하는 용어이다."),
+        HomeCardData("ADHD란?", "주의력 결핍/과잉행동 장애(Attention Deficit/Hyperactivity Disorder)는 아동기에 많이 나타나는 장애로, 지속적으로 주의력이 부족하여 산만하고 과다활동을 보이는 장애를 말한다.")
+    )
+}
