@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.konkuk.gomgomee.presentation.diagnosis.DiagnosisScreen
+import com.konkuk.gomgomee.presentation.findcare.DiagnosisScreen
 import com.konkuk.gomgomee.presentation.findcare.FindCareScreen
 import com.konkuk.gomgomee.presentation.home.HomeDetailScreen
 import com.konkuk.gomgomee.presentation.home.HomeScreen
