@@ -15,7 +15,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.konkuk.gomgomee.R
+import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.ui.theme.White
 
 // 연두색 계열의 색상 정의
@@ -24,8 +26,8 @@ private val DarkGreen = Color(0xFF86B875)
 
 @Composable
 fun DiagnosisScreen(
+    navController: NavController,
     modifier: Modifier = Modifier,
-    onSelfDiagnosisClick: () -> Unit = {},
     onReadingAreaClick: () -> Unit = {},
     onWritingAreaClick: () -> Unit = {},
     onListeningAreaClick: () -> Unit = {},
@@ -69,7 +71,9 @@ fun DiagnosisScreen(
                 fontWeight = FontWeight.Bold
             )
             Button(
-                onClick = onSelfDiagnosisClick,
+                onClick = { 
+                    navController.navigate(route = Route.Checklist.route)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .border(2.dp, DarkGreen, RoundedCornerShape(12.dp)),

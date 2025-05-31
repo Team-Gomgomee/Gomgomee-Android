@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.konkuk.gomgomee.presentation.diagnosis.ChecklistScreen
 import com.konkuk.gomgomee.presentation.findcare.DiagnosisScreen
 import com.konkuk.gomgomee.presentation.findcare.FindCareScreen
 import com.konkuk.gomgomee.presentation.home.HomeDetailScreen
@@ -60,7 +61,9 @@ fun GomgomeeNavGraph(
         }
 
         composable(route = Route.Diagnosis.route) {
-            DiagnosisScreen()
+            DiagnosisScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.FindCare.route) {
@@ -73,6 +76,17 @@ fun GomgomeeNavGraph(
 
         composable(route = Route.HomeDetail.route) {
             HomeDetailScreen()
+        }
+
+        composable(route = Route.Checklist.route) {
+            ChecklistScreen(
+                navController = navController
+            )
+        }
+
+        // 결과 화면은 추후 구현 예정
+        composable(route = Route.ChecklistResult.route) {
+            // ChecklistResultScreen(navController = navController)
         }
     }
 }

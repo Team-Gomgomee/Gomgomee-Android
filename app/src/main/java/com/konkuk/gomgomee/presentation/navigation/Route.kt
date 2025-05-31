@@ -18,4 +18,8 @@ sealed class Route(
     data object FindCare: Route(route = "findcare")
 
     data object MyPage: Route(route = "mypage")
+
+    data object Checklist: Route(route = "checklist")
+
+    data object ChecklistResult: Route(route = "checklist_result")
 }
