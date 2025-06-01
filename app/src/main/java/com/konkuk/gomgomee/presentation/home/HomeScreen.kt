@@ -26,10 +26,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.presentation.home.component.HomeCardItem
 import com.konkuk.gomgomee.ui.theme.White
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
+    navigateToHomeDetail: () -> Unit,
     viewModel: HomeViewModel = viewModel()
 ) {
     val homeCardItems = viewModel.homeCardItems
@@ -68,7 +70,10 @@ fun HomeScreen(
             items(homeCardItems) { card ->
                 HomeCardItem(
                     cardTitle = card.cardTitle,
-                    cardDescription = card.cardDescription
+                    cardDescription = card.cardDescription,
+                    modifier = Modifier.noRippleClickable {
+                        navigateToHomeDetail()
+                    }
                 )
                 Spacer(modifier = Modifier.height(20.dp))
             }
@@ -79,5 +84,7 @@ fun HomeScreen(
 @Preview
 @Composable
 private fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreen(
+        navigateToHomeDetail = {}
+    )
 }

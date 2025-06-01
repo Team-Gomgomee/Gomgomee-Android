@@ -53,7 +53,10 @@ fun GomgomeeNavGraph(
 
         composable(route = Route.Home.route) {
             HomeScreen(
-                modifier = modifier
+                modifier = modifier,
+                navigateToHomeDetail = {
+                    navController.navigate(Route.HomeDetail.route)
+                }
             )
         }
 
