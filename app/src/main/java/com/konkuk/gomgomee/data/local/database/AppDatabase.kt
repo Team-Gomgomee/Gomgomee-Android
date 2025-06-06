@@ -4,16 +4,22 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.konkuk.gomgomee.data.local.dao.ChecklistItemDao
 import com.konkuk.gomgomee.data.local.dao.UserDao
+import com.konkuk.gomgomee.data.local.entity.ChecklistItemEntity
 import com.konkuk.gomgomee.data.local.entity.UserEntity
 
 @Database(
-    entities = [UserEntity::class],
+    entities = [
+        UserEntity::class,
+        ChecklistItemEntity::class
+    ],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun checklistItemDao(): ChecklistItemDao
 
     companion object {
         @Volatile
