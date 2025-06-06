@@ -7,10 +7,12 @@ import androidx.room.RoomDatabase
 import com.konkuk.gomgomee.data.local.dao.ChecklistItemDao
 import com.konkuk.gomgomee.data.local.dao.ChecklistResultDao
 import com.konkuk.gomgomee.data.local.dao.TestQuestionDao
+import com.konkuk.gomgomee.data.local.dao.TestSessionDao
 import com.konkuk.gomgomee.data.local.dao.UserDao
 import com.konkuk.gomgomee.data.local.entity.ChecklistItemEntity
 import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.local.entity.TestQuestionEntity
+import com.konkuk.gomgomee.data.local.entity.TestSessionEntity
 import com.konkuk.gomgomee.data.local.entity.UserEntity
 
 @Database(
@@ -18,7 +20,8 @@ import com.konkuk.gomgomee.data.local.entity.UserEntity
         UserEntity::class,
         ChecklistItemEntity::class,
         ChecklistResultEntity::class,
-        TestQuestionEntity::class
+        TestQuestionEntity::class,
+        TestSessionEntity::class
     ],
     version = 1,
     exportSchema = false
@@ -28,6 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun checklistItemDao(): ChecklistItemDao
     abstract fun checklistResultDao(): ChecklistResultDao
     abstract fun testQuestionDao(): TestQuestionDao
+    abstract fun testSessionDao(): TestSessionDao
 
     companion object {
         @Volatile
