@@ -22,4 +22,8 @@ sealed class Route(
     data object Checklist: Route(route = "checklist")
 
     data object ChecklistResult: Route(route = "checklist_result")
+
+    data object AreaTest: Route(route = "area_test/{areaType}")
+
+    data object AreaTestResult: Route(route = "area_test_result")
 }

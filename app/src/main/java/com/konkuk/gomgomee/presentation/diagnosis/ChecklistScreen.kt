@@ -25,6 +25,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.ui.theme.White
+import android.app.Application
+import androidx.compose.ui.platform.LocalContext
 
 // 체크박스 관련 색상 정의
 private val CheckboxCheckedColor = Color(0xFF4CAF50)
@@ -33,7 +35,7 @@ private val CheckboxUncheckedColor = Color.Gray
 @Composable
 fun ChecklistScreen(
     navController: NavController,
-    viewModel: ChecklistViewModel = viewModel(),
+    viewModel: ChecklistViewModel = viewModel(factory = ChecklistViewModel.Factory),
     modifier: Modifier = Modifier
 ) {
     Column(

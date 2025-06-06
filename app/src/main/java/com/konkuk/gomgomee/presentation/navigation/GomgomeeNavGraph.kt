@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.konkuk.gomgomee.presentation.areatest.AreaTestScreen
+import com.konkuk.gomgomee.presentation.areatest.AreaTestResultScreen
 import com.konkuk.gomgomee.presentation.areatest.model.AreaType
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistScreen
 import com.konkuk.gomgomee.presentation.diagnosis.DiagnosisScreen
@@ -94,7 +95,7 @@ fun GomgomeeNavGraph(
 
         // 영역별 테스트 화면
         composable(
-            route = "area_test/{areaType}",
+            route = Route.AreaTest.route,
             arguments = listOf(
                 navArgument("areaType") { 
                     type = androidx.navigation.NavType.StringType 
@@ -105,6 +106,11 @@ fun GomgomeeNavGraph(
                 AreaType.valueOf(it)
             } ?: AreaType.READING
             AreaTestScreen(navController = navController, areaType = areaType)
+        }
+
+        // 영역별 테스트 결과 화면
+        composable(route = Route.AreaTestResult.route) {
+            AreaTestResultScreen(navController = navController)
         }
     }
 }

@@ -30,6 +30,7 @@ import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.presentation.areatest.model.AreaType
 import com.konkuk.gomgomee.presentation.areatest.model.Choice
 import com.konkuk.gomgomee.presentation.areatest.model.Question
+import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.ui.theme.White
 
 @Composable
@@ -127,7 +128,13 @@ fun AreaTestScreen(
                 exit = fadeOut()
             ) {
                 Button(
-                    onClick = { navController.navigate("area_test_result") },
+                    onClick = { 
+                        navController.navigate(Route.AreaTestResult.route) {
+                            popUpTo(Route.AreaTest.route) {
+                                inclusive = false
+                            }
+                        }
+                    },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary
                     )
