@@ -19,6 +19,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,18 +30,34 @@ import androidx.navigation.NavController
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.presentation.areatest.model.AreaType
 import com.konkuk.gomgomee.presentation.areatest.model.Choice
-import com.konkuk.gomgomee.presentation.areatest.model.Question
+import com.konkuk.gomgomee.presentation.areatest.model.MediaType
 import com.konkuk.gomgomee.presentation.navigation.Route
-import com.konkuk.gomgomee.ui.theme.White
+import com.konkuk.gomgomee.ui.theme.*
+import com.konkuk.gomgomee.util.context.toast
+import kotlinx.coroutines.launch
 
 @Composable
 fun AreaTestScreen(
     navController: NavController,
     areaType: AreaType,
-    viewModel: AreaTestViewModel = viewModel()
+    userNo: Int,
+    viewModel: AreaTestViewModel = viewModel(
+        factory = AreaTestViewModel.Factory
+    )
 ) {
     var currentQuestionIndex by remember { mutableStateOf(0) }
-    val questions = remember(areaType) { viewModel.getQuestionsByArea(areaType) }
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+
+    // 문제 로딩
+    LaunchedEffect(areaType) {
+        try {
+            viewModel.loadQuestionsByArea(areaType, userNo)
+        } catch (e: Exception) {
+            context.toast("문제를 불러오는데 실패했습니다.")
+            navController.popBackStack()
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -61,8 +78,8 @@ fun AreaTestScreen(
                 text = when(areaType) {
                     AreaType.READING -> "읽기 영역\n테스트"
                     AreaType.WRITING -> "쓰기 영역\n테스트"
-                    AreaType.ARITHMETIC -> "연산 영역\n테스트"
-                    AreaType.ATTENTION -> "주의력 영역\n테스트"
+                    AreaType.ARITHMETIC -> "산수 영역\n테스트"
+                    AreaType.ATTENTION -> "듣기 영역\n테스트"
                 },
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
@@ -75,85 +92,143 @@ fun AreaTestScreen(
             )
         }
 
-        // 진행 상황
-        Text(
-            text = "문제 ${currentQuestionIndex + 1} / ${questions.size}",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Medium,
-            color = Color.Gray
-        )
+        if (viewModel.questions.isNotEmpty()) {
+            val currentQuestion = viewModel.questions[currentQuestionIndex]
 
-        // 문제 내용
-        Text(
-            text = questions[currentQuestionIndex].questionText,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Medium,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Start
-        )
+            // 진행 상황
+            Text(
+                text = "문제 ${currentQuestionIndex + 1} / ${viewModel.questions.size}",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.Gray
+            )
 
-        // 보기 그리드 (2x2)
-        ChoiceGrid(
-            choices = questions[currentQuestionIndex].choices,
-            selectedChoice = viewModel.getSelectedAnswer(questions[currentQuestionIndex].id),
-            onChoiceSelected = { 
-                viewModel.setAnswer(questions[currentQuestionIndex].id, it)
-            }
-        )
+            // 문제 내용
+            Text(
+                text = currentQuestion.questionText,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Start
+            )
 
-        // 네비게이션 버튼
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            // 이전 버튼
-            IconButton(
-                onClick = { if (currentQuestionIndex > 0) currentQuestionIndex-- },
-                enabled = currentQuestionIndex > 0
-            ) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "이전 문제",
-                    tint = if (currentQuestionIndex > 0) MaterialTheme.colorScheme.primary else Color.Gray
-                )
-            }
-
-            // 완료 버튼 (마지막 문제이고 모든 문제를 풀었을 때만 표시)
-            AnimatedVisibility(
-                visible = currentQuestionIndex == questions.size - 1 && 
-                         viewModel.isAllQuestionsAnswered(questions.size),
-                enter = fadeIn(),
-                exit = fadeOut()
-            ) {
-                Button(
-                    onClick = { 
-                        navController.navigate(Route.AreaTestResult.route) {
-                            popUpTo(Route.AreaTest.route) {
-                                inclusive = false
-                            }
+            // 미디어 표시 (이미지/오디오)
+            currentQuestion.media?.forEach { media ->
+                when (media.type) {
+                    MediaType.IMAGE -> {
+                        // 이미지 표시 로직
+                        val resourceId = remember(media.source) {
+                            context.resources.getIdentifier(
+                                media.source,
+                                "drawable",
+                                context.packageName
+                            )
                         }
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
-                    )
-                ) {
-                    Text("테스트 완료", fontSize = 16.sp)
+                        
+                        if (resourceId != 0) {
+                            Image(
+                                painter = painterResource(id = resourceId),
+                                contentDescription = "문제 이미지",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(200.dp)
+                            )
+                        } else {
+                            Text(
+                                text = "이미지를 불러올 수 없습니다",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                                textAlign = TextAlign.Center,
+                                color = Color.Gray
+                            )
+                        }
+                    }
+                    MediaType.AUDIO -> {
+                        // 오디오 재생 버튼
+                        Button(
+                            onClick = { /* 오디오 재생 로직 */ },
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text("음성 듣기")
+                        }
+                    }
+                    else -> {}
                 }
             }
 
-            // 다음 버튼
-            IconButton(
-                onClick = { if (currentQuestionIndex < questions.size - 1) currentQuestionIndex++ },
-                enabled = currentQuestionIndex < questions.size - 1
+            // 보기 그리드
+            ChoiceGrid(
+                choices = currentQuestion.choices,
+                selectedChoice = viewModel.getSelectedAnswer(currentQuestion.id),
+                onChoiceSelected = { 
+                    viewModel.setAnswer(currentQuestion.id, it)
+                }
+            )
+
+            // 네비게이션 버튼
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Icon(
-                    imageVector = Icons.Default.ArrowForward,
-                    contentDescription = "다음 문제",
-                    tint = if (currentQuestionIndex < questions.size - 1) 
-                          MaterialTheme.colorScheme.primary else Color.Gray
-                )
+                // 이전 버튼
+                IconButton(
+                    onClick = { if (currentQuestionIndex > 0) currentQuestionIndex-- },
+                    enabled = currentQuestionIndex > 0
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "이전 문제",
+                        tint = if (currentQuestionIndex > 0) MaterialTheme.colorScheme.primary else Color.Gray
+                    )
+                }
+
+                // 완료 버튼 (마지막 문제이고 모든 문제를 풀었을 때만 표시)
+                AnimatedVisibility(
+                    visible = currentQuestionIndex == viewModel.questions.size - 1 && 
+                             viewModel.isAllQuestionsAnswered(),
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    Button(
+                        onClick = { 
+                            scope.launch {
+                                try {
+                                    viewModel.finishTest()
+                                    navController.navigate(
+                                        "area_test_result/${viewModel.questions.size}/${viewModel.currentSession?.correctCount ?: 0}"
+                                    ) {
+                                        popUpTo(Route.AreaTest.route) {
+                                            inclusive = true
+                                        }
+                                    }
+                                } catch (e: Exception) {
+                                    context.toast("결과를 저장하는데 실패했습니다.")
+                                }
+                            }
+                        },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primary
+                        )
+                    ) {
+                        Text("테스트 완료", fontSize = 16.sp)
+                    }
+                }
+
+                // 다음 버튼
+                IconButton(
+                    onClick = { if (currentQuestionIndex < viewModel.questions.size - 1) currentQuestionIndex++ },
+                    enabled = currentQuestionIndex < viewModel.questions.size - 1
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowForward,
+                        contentDescription = "다음 문제",
+                        tint = if (currentQuestionIndex < viewModel.questions.size - 1) 
+                              MaterialTheme.colorScheme.primary else Color.Gray
+                    )
+                }
             }
         }
     }
@@ -167,60 +242,40 @@ private fun ChoiceGrid(
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        // 2x2 그리드로 보기 배치
-        for (row in 0..1) {
+        choices.forEachIndexed { index, choice ->
+            val isSelected = selectedChoice == index
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(
+                        width = 1.dp,
+                        color = if (isSelected) MaterialTheme.colorScheme.primary else Color.LightGray,
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .background(
+                        color = if (isSelected) MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
+                        else Color.White,
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .clickable { onChoiceSelected(index) }
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                for (col in 0..1) {
-                    val index = row * 2 + col
-                    if (index < choices.size) {
-                        ChoiceItem(
-                            choice = choices[index],
-                            isSelected = selectedChoice == index,
-                            onClick = { onChoiceSelected(index) },
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
-                }
+                Text(
+                    text = when(index) {
+                        0 -> "① "
+                        1 -> "② "
+                        2 -> "③ "
+                        3 -> "④ "
+                        else -> "${index + 1}. "
+                    } + choice.text,
+                    fontSize = 16.sp,
+                    color = if (isSelected) MaterialTheme.colorScheme.primary else Color.DarkGray
+                )
             }
         }
-    }
-}
-
-@Composable
-private fun ChoiceItem(
-    choice: Choice,
-    isSelected: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier
-            .background(
-                color = if (isSelected) MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
-                else MaterialTheme.colorScheme.surface,
-                shape = RoundedCornerShape(8.dp)
-            )
-            .border(
-                width = 1.dp,
-                color = if (isSelected) MaterialTheme.colorScheme.primary
-                else MaterialTheme.colorScheme.outline,
-                shape = RoundedCornerShape(8.dp)
-            )
-            .clickable(onClick = onClick)
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = choice.text,
-            fontSize = 16.sp,
-            textAlign = TextAlign.Center,
-            color = if (isSelected) MaterialTheme.colorScheme.primary
-            else MaterialTheme.colorScheme.onSurface
-        )
     }
 } 

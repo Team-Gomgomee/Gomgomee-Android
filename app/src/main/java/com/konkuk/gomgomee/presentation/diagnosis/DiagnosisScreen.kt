@@ -26,7 +26,8 @@ private val DarkGreen = Color(0xFF86B875)
 @Composable
 fun DiagnosisScreen(
     navController: NavController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    userNo: Int = 1  // 임시로 1을 기본값으로 설정
 ) {
     Column(
         modifier = modifier
@@ -94,11 +95,11 @@ fun DiagnosisScreen(
             ) {
                 AreaButton(
                     text = "읽기 영역",
-                    onClick = { navController.navigate("area_test/${AreaType.READING}") }
+                    onClick = { navController.navigate("area_test/${AreaType.READING}/$userNo") }
                 )
                 AreaButton(
                     text = "쓰기 영역",
-                    onClick = { navController.navigate("area_test/${AreaType.WRITING}") }
+                    onClick = { navController.navigate("area_test/${AreaType.WRITING}/$userNo") }
                 )
             }
             Column(
@@ -107,11 +108,11 @@ fun DiagnosisScreen(
             ) {
                 AreaButton(
                     text = "연산 영역",
-                    onClick = { navController.navigate("area_test/${AreaType.ARITHMETIC}") }
+                    onClick = { navController.navigate("area_test/${AreaType.ARITHMETIC}/$userNo") }
                 )
                 AreaButton(
                     text = "주의력 영역",
-                    onClick = { navController.navigate("area_test/${AreaType.ATTENTION}") }
+                    onClick = { navController.navigate("area_test/${AreaType.ATTENTION}/$userNo") }
                 )
             }
         }

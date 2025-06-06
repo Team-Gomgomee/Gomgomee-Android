@@ -22,12 +22,15 @@ import com.konkuk.gomgomee.presentation.onboarding.SplashScreen
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistResultScreen
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistResultViewModel
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistItem
+import com.konkuk.gomgomee.presentation.areatest.AreaTestResultViewModel
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun GomgomeeNavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     NavHost(
         navController = navController,
         startDestination = Route.Splash.route
@@ -108,18 +111,44 @@ fun GomgomeeNavGraph(
             arguments = listOf(
                 navArgument("areaType") { 
                     type = androidx.navigation.NavType.StringType 
+                },
+                navArgument("userNo") {
+                    type = androidx.navigation.NavType.IntType
                 }
             )
         ) { backStackEntry ->
             val areaType = backStackEntry.arguments?.getString("areaType")?.let {
                 AreaType.valueOf(it)
             } ?: AreaType.READING
-            AreaTestScreen(navController = navController, areaType = areaType)
+            val userNo = backStackEntry.arguments?.getInt("userNo") ?: 0
+            AreaTestScreen(navController = navController, areaType = areaType, userNo = userNo)
         }
 
         // 영역별 테스트 결과 화면
-        composable(route = Route.AreaTestResult.route) {
-            AreaTestResultScreen(navController = navController)
+        composable(
+            route = Route.AreaTestResult.route,
+            arguments = listOf(
+                navArgument("totalQuestions") {
+                    type = androidx.navigation.NavType.IntType
+                },
+                navArgument("correctAnswers") {
+                    type = androidx.navigation.NavType.IntType
+                }
+            )
+        ) { backStackEntry ->
+            val totalQuestions = backStackEntry.arguments?.getInt("totalQuestions") ?: 0
+            val correctAnswers = backStackEntry.arguments?.getInt("correctAnswers") ?: 0
+            
+            AreaTestResultScreen(
+                navController = navController,
+                viewModel = viewModel(
+                    factory = AreaTestResultViewModel.factory(
+                        application = context.applicationContext as android.app.Application,
+                        totalQuestions = totalQuestions,
+                        correctAnswers = correctAnswers
+                    )
+                )
+            )
         }
     }
 }

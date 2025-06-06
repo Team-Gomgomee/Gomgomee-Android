@@ -23,7 +23,7 @@ sealed class Route(
 
     data object ChecklistResult: Route(route = "checklist_result")
 
-    data object AreaTest: Route(route = "area_test/{areaType}")
+    data object AreaTest: Route(route = "area_test/{areaType}/{userNo}")
 
-    data object AreaTestResult: Route(route = "area_test_result")
+    data object AreaTestResult: Route(route = "area_test_result/{totalQuestions}/{correctAnswers}")
 }
