@@ -19,8 +19,8 @@ class TestSessionRepository(private val testSessionDao: TestSessionDao) {
         return testSessionDao.getSessionById(sessionId)
     }
     
-    suspend fun insert(session: TestSessionEntity) {
-        testSessionDao.insertSession(session)
+    suspend fun insert(session: TestSessionEntity): Long {
+        return testSessionDao.insertSession(session)
     }
     
     suspend fun update(session: TestSessionEntity) {

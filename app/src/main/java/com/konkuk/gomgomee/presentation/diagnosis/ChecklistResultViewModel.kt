@@ -1,6 +1,7 @@
 package com.konkuk.gomgomee.presentation.diagnosis
 
 import android.app.Application
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -8,6 +9,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.lifecycle.viewModelScope
+import com.konkuk.gomgomee.data.local.database.AppDatabase
+import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
+import com.konkuk.gomgomee.data.repository.ChecklistResultRepository
+import kotlinx.coroutines.launch
 
 data class ChecklistResultState(
     val totalQuestions: Int,
@@ -28,10 +34,13 @@ class ChecklistResultViewModel(
     private val checklistItems: List<ChecklistItem>
 ) : AndroidViewModel(application) {
 
+    private val checklistResultRepository: ChecklistResultRepository
     var resultState by mutableStateOf<ChecklistResultState?>(null)
         private set
 
     init {
+        val database = AppDatabase.getDatabase(application)
+        checklistResultRepository = ChecklistResultRepository(database.checklistResultDao())
         calculateResult()
     }
 
@@ -53,6 +62,21 @@ class ChecklistResultViewModel(
             resultLevel = resultLevel,
             message = message
         )
+
+        // 결과를 데이터베이스에 저장
+        viewModelScope.launch {
+            try {
+                val result = ChecklistResultEntity(
+                    userNo = 1, // 임시로 1번 회원으로 고정
+                    yesCount = yesAnswers,
+                    createdAt = System.currentTimeMillis()
+                )
+                checklistResultRepository.insert(result)
+            } catch (e: Exception) {
+                Log.e("ChecklistResultViewModel", "Error saving result", e)
+                // 에러 처리는 필요에 따라 추가
+            }
+        }
     }
 
     companion object {

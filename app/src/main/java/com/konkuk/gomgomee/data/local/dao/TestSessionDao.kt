@@ -18,8 +18,8 @@ interface TestSessionDao {
     @Query("SELECT * FROM test_session WHERE sessionId = :sessionId")
     fun getSessionById(sessionId: Int): Flow<TestSessionEntity?>
     
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSession(session: TestSessionEntity)
+    @Insert
+    suspend fun insertSession(session: TestSessionEntity): Long
     
     @Update
     suspend fun updateSession(session: TestSessionEntity)

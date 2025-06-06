@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.konkuk.gomgomee.ui.theme.White
-import com.konkuk.gomgomee.presentation.viewmodel.TestHistoryViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.compose.material.icons.Icons

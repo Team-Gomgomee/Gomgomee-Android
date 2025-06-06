@@ -70,14 +70,24 @@ class AreaTestViewModel(application: Application) : AndroidViewModel(application
                 throw Exception("해당 영역의 문제가 없습니다.")
             }
             
-            // 세션 생성
-            currentSession = TestSessionEntity(
+            // 세션 생성 및 저장
+            val newSession = TestSessionEntity(
                 userNo = userNo,
                 domain = domain,
                 startedAt = System.currentTimeMillis(),
                 finishedAt = null,
-                totalCount = dbQuestions.size
+                totalCount = dbQuestions.size,
+                correctCount = 0
             )
+            
+            // 데이터베이스에 세션 저장
+            try {
+                val sessionId = sessionRepository.insert(newSession)
+                currentSession = newSession.copy(sessionId = sessionId.toInt())
+            } catch (e: Exception) {
+                Log.e(TAG, "Error saving initial session", e)
+                throw e
+            }
             
             // UI 모델로 변환
             questions = dbQuestions.map { entity ->
@@ -104,8 +114,6 @@ class AreaTestViewModel(application: Application) : AndroidViewModel(application
             
             // 답변 초기화
             userAnswers.value = emptyMap()
-            
-            Log.d(TAG, "Loaded ${questions.size} questions for domain: $domain")
             
         } catch (e: Exception) {
             Log.e(TAG, "Error loading questions", e)
@@ -164,26 +172,34 @@ class AreaTestViewModel(application: Application) : AndroidViewModel(application
 
     // 테스트 완료 처리
     suspend fun finishTest() {
-        currentSession?.let { session ->
-            val correctCount = questions.count { question ->
-                val userAnswer = userAnswers.value[question.id]
-                val correctAnswer = when(question.correctAnswer) {
-                    0 -> "A"
-                    1 -> "B"
-                    2 -> "C"
-                    3 -> "D"
-                    else -> null
-                }
-                userAnswer == correctAnswer
+        val session = currentSession ?: throw Exception("No active test session")
+        
+        // 정답 개수 계산
+        val correctCount = questions.count { question ->
+            val userAnswer = userAnswers.value[question.id]
+            val correctAnswer = when(question.correctAnswer) {
+                0 -> "A"
+                1 -> "B"
+                2 -> "C"
+                3 -> "D"
+                else -> null
             }
-            
-            val finishedSession = session.copy(
-                finishedAt = System.currentTimeMillis(),
-                correctCount = correctCount
-            )
-            
-            sessionRepository.insert(finishedSession)
+            userAnswer == correctAnswer
+        }
+        
+        // 세션 업데이트
+        val finishedSession = session.copy(
+            finishedAt = System.currentTimeMillis(),
+            correctCount = correctCount
+        )
+        
+        try {
+            // 데이터베이스에 저장
+            sessionRepository.update(finishedSession)
             currentSession = finishedSession
+        } catch (e: Exception) {
+            Log.e(TAG, "Error updating test session", e)
+            throw e
         }
     }
 
