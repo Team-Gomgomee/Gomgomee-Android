@@ -79,7 +79,7 @@ fun AreaTestScreen(
                     AreaType.READING -> "읽기 영역\n테스트"
                     AreaType.WRITING -> "쓰기 영역\n테스트"
                     AreaType.ARITHMETIC -> "산수 영역\n테스트"
-                    AreaType.ATTENTION -> "듣기 영역\n테스트"
+                    AreaType.LISTENING -> "듣기 영역\n테스트"
                 },
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,

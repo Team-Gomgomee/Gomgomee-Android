@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -64,7 +65,11 @@ fun DiagnosisScreen(
                 .height(64.dp),
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
+                containerColor = Color(0xFFE5F1E7),
+                contentColor = Color.Black
+            ),
+            border = ButtonDefaults.outlinedButtonBorder.copy(
+                brush = SolidColor(Color(0xFF6FAB8E))
             )
         ) {
             Text(
@@ -107,12 +112,12 @@ fun DiagnosisScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 AreaButton(
-                    text = "연산 영역",
-                    onClick = { navController.navigate("area_test/${AreaType.ARITHMETIC}/$userNo") }
+                    text = "듣기 영역",
+                    onClick = { navController.navigate("area_test/${AreaType.LISTENING}/$userNo") }
                 )
                 AreaButton(
-                    text = "주의력 영역",
-                    onClick = { navController.navigate("area_test/${AreaType.ATTENTION}/$userNo") }
+                    text = "산수 영역",
+                    onClick = { navController.navigate("area_test/${AreaType.ARITHMETIC}/$userNo") }
                 )
             }
         }
@@ -132,14 +137,34 @@ private fun AreaButton(
             .height(120.dp),
         shape = RoundedCornerShape(8.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+            containerColor = Color(0xFFE5F1E7),
+            contentColor = Color.Black
+        ),
+        border = ButtonDefaults.outlinedButtonBorder.copy(
+            brush = SolidColor(Color(0xFF6FAB8E))
         )
     ) {
-        Text(
-            text = text,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Medium
-        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = text,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Text(
+                text = when (text) {
+                    "읽기 영역" -> "(시지각 + 이해)"
+                    "쓰기 영역" -> "(운동 협응 + 철자 기억)"
+                    "듣기 영역" -> "(청지각 + 언어 처리)"
+                    "산수 영역" -> "(수리력 + 수 개념 이해)"
+                    else -> ""
+                },
+                fontSize = 12.sp,
+                color = Color.Gray,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+        }
     }
 }

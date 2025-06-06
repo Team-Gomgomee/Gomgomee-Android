@@ -58,7 +58,7 @@ class AreaTestViewModel(application: Application) : AndroidViewModel(application
             AreaType.READING -> "읽기"
             AreaType.WRITING -> "쓰기"
             AreaType.ARITHMETIC -> "산수"
-            AreaType.ATTENTION -> "듣기"
+            AreaType.LISTENING -> "듣기"
         }
 
         try {

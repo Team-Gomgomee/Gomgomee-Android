@@ -3,8 +3,8 @@ package com.konkuk.gomgomee.presentation.areatest.model
 enum class AreaType {
     READING,    // 읽기 영역
     WRITING,    // 쓰기 영역
-    ARITHMETIC, // 연산 영역
-    ATTENTION   // 주의력 영역
+    LISTENING,  // 듣기 영역
+    ARITHMETIC  // 산수 영역
 }
 
 enum class MediaType {

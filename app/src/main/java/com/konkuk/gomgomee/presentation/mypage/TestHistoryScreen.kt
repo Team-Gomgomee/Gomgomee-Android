@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.local.entity.TestSessionEntity
 
@@ -52,13 +53,21 @@ fun TestHistoryScreen(
             selectedTabIndex = selectedTabIndex,
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(8.dp)),
+            containerColor = Color.White,
+            contentColor = Color(0xFF6FAB8E),
+            indicator = { tabPositions ->
+                TabRowDefaults.Indicator(
+                    modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
+                    color = Color(0xFF6FAB8E)
+                )
+            }
         ) {
             tabs.forEachIndexed { index, title ->
                 Tab(
                     selected = selectedTabIndex == index,
                     onClick = { selectedTabIndex = index },
-                    text = { Text(title) }
+                    text = { Text(title, color = Color.Black) }
                 )
             }
         }
@@ -106,7 +115,10 @@ fun ChecklistResultItem(result: ChecklistResultEntity) {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFFE5F1E7)
+        )
     ) {
         Column(
             modifier = Modifier
@@ -169,7 +181,10 @@ fun AreaTestSessionItem(session: TestSessionEntity) {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFFE5F1E7)
+        )
     ) {
         Column(
             modifier = Modifier
@@ -194,7 +209,7 @@ fun AreaTestSessionItem(session: TestSessionEntity) {
                             "읽기" -> "읽기 영역 테스트"
                             "쓰기" -> "쓰기 영역 테스트"
                             "산수" -> "산수 영역 테스트"
-                            "듣기" -> "주의력 영역 테스트"
+                            "듣기" -> "듣기 영역 테스트"
                             else -> "${session.domain} 테스트"
                         },
                         fontSize = 16.sp,
