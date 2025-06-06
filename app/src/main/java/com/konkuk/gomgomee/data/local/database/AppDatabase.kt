@@ -14,6 +14,8 @@ import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.local.entity.TestQuestionEntity
 import com.konkuk.gomgomee.data.local.entity.TestSessionEntity
 import com.konkuk.gomgomee.data.local.entity.UserEntity
+import com.konkuk.gomgomee.data.local.entity.InstitutionEntity
+import com.konkuk.gomgomee.data.local.dao.InstitutionDao
 
 @Database(
     entities = [
@@ -21,7 +23,8 @@ import com.konkuk.gomgomee.data.local.entity.UserEntity
         ChecklistItemEntity::class,
         ChecklistResultEntity::class,
         TestQuestionEntity::class,
-        TestSessionEntity::class
+        TestSessionEntity::class,
+        InstitutionEntity::class
     ],
     version = 1,
     exportSchema = false
@@ -32,6 +35,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun checklistResultDao(): ChecklistResultDao
     abstract fun testQuestionDao(): TestQuestionDao
     abstract fun testSessionDao(): TestSessionDao
+    abstract fun institutionDao(): InstitutionDao
 
     companion object {
         @Volatile
