@@ -5,6 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.konkuk.gomgomee.presentation.areatest.AreaTestScreen
+import com.konkuk.gomgomee.presentation.areatest.model.AreaType
+import com.konkuk.gomgomee.presentation.diagnosis.ChecklistScreen
 import com.konkuk.gomgomee.presentation.diagnosis.DiagnosisScreen
 import com.konkuk.gomgomee.presentation.findcare.FindCareScreen
 import com.konkuk.gomgomee.presentation.home.HomeDetailScreen
@@ -60,7 +64,9 @@ fun GomgomeeNavGraph(
         }
 
         composable(route = Route.Diagnosis.route) {
-            DiagnosisScreen()
+            DiagnosisScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.FindCare.route) {
@@ -73,6 +79,32 @@ fun GomgomeeNavGraph(
 
         composable(route = Route.HomeDetail.route) {
             HomeDetailScreen()
+        }
+
+        composable(route = Route.Checklist.route) {
+            ChecklistScreen(
+                navController = navController
+            )
+        }
+
+        // 결과 화면은 추후 구현 예정
+        composable(route = Route.ChecklistResult.route) {
+            // ChecklistResultScreen(navController = navController)
+        }
+
+        // 영역별 테스트 화면
+        composable(
+            route = "area_test/{areaType}",
+            arguments = listOf(
+                navArgument("areaType") { 
+                    type = androidx.navigation.NavType.StringType 
+                }
+            )
+        ) { backStackEntry ->
+            val areaType = backStackEntry.arguments?.getString("areaType")?.let {
+                AreaType.valueOf(it)
+            } ?: AreaType.READING
+            AreaTestScreen(navController = navController, areaType = areaType)
         }
     }
 }
