@@ -44,16 +44,18 @@ interface InstitutionDao {
     ): Flow<List<InstitutionEntity>>
     
     // 현재 위치 기준 반경 내 기관 검색 (Haversine 공식 사용)
+    @RewriteQueriesToDropUnusedColumns
     @Query("""
-        SELECT *, (
-            6371 * acos(
-                cos(radians(:lat)) * cos(radians(latitude)) *
-                cos(radians(longitude) - radians(:lng)) +
-                sin(radians(:lat)) * sin(radians(latitude))
-            )
-        ) as distance
-        FROM institution
-        HAVING distance <= :radiusKm
+        SELECT * FROM (
+            SELECT *, (
+                6371 * acos(
+                    cos(radians(:lat)) * cos(radians(latitude)) *
+                    cos(radians(longitude) - radians(:lng)) +
+                    sin(radians(:lat)) * sin(radians(latitude))
+                )
+            ) as distance
+            FROM institution
+        ) WHERE distance <= :radiusKm
         ORDER BY distance
     """)
     fun getInstitutionsWithinRadius(

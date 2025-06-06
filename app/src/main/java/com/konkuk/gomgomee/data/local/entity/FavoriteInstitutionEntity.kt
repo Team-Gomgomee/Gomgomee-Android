@@ -18,7 +18,10 @@ import androidx.room.*
             onDelete = ForeignKey.CASCADE
         )
     ],
-    indices = [Index(value = ["userNo", "institutionId"], unique = true)]
+    indices = [
+        Index(value = ["userNo", "institutionId"], unique = true),
+        Index(value = ["institutionId"])
+    ]
 )
 data class FavoriteInstitutionEntity(
     @PrimaryKey(autoGenerate = true) 

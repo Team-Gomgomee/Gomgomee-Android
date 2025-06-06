@@ -29,7 +29,7 @@ import com.konkuk.gomgomee.data.local.entity.FavoriteInstitutionEntity
         InstitutionEntity::class,
         FavoriteInstitutionEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

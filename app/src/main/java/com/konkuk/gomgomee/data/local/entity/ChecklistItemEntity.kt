@@ -7,6 +7,5 @@ import androidx.room.PrimaryKey
 data class ChecklistItemEntity(
     @PrimaryKey(autoGenerate = true) 
     val itemId: Int = 0,
-    val questionText: String,
-    val createdAt: Long = System.currentTimeMillis()
+    val questionText: String
 ) 

@@ -3,6 +3,7 @@ package com.konkuk.gomgomee.data.local.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import androidx.room.Index
 
 @Entity(
     tableName = "test_session",
@@ -11,7 +12,8 @@ import androidx.room.PrimaryKey
         parentColumns = ["userNo"],
         childColumns = ["userNo"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("userNo")]
 )
 data class TestSessionEntity(
     @PrimaryKey(autoGenerate = true) 
