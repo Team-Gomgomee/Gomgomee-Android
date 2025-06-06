@@ -24,6 +24,9 @@ import com.konkuk.gomgomee.presentation.diagnosis.ChecklistResultViewModel
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistItem
 import com.konkuk.gomgomee.presentation.areatest.AreaTestResultViewModel
 import androidx.compose.ui.platform.LocalContext
+import com.konkuk.gomgomee.presentation.mypage.TestHistoryScreen
+import com.konkuk.gomgomee.presentation.mypage.FavoriteInstitutionsScreen
+import com.konkuk.gomgomee.presentation.mypage.FeedbackScreen
 
 @Composable
 fun GomgomeeNavGraph(
@@ -82,7 +85,28 @@ fun GomgomeeNavGraph(
         }
 
         composable(route = Route.MyPage.route) {
-            MyPageScreen()
+            MyPageScreen(
+                navController = navController,
+                onLogout = {
+                    navController.navigate(Route.Login.route) {
+                        popUpTo(Route.Home.route) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable(route = Route.TestHistory.route) {
+            TestHistoryScreen(navController = navController)
+        }
+
+        composable(route = Route.FavoriteInstitutions.route) {
+            FavoriteInstitutionsScreen(navController = navController)
+        }
+
+        composable(route = Route.Feedback.route) {
+            FeedbackScreen(navController = navController)
         }
 
         composable(route = Route.HomeDetail.route) {

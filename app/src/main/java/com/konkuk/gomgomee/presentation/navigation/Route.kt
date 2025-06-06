@@ -26,4 +26,10 @@ sealed class Route(
     data object AreaTest: Route(route = "area_test/{areaType}/{userNo}")
 
     data object AreaTestResult: Route(route = "area_test_result/{totalQuestions}/{correctAnswers}")
+
+    data object TestHistory: Route(route = "test_history")
+
+    data object FavoriteInstitutions: Route(route = "favorite_institutions")
+
+    data object Feedback: Route(route = "feedback")
 }
