@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.konkuk.gomgomee.presentation.areatest.AreaTestScreen
 import com.konkuk.gomgomee.presentation.areatest.AreaTestResultScreen
 import com.konkuk.gomgomee.presentation.areatest.model.AreaType
@@ -18,6 +19,9 @@ import com.konkuk.gomgomee.presentation.mypage.MyPageScreen
 import com.konkuk.gomgomee.presentation.onboarding.LoginScreen
 import com.konkuk.gomgomee.presentation.onboarding.SignUpScreen
 import com.konkuk.gomgomee.presentation.onboarding.SplashScreen
+import com.konkuk.gomgomee.presentation.diagnosis.ChecklistResultScreen
+import com.konkuk.gomgomee.presentation.diagnosis.ChecklistResultViewModel
+import com.konkuk.gomgomee.presentation.diagnosis.ChecklistItem
 
 @Composable
 fun GomgomeeNavGraph(
@@ -88,9 +92,14 @@ fun GomgomeeNavGraph(
             )
         }
 
-        // 결과 화면은 추후 구현 예정
-        composable(route = Route.ChecklistResult.route) {
-            // ChecklistResultScreen(navController = navController)
+        composable(route = "checklist_result") {
+            val checklistItems = navController.previousBackStackEntry?.savedStateHandle?.get<List<ChecklistItem>>("checklistItems") ?: emptyList()
+            ChecklistResultScreen(
+                navController = navController,
+                viewModel = viewModel(
+                    factory = ChecklistResultViewModel.factory(checklistItems)
+                )
+            )
         }
 
         // 영역별 테스트 화면

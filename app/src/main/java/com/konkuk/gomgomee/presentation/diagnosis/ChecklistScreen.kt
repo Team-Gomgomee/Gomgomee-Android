@@ -126,7 +126,13 @@ fun ChecklistScreen(
 
         // 결과 보기 버튼
         Button(
-            onClick = { navController.navigate("checklist_result") },
+            onClick = { 
+                navController.currentBackStackEntry?.savedStateHandle?.set(
+                    "checklistItems",
+                    viewModel.checklistItems
+                )
+                navController.navigate("checklist_result")
+            },
             enabled = viewModel.isAllItemsAnswered,
             modifier = Modifier
                 .fillMaxWidth()

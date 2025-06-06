@@ -19,13 +19,8 @@ class DataInitializer(private val context: Context) {
         if (!isInitialized) {
             withContext(Dispatchers.IO) {
                 try {
-                    Log.d(TAG, "Starting data initialization...")
+                    Log.d(TAG, "Starting initial data initialization...")
                     
-                    // 사용자 데이터 초기화
-                    val users = jsonDataReader.readUsers()
-                    Log.d(TAG, "Read ${users.size} users from JSON")
-                    database.userDao().insertUsers(users)
-
                     // 체크리스트 문항 초기화
                     val checklistItems = jsonDataReader.readChecklistItems()
                     Log.d(TAG, "Read ${checklistItems.size} checklist items from JSON")
@@ -45,9 +40,9 @@ class DataInitializer(private val context: Context) {
                     sharedPreferences.edit()
                         .putBoolean("is_data_initialized", true)
                         .apply()
-                    Log.d(TAG, "Data initialization completed successfully")
+                    Log.d(TAG, "Initial data initialization completed successfully")
                 } catch (e: Exception) {
-                    Log.e(TAG, "Error during data initialization", e)
+                    Log.e(TAG, "Error during initial data initialization", e)
                     // 초기화 실패 시 flag를 false로 설정하여 다음 시작 시 다시 시도하도록 함
                     sharedPreferences.edit()
                         .putBoolean("is_data_initialized", false)
@@ -58,23 +53,18 @@ class DataInitializer(private val context: Context) {
         }
     }
 
-    // 데이터 재초기화가 필요한 경우 사용
-    suspend fun reinitializeData() {
-        Log.d(TAG, "Starting data reinitialization...")
+    // 초기 데이터만 재초기화 (사용자 데이터는 유지)
+    suspend fun reinitializeInitialData() {
+        Log.d(TAG, "Starting reinitialization of initial data...")
         withContext(Dispatchers.IO) {
             try {
-                // 기존 데이터 삭제
-                database.userDao().deleteAllUsers()
+                // 초기 데이터만 삭제
                 database.checklistItemDao().deleteAllItems()
                 database.testQuestionDao().deleteAllQuestions()
                 database.institutionDao().deleteAllInstitutions()
-                Log.d(TAG, "Existing data deleted")
+                Log.d(TAG, "Existing initial data deleted")
 
-                // 새로운 데이터 삽입
-                val users = jsonDataReader.readUsers()
-                database.userDao().insertUsers(users)
-                Log.d(TAG, "${users.size} users reinitialized")
-
+                // 새로운 초기 데이터 삽입
                 val checklistItems = jsonDataReader.readChecklistItems()
                 database.checklistItemDao().insertItems(checklistItems)
                 Log.d(TAG, "${checklistItems.size} checklist items reinitialized")
@@ -87,16 +77,9 @@ class DataInitializer(private val context: Context) {
                 database.institutionDao().insertInstitutions(institutions)
                 Log.d(TAG, "${institutions.size} institutions reinitialized")
 
-                // 초기화 상태 업데이트
-                sharedPreferences.edit()
-                    .putBoolean("is_data_initialized", true)
-                    .apply()
-                Log.d(TAG, "Data reinitialization completed successfully")
+                Log.d(TAG, "Initial data reinitialization completed successfully")
             } catch (e: Exception) {
-                Log.e(TAG, "Error during data reinitialization", e)
-                sharedPreferences.edit()
-                    .putBoolean("is_data_initialized", false)
-                    .apply()
+                Log.e(TAG, "Error during initial data reinitialization", e)
                 throw e
             }
         }

@@ -22,8 +22,8 @@ class GomgomeeApplication : Application() {
                 Log.d(TAG, "Starting application initialization")
                 val dataInitializer = DataInitializer(applicationContext)
                 
-                // 강제로 데이터 재초기화
-                dataInitializer.reinitializeData()
+                // 최초 1회만 초기화
+                dataInitializer.initializeDataIfNeeded()
                 
                 Log.d(TAG, "Application initialization completed")
             } catch (e: Exception) {

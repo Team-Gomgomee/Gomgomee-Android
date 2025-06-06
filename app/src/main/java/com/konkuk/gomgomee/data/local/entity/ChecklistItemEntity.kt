@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "checklist_item")
 data class ChecklistItemEntity(
-    @PrimaryKey(autoGenerate = true) 
-    val itemId: Int = 0,
+    @PrimaryKey
+    val itemId: Int,
     val questionText: String
 ) 
