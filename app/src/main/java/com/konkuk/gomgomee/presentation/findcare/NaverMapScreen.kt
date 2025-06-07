@@ -16,6 +16,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -115,42 +120,12 @@ fun NaverMapScreen(modifier: Modifier = Modifier) {
 
         // 선택된 병원 카드
         selectedInstitution?.let { inst ->
-            Column(
+            InstitutionCard(
+                inst = inst,
                 modifier = Modifier
                     .align(Alignment.TopCenter)
                     .padding(10.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(Color.White.copy(alpha = 0.95f))
-                    .fillMaxWidth(1f)
-            ) {
-                // 병원명 + 분류
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = inst.name,
-                        fontSize = 18.sp,
-                        color = Color.Black,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = inst.category,
-                        fontSize = 14.sp,
-                        color = Color.Gray
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(4.dp))
-
-                // 거리 + 주소
-                Text(
-                    text = inst.address,
-                    fontSize = 14.sp,
-                    color = Color.DarkGray
-                )
-            }
+            )
         }
     }
 }
