@@ -1,5 +1,5 @@
 package com.konkuk.gomgomee.type
 
 enum class DisorderType {
-    LEARNING, ADHD
+    LEARNING, ADHD, LANGUAGE
 }

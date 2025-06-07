@@ -74,7 +74,13 @@ fun HomeScreen(
                     cardTitle = card.cardTitle,
                     cardDescription = card.cardDescription,
                     modifier = Modifier.noRippleClickable {
-                        val type = if (index % 2 == 1) DisorderType.ADHD else DisorderType.LEARNING
+                        val type =
+                            when (index) {
+                                0 -> DisorderType.LEARNING
+                                1 -> DisorderType.ADHD
+                                2 -> DisorderType.LANGUAGE
+                                else -> DisorderType.LEARNING
+                            }
                         detailViewModel.setInitialDataIndex(index)
                         navigateToHomeDetail(type)
                     }

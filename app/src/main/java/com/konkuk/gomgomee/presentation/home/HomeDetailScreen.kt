@@ -50,8 +50,9 @@ fun HomeDetailScreen(
     LaunchedEffect(disorderType) {
         viewModel.setDisorderType(disorderType)
         when (disorderType) {
-            DisorderType.ADHD -> viewModel.fetchAdhdInfo()
             DisorderType.LEARNING -> viewModel.fetchLearningDisorderInfo()
+            DisorderType.ADHD -> viewModel.fetchAdhdInfo()
+            DisorderType.LANGUAGE -> viewModel.fetchCommunicationDisorderInfo()
         }
     }
 
@@ -96,10 +97,12 @@ fun HomeDetailScreen(
 
                 Text(
                     text = when (disorderType) {
-                        DisorderType.ADHD ->
-                            "곰곰이가 SNUH ADHD 페이지에서\n가져온 정보를 확인해보세요!"
                         DisorderType.LEARNING ->
-                            "곰곰이가 SNUH 의학정보 페이지에서\n가져온 정보를 확인해보세요!"
+                            "곰곰이가 SNUH 의학정보 페이지에서 가져온\n학습장애 관련 정보를 확인해보세요!"
+                        DisorderType.ADHD ->
+                            "곰곰이가 SNUH 의학정보 페이지에서 가져온\nADHD 관련 정보를 확인해보세요!"
+                        DisorderType.LANGUAGE ->
+                            "곰곰이가 SNUH 의학정보 페이지에서 가져온\n의사소통장애 관련 정보를 확인해보세요!"
                     },
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
