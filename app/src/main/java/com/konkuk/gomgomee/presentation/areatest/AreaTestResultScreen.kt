@@ -107,18 +107,18 @@ fun AreaTestResultScreen(
             }
 
             // 설명 텍스트
-            Text(
-                text = when (resultState.resultLevel) {
-                    ResultLevel.WARNING -> "정답률이 매우 낮습니다.\n전문의와 상담하여 정확한 진단을 받아보세요."
-                    ResultLevel.CAUTION -> "일부 영역에서 어려움이 있을 수 있습니다.\n전문가와 상담하는 것이 좋습니다."
-                    ResultLevel.SAFE -> "대부분의 문제를 잘 해결했습니다.\n지속적인 관찰과 연습을 통해 더 발전할 수 있습니다."
-                },
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Normal,
-                textAlign = TextAlign.Center,
-                lineHeight = 24.sp,
-                color = Color.DarkGray
-            )
+//            Text(
+//                text = when (resultState.resultLevel) {
+//                    ResultLevel.WARNING -> "정답률이 매우 낮습니다.\n전문의와 상담하여 정확한 진단을 받아보세요."
+//                    ResultLevel.CAUTION -> "일부 영역에서 어려움이 있을 수 있습니다.\n전문가와 상담하는 것이 좋습니다."
+//                    ResultLevel.SAFE -> "대부분의 문제를 잘 해결했습니다.\n지속적인 관찰과 연습을 통해 더 발전할 수 있습니다."
+//                },
+//                fontSize = 16.sp,
+//                fontWeight = FontWeight.Normal,
+//                textAlign = TextAlign.Center,
+//                lineHeight = 24.sp,
+//                color = Color.DarkGray
+//            )
         }
 
         Spacer(modifier = Modifier.weight(1f))

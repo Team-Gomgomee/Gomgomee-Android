@@ -186,7 +186,7 @@ fun ChecklistResultItem(result: ChecklistResultEntity) {
             
             if (expanded) {
                 Spacer(modifier = Modifier.height(8.dp))
-                val riskScore = (result.yesCount.toFloat() / 10 * 100).toInt() // Assuming total questions is 10
+                val riskScore = (result.yesCount.toFloat() / 17 * 100).toInt() // 체크리스트 문항 수 하드코딩..
                 val recommendation = when {
                     riskScore < 30 -> "현재는 특별한 이상이 없어 보입니다.\n정기적인 관찰만으로도 충분합니다."
                     riskScore < 70 -> "전문가와의 상담이 권장됩니다.\n조기 발견이 중요할 수 있습니다."
