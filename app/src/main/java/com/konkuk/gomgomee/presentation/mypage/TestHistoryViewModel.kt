@@ -1,6 +1,7 @@
 package com.konkuk.gomgomee.presentation.mypage
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,6 +22,9 @@ class TestHistoryViewModel(application: Application) : AndroidViewModel(applicat
 
     private val checklistResultRepository: ChecklistResultRepository
     private val testSessionRepository: TestSessionRepository
+    private val sharedPreferences = application.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    private val currentUserNo: Int
+        get() = sharedPreferences.getInt("current_user_no", -1)
 
     // 체크리스트 결과 Flow
     private val _checklistResults = MutableStateFlow<List<ChecklistResultEntity>>(emptyList())
@@ -37,34 +41,39 @@ class TestHistoryViewModel(application: Application) : AndroidViewModel(applicat
         loadTestHistory()
     }
 
-    private fun loadTestHistory() {
-        viewModelScope.launch {
-            // 체크리스트 결과 로드
-            launch {
-                try {
-                    checklistResultRepository.allResults
-                        .collect { results ->
-                            _checklistResults.value = results.sortedByDescending { it.createdAt }
-                        }
-                } catch (e: Exception) {
-                    if (e !is kotlinx.coroutines.CancellationException) {
-                        Log.e(TAG, "Error loading checklist results", e)
-                    }
-                }
-            }
+    fun loadTestHistory() {
+        Log.d(TAG, "Loading test history for user: $currentUserNo")
+        
+        if (currentUserNo == -1) {
+            Log.e(TAG, "No user is currently logged in")
+            return
+        }
 
-            // 영역별 테스트 세션 로드
-            launch {
-                try {
-                    testSessionRepository.allSessions
-                        .collect { sessions ->
-                            _areaTestSessions.value = sessions.sortedByDescending { it.startedAt }
-                        }
-                } catch (e: Exception) {
-                    if (e !is kotlinx.coroutines.CancellationException) {
-                        Log.e(TAG, "Error loading test sessions", e)
+        viewModelScope.launch {
+            try {
+                // 체크리스트 결과와 영역별 테스트 세션을 별도의 코루틴에서 로드
+                launch {
+                    Log.d(TAG, "Starting to load checklist results")
+                    checklistResultRepository.getResultsByUser(currentUserNo).collect { results ->
+                        Log.d(TAG, "Loaded ${results.size} checklist results")
+                        _checklistResults.value = results.sortedByDescending { it.createdAt }
                     }
                 }
+
+                launch {
+                    Log.d(TAG, "Starting to load area test sessions")
+                    testSessionRepository.getSessionsByUser(currentUserNo).collect { sessions ->
+                        Log.d(TAG, "Loaded ${sessions.size} area test sessions")
+                        sessions.forEach { session ->
+                            Log.d(TAG, "Session details: id=${session.sessionId}, domain=${session.domain}, " +
+                                    "correctCount=${session.correctCount}, totalCount=${session.totalCount}, " +
+                                    "startedAt=${session.startedAt}, finishedAt=${session.finishedAt}")
+                        }
+                        _areaTestSessions.value = sessions
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error loading test history", e)
             }
         }
     }

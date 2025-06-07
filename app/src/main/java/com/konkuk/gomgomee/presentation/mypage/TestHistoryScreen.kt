@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.local.entity.TestSessionEntity
+import kotlinx.coroutines.launch
 
 @Composable
 fun TestHistoryScreen(
@@ -34,6 +35,13 @@ fun TestHistoryScreen(
 ) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val tabs = listOf("체크리스트", "영역별 진단")
+    val checklistResults by viewModel.checklistResults.collectAsState(initial = emptyList())
+    val areaTestSessions by viewModel.areaTestSessions.collectAsState(initial = emptyList())
+
+    // 화면이 표시될 때마다 데이터 다시 로드
+    LaunchedEffect(Unit) {
+        viewModel.loadTestHistory()
+    }
 
     Column(
         modifier = Modifier
@@ -85,11 +93,24 @@ fun TestHistoryScreen(
 fun ChecklistHistoryTab(viewModel: TestHistoryViewModel) {
     val checklistResults by viewModel.checklistResults.collectAsState(initial = emptyList())
     
-    LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(checklistResults) { result ->
-            ChecklistResultItem(result)
+    if (checklistResults.isEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "아직 체크리스트 기록이 없습니다.",
+                color = Color.Gray,
+                fontSize = 16.sp
+            )
+        }
+    } else {
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(checklistResults) { result ->
+                ChecklistResultItem(result)
+            }
         }
     }
 }
@@ -98,11 +119,24 @@ fun ChecklistHistoryTab(viewModel: TestHistoryViewModel) {
 fun AreaTestHistoryTab(viewModel: TestHistoryViewModel) {
     val areaTestSessions by viewModel.areaTestSessions.collectAsState(initial = emptyList())
     
-    LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(areaTestSessions) { session ->
-            AreaTestSessionItem(session)
+    if (areaTestSessions.isEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "아직 영역별 진단 기록이 없습니다.",
+                color = Color.Gray,
+                fontSize = 16.sp
+            )
+        }
+    } else {
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(areaTestSessions) { session ->
+                AreaTestSessionItem(session)
+            }
         }
     }
 }

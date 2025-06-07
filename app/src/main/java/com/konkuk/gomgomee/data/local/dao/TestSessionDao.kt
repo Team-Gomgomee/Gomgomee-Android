@@ -9,19 +9,19 @@ interface TestSessionDao {
     @Query("SELECT * FROM test_session")
     fun getAllSessions(): Flow<List<TestSessionEntity>>
     
-    @Query("SELECT * FROM test_session WHERE userNo = :userNo")
+    @Query("SELECT * FROM test_session WHERE userNo = :userNo ORDER BY startedAt DESC")
     fun getSessionsByUser(userNo: Int): Flow<List<TestSessionEntity>>
     
-    @Query("SELECT * FROM test_session WHERE userNo = :userNo AND domain = :domain")
+    @Query("SELECT * FROM test_session WHERE userNo = :userNo AND domain = :domain ORDER BY startedAt DESC")
     fun getSessionsByUserAndDomain(userNo: Int, domain: String): Flow<List<TestSessionEntity>>
     
     @Query("SELECT * FROM test_session WHERE sessionId = :sessionId")
     fun getSessionById(sessionId: Int): Flow<TestSessionEntity?>
     
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSession(session: TestSessionEntity): Long
     
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateSession(session: TestSessionEntity)
     
     @Delete

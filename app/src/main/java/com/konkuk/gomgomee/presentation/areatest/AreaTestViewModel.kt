@@ -173,6 +173,7 @@ class AreaTestViewModel(application: Application) : AndroidViewModel(application
     // 테스트 완료 처리
     suspend fun finishTest() {
         val session = currentSession ?: throw Exception("No active test session")
+        Log.d(TAG, "Finishing test session: $session")
         
         // 정답 개수 계산
         val correctCount = questions.count { question ->
@@ -187,16 +188,18 @@ class AreaTestViewModel(application: Application) : AndroidViewModel(application
             userAnswer == correctAnswer
         }
         
-        // 세션 업데이트
-        val finishedSession = session.copy(
-            finishedAt = System.currentTimeMillis(),
-            correctCount = correctCount
-        )
+        Log.d(TAG, "Calculated correct answers: $correctCount out of ${questions.size}")
         
         try {
-            // 데이터베이스에 저장
-            sessionRepository.update(finishedSession)
+            // 세션 업데이트 (기존 sessionId 유지)
+            val finishedSession = session.copy(
+                finishedAt = System.currentTimeMillis(),
+                correctCount = correctCount
+            )
+            Log.d(TAG, "Updating test session in database: $finishedSession")
+            sessionRepository.update(finishedSession)  // insert 대신 update 사용
             currentSession = finishedSession
+            Log.d(TAG, "Successfully updated test session")
         } catch (e: Exception) {
             Log.e(TAG, "Error updating test session", e)
             throw e
