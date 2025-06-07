@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,14 +25,16 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.presentation.home.component.HomeCardItem
+import com.konkuk.gomgomee.type.DisorderType
 import com.konkuk.gomgomee.ui.theme.White
 import com.konkuk.gomgomee.util.modifier.noRippleClickable
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    navigateToHomeDetail: () -> Unit,
-    viewModel: HomeViewModel = viewModel()
+    navigateToHomeDetail: (DisorderType) -> Unit,
+    viewModel: HomeViewModel = viewModel(),
+    detailViewModel: HomeDetailViewModel = viewModel()
 ) {
     val homeCardItems = viewModel.homeCardItems
 
@@ -67,12 +69,14 @@ fun HomeScreen(
         LazyColumn(
             modifier = Modifier.weight(1f)
         ) {
-            items(homeCardItems) { card ->
+            itemsIndexed(homeCardItems) {index, card ->
                 HomeCardItem(
                     cardTitle = card.cardTitle,
                     cardDescription = card.cardDescription,
                     modifier = Modifier.noRippleClickable {
-                        navigateToHomeDetail()
+                        val type = if (index % 2 == 1) DisorderType.ADHD else DisorderType.LEARNING
+                        detailViewModel.setInitialDataIndex(index)
+                        navigateToHomeDetail(type)
                     }
                 )
                 Spacer(modifier = Modifier.height(20.dp))

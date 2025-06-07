@@ -3,8 +3,10 @@ package com.konkuk.gomgomee.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.konkuk.gomgomee.presentation.diagnosis.DiagnosisScreen
 import com.konkuk.gomgomee.presentation.findcare.FindCareScreen
 import com.konkuk.gomgomee.presentation.home.HomeDetailScreen
@@ -13,6 +15,7 @@ import com.konkuk.gomgomee.presentation.mypage.MyPageScreen
 import com.konkuk.gomgomee.presentation.onboarding.LoginScreen
 import com.konkuk.gomgomee.presentation.onboarding.SignUpScreen
 import com.konkuk.gomgomee.presentation.onboarding.SplashScreen
+import com.konkuk.gomgomee.type.DisorderType
 
 @Composable
 fun GomgomeeNavGraph(
@@ -55,7 +58,7 @@ fun GomgomeeNavGraph(
             HomeScreen(
                 modifier = modifier,
                 navigateToHomeDetail = {
-                    navController.navigate(Route.HomeDetail.route)
+                    navController.navigate(Route.HomeDetail.createRoute(it))
                 }
             )
         }
@@ -78,8 +81,20 @@ fun GomgomeeNavGraph(
             )
         }
 
-        composable(route = Route.HomeDetail.route) {
-            HomeDetailScreen()
+        composable(
+            route = Route.HomeDetail.route,
+            arguments = listOf(
+                navArgument("type") {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val type = backStackEntry.arguments!!.getString("type")!!
+            val disorderType = DisorderType.valueOf(type)
+
+            HomeDetailScreen(
+                disorderType = disorderType
+            )
         }
     }
 }

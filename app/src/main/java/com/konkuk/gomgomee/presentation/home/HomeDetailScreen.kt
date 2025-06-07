@@ -1,5 +1,6 @@
 package com.konkuk.gomgomee.presentation.home
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,10 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.pullrefresh.PullRefreshIndicator
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,30 +33,32 @@ import com.konkuk.gomgomee.data.HomeDetailCardData
 import com.konkuk.gomgomee.presentation.home.component.AnimatedProgressBar
 import com.konkuk.gomgomee.presentation.home.component.HomeDetailCardItem
 import com.konkuk.gomgomee.presentation.home.component.SmallButton
+import com.konkuk.gomgomee.type.DisorderType
 import com.konkuk.gomgomee.ui.theme.White
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HomeDetailScreen(
     modifier: Modifier = Modifier,
+    disorderType: DisorderType,
     viewModel: HomeDetailViewModel = viewModel()
 ) {
     val sections = viewModel.detailCards
     val isLoading = viewModel.isLoading.value
 
-    val refreshState = rememberPullRefreshState(
-        refreshing = isLoading,
-        onRefresh = { viewModel.fetchLearningDisorderInfo() }
-    )
+    var currentPage by remember(sections) { mutableIntStateOf(0) }
 
-    LaunchedEffect(Unit) {
-        viewModel.fetchLearningDisorderInfo()
+    LaunchedEffect(disorderType) {
+        viewModel.setDisorderType(disorderType)
+        when (disorderType) {
+            DisorderType.ADHD -> viewModel.fetchAdhdInfo()
+            DisorderType.LEARNING -> viewModel.fetchLearningDisorderInfo()
+        }
     }
 
     Box(
         modifier = modifier
             .fillMaxSize()
-            .pullRefresh(refreshState)
+//            .pullRefresh(refreshState)
             .background(White)
             .padding(horizontal = 16.dp)
     ) {
@@ -74,12 +73,12 @@ fun HomeDetailScreen(
                 textAlign = TextAlign.Center
             )
         } else {
+            Log.d("HomeDetailScreen", "Sections is NOT empty. Size: ${sections.size}")
             val pages: List<List<HomeDetailCardData>> = remember(sections) {
                 sections.chunked(3)
             }
+            Log.d("HomeDetailScreen", "Pages for current page: ${pages[currentPage].size}")
             val totalPages = pages.size
-
-            var currentPage by remember { mutableIntStateOf(0) }
 
             Column(modifier = Modifier.fillMaxSize()) {
                 val progressFraction = (currentPage + 1).toFloat() / totalPages.toFloat()
@@ -96,7 +95,12 @@ fun HomeDetailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "곰곰이가 SNUH 의학정보 페이지에서\n가져온 정보를 확인해보세요!",
+                    text = when (disorderType) {
+                        DisorderType.ADHD ->
+                            "곰곰이가 SNUH ADHD 페이지에서\n가져온 정보를 확인해보세요!"
+                        DisorderType.LEARNING ->
+                            "곰곰이가 SNUH 의학정보 페이지에서\n가져온 정보를 확인해보세요!"
+                    },
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
                     lineHeight = 22.sp,
@@ -147,10 +151,10 @@ fun HomeDetailScreen(
             }
         }
 
-        PullRefreshIndicator(
-            refreshing = isLoading,
-            state = refreshState,
-            modifier = Modifier.align(Alignment.TopCenter)
-        )
+//        PullRefreshIndicator(
+//            refreshing = isLoading,
+//            state = refreshState,
+//            modifier = Modifier.align(Alignment.TopCenter)
+//        )
     }
 }
