@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId = "com.konkuk.gomgomee"
-        minSdk = 35
+        minSdk = 26 // 실제 기기에서 수행하기 위함
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -64,6 +64,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.naver.map.compose)
+    implementation(libs.androidx.databinding.runtime)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -92,4 +94,5 @@ dependencies {
 
     //Naver Map
     implementation("com.naver.maps:map-sdk:3.21.0")
+    implementation ("com.google.accompanist:accompanist-permissions:0.34.0")
 }
