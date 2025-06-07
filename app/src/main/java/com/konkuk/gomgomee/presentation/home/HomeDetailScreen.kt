@@ -53,6 +53,7 @@ fun HomeDetailScreen(
             DisorderType.LEARNING -> viewModel.fetchLearningDisorderInfo()
             DisorderType.ADHD -> viewModel.fetchAdhdInfo()
             DisorderType.LANGUAGE -> viewModel.fetchCommunicationDisorderInfo()
+            DisorderType.DYSLEXIA -> viewModel.fetchDyslexiaInfo()
         }
     }
 
@@ -76,7 +77,7 @@ fun HomeDetailScreen(
         } else {
             Log.d("HomeDetailScreen", "Sections is NOT empty. Size: ${sections.size}")
             val pages: List<List<HomeDetailCardData>> = remember(sections) {
-                sections.chunked(3)
+                sections.chunked(2)
             }
             Log.d("HomeDetailScreen", "Pages for current page: ${pages[currentPage].size}")
             val totalPages = pages.size
@@ -103,6 +104,8 @@ fun HomeDetailScreen(
                             "곰곰이가 SNUH 의학정보 페이지에서 가져온\nADHD 관련 정보를 확인해보세요!"
                         DisorderType.LANGUAGE ->
                             "곰곰이가 SNUH 의학정보 페이지에서 가져온\n의사소통장애 관련 정보를 확인해보세요!"
+                        DisorderType.DYSLEXIA ->
+                            "곰곰이가 SNUH 의학정보 페이지에서 가져온\n난독증 관련 정보를 확인해보세요!"
                     },
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,

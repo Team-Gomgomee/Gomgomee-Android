@@ -79,6 +79,7 @@ fun HomeScreen(
                                 0 -> DisorderType.LEARNING
                                 1 -> DisorderType.ADHD
                                 2 -> DisorderType.LANGUAGE
+                                3 -> DisorderType.DYSLEXIA
                                 else -> DisorderType.LEARNING
                             }
                         detailViewModel.setInitialDataIndex(index)

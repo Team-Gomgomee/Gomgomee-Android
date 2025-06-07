@@ -81,6 +81,21 @@ class HomeDetailViewModel : ViewModel() {
         }
     }
 
+    fun fetchDyslexiaInfo() {
+        _isLoading.value = true
+        viewModelScope.launch {
+            try {
+                val list = getDyslexiaInfo()
+                _detailCards.clear()
+                _detailCards.addAll(list)
+            } catch (e: Exception) {
+                Log.e("Dyslexia Crawling", "크롤링 실패", e)
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
     private suspend fun getLearningDisorderInfo(): List<HomeDetailCardData> = withContext(Dispatchers.IO) {
         val url = "https://snuh.org/health/nMedInfo/nView.do?category=DIS&medid=AA000616"
 
@@ -156,6 +171,42 @@ class HomeDetailViewModel : ViewModel() {
 
     private suspend fun getCommunicationDisorderInfo(): List<HomeDetailCardData> = withContext(Dispatchers.IO) {
         val url = "https://snuh.org/health/nMedInfo/nView.do?category=DIS&medid=AA001092"
+
+        val doc = Jsoup.connect(url)
+            .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
+                    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36")
+            .referrer("https://www.google.com")
+            .timeout(10_000)
+            .get()
+
+        val result = mutableListOf<HomeDetailCardData>()
+
+        val headingElements = doc.select("h5")
+        for (heading in headingElements) {
+            val cardTitle = heading.text().trim()
+
+            val contentBuilder = StringBuilder()
+            var sibling = heading.nextElementSibling()
+
+            while (sibling != null && sibling.tagName() != "h5") {
+                val text = sibling.wholeText().trim()
+                if (text.isNotEmpty()) {
+                    contentBuilder.append(text).append("\n\n")
+                }
+                sibling = sibling.nextElementSibling()
+            }
+
+            val cardContent = contentBuilder.toString().trim()
+            if (cardContent.isNotEmpty()) {
+                result.add(HomeDetailCardData(title = cardTitle, content = cardContent))
+            }
+        }
+
+        result
+    }
+
+    private suspend fun getDyslexiaInfo(): List<HomeDetailCardData> = withContext(Dispatchers.IO) {
+        val url = "https://www.snuh.org/health/nMedInfo/nView.do?category=DIS&medid=AA000594"
 
         val doc = Jsoup.connect(url)
             .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
