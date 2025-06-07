@@ -29,4 +29,7 @@ interface UserDao {
 
     @Query("DELETE FROM user")
     suspend fun deleteAllUsers()
+
+    @Query("SELECT EXISTS(SELECT 1 FROM user WHERE id = :id)")
+    suspend fun isIdExists(id: String): Boolean
 } 

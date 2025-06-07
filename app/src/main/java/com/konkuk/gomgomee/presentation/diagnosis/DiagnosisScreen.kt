@@ -1,15 +1,18 @@
 package com.konkuk.gomgomee.presentation.diagnosis
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -18,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.presentation.areatest.model.AreaType
+import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.ui.theme.White
 
 // 연두색 계열의 색상 정의
@@ -27,9 +31,23 @@ private val DarkGreen = Color(0xFF86B875)
 @Composable
 fun DiagnosisScreen(
     navController: NavController,
-    modifier: Modifier = Modifier,
-    userNo: Int = 1  // 임시로 1을 기본값으로 설정
+    modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+    val userNo = remember {
+        context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            .getInt("current_user_no", -1)
+    }
+
+    // userNo가 -1이면 로그인되지 않은 상태
+    if (userNo == -1) {
+        LaunchedEffect(Unit) {
+            Toast.makeText(context, "로그인이 필요합니다", Toast.LENGTH_SHORT).show()
+            navController.navigate(Route.Login.route)
+        }
+        return
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -59,7 +77,7 @@ fun DiagnosisScreen(
 
         // 자가진단 체크리스트 버튼
         Button(
-            onClick = { navController.navigate("checklist") },
+            onClick = { navController.navigate(Route.Checklist.route) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(64.dp),

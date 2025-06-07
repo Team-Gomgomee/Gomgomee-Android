@@ -3,6 +3,7 @@ package com.konkuk.gomgomee.data.util
 import android.content.Context
 import android.util.Log
 import com.konkuk.gomgomee.data.local.database.AppDatabase
+import com.konkuk.gomgomee.data.local.entity.UserEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -35,6 +36,11 @@ class DataInitializer(private val context: Context) {
                     val institutions = jsonDataReader.readInstitutions()
                     Log.d(TAG, "Read ${institutions.size} institutions from JSON")
                     database.institutionDao().insertInstitutions(institutions)
+
+                    // 사용자 정보 초기화
+                    val users = jsonDataReader.readUsers()
+                    Log.d(TAG, "Read ${users.size} users from JSON")
+                    database.userDao().insertUsers(users)
 
                     // 초기화 완료 표시
                     sharedPreferences.edit()

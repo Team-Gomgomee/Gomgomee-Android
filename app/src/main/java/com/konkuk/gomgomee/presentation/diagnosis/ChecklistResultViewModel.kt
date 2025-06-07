@@ -1,7 +1,9 @@
 package com.konkuk.gomgomee.presentation.diagnosis
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -13,6 +15,7 @@ import androidx.lifecycle.viewModelScope
 import com.konkuk.gomgomee.data.local.database.AppDatabase
 import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.repository.ChecklistResultRepository
+import com.konkuk.gomgomee.util.context.toast
 import kotlinx.coroutines.launch
 
 data class ChecklistResultState(
@@ -34,13 +37,14 @@ class ChecklistResultViewModel(
     private val checklistItems: List<ChecklistItem>
 ) : AndroidViewModel(application) {
 
-    private val checklistResultRepository: ChecklistResultRepository
+    private val repository: ChecklistResultRepository
+    private val context = application
     var resultState by mutableStateOf<ChecklistResultState?>(null)
         private set
 
     init {
-        val database = AppDatabase.getDatabase(application)
-        checklistResultRepository = ChecklistResultRepository(database.checklistResultDao())
+        val dao = AppDatabase.getDatabase(application).checklistResultDao()
+        repository = ChecklistResultRepository(dao)
         calculateResult()
     }
 
@@ -66,20 +70,29 @@ class ChecklistResultViewModel(
         // 결과를 데이터베이스에 저장
         viewModelScope.launch {
             try {
+                val userNo = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+                    .getInt("current_user_no", -1)
+                
+                if (userNo == -1) {
+                    throw Exception("로그인이 필요합니다")
+                }
+
                 val result = ChecklistResultEntity(
-                    userNo = 1, // 임시로 1번 회원으로 고정
+                    userNo = userNo,
                     yesCount = yesAnswers,
                     createdAt = System.currentTimeMillis()
                 )
-                checklistResultRepository.insert(result)
+                repository.insert(result)
             } catch (e: Exception) {
-                Log.e("ChecklistResultViewModel", "Error saving result", e)
-                // 에러 처리는 필요에 따라 추가
+                Log.e(TAG, "Error saving checklist result", e)
+                Toast.makeText(context, "결과 저장에 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     companion object {
+        private const val TAG = "ChecklistResultViewModel"
+        
         fun factory(checklistItems: List<ChecklistItem>): ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as Application)

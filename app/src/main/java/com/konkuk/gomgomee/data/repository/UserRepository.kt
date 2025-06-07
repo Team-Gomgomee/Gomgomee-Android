@@ -26,4 +26,8 @@ class UserRepository(private val userDao: UserDao) {
     fun getUserById(userId: String): Flow<UserEntity?> {
         return userDao.getUserById(userId)
     }
+
+    suspend fun isIdExists(id: String): Boolean {
+        return userDao.isIdExists(id)
+    }
 } 

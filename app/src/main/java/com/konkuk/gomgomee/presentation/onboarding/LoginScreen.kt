@@ -1,5 +1,7 @@
 package com.konkuk.gomgomee.presentation.onboarding
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -8,20 +10,57 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.konkuk.gomgomee.presentation.navigation.Route
+import com.konkuk.gomgomee.presentation.viewmodel.UserViewModel
 
 @Composable
 fun LoginScreen(
     navController: NavController,
+    viewModel: UserViewModel = viewModel(),
     modifier: Modifier = Modifier
 ) {
     var userId by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    val context = LocalContext.current
+
+    // 입력값이 변경될 때마다 상태 초기화
+    LaunchedEffect(userId, password) {
+        viewModel.resetStates()
+    }
+
+    // 로그인 상태 수집
+    LaunchedEffect(viewModel.loginState) {
+        viewModel.loginState.collect { user ->
+            user?.let {
+                Toast.makeText(context, "No.${it.userNo} ${it.name}님 환영합니다", Toast.LENGTH_SHORT).show()
+                // 로그인 성공 시 userNo를 SharedPreferences에 저장
+                context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+                    .edit()
+                    .putInt("current_user_no", it.userNo)
+                    .apply()
+                
+                navController.navigate(Route.Home.route) {
+                    popUpTo(Route.Login.route) { inclusive = true }
+                }
+            }
+        }
+    }
+
+    // 에러 메시지 수집
+    LaunchedEffect(viewModel.errorMessage) {
+        viewModel.errorMessage.collect { message ->
+            message?.let {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     Column(
         modifier = modifier
@@ -82,10 +121,10 @@ fun LoginScreen(
         // 로그인 버튼
         Button(
             onClick = {
-                if (userId.isNotBlank() && password.isNotBlank()) {
-                    navController.navigate(Route.Home.route) {
-                        popUpTo(Route.Login.route) { inclusive = true }
-                    }
+                when {
+                    userId.isBlank() -> Toast.makeText(context, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
+                    password.isBlank() -> Toast.makeText(context, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
+                    else -> viewModel.login(userId, password)
                 }
             },
             modifier = Modifier
@@ -105,7 +144,7 @@ fun LoginScreen(
         // 회원가입 버튼
         OutlinedButton(
             onClick = {
-                navController.navigate("signup")
+                navController.navigate(Route.SignUp.route)
             },
             modifier = Modifier
                 .fillMaxWidth()
