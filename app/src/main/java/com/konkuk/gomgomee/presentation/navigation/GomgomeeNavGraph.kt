@@ -40,29 +40,19 @@ fun GomgomeeNavGraph(
     ) {
         composable(route = Route.Splash.route) {
             SplashScreen(
-                onNavigateToSignUp = {
-                    navController.navigate(Route.SignUp.route)
-                }
+                navController = navController
             )
         }
 
         composable(route = Route.SignUp.route) {
             SignUpScreen(
-                onNavigateToLogin = {
-                    navController.navigate(Route.Login.route)
-                }
+                navController = navController
             )
         }
 
         composable(route = Route.Login.route) {
             LoginScreen(
-                onNavigateToMain = {
-                    navController.navigate("home") {
-                        popUpTo(Route.Splash.route) {
-                            inclusive = true
-                        }
-                    }
-                }
+                navController = navController
             )
         }
 
