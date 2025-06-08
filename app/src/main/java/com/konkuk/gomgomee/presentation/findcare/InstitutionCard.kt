@@ -20,8 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.konkuk.gomgomee.ui.theme.Green200
 
 @Composable
 fun InstitutionCard(
@@ -32,7 +34,7 @@ fun InstitutionCard(
         modifier = Modifier
             .padding(10.dp)
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White.copy(alpha = 0.95f))
+            .background(Green200)
             .fillMaxWidth(1f)
     ) {
         // 병원명 + 분류
@@ -66,12 +68,28 @@ fun InstitutionCard(
         }
 
         Spacer(modifier = Modifier.height(4.dp))
-
-        // 거리 + 주소
+        //전화번호
+        Text(
+            text = "${inst.phone}",
+            fontSize = 14.sp,
+            color = Color.DarkGray
+        )
+        // 주소
         Text(
             text = inst.address,
             fontSize = 14.sp,
             color = Color.DarkGray
         )
     }
+}
+
+@Preview
+@Composable
+private fun a() {
+    val institutions = listOf(
+        Institution(1, "서울곰병원", "서울 성동구 뚝섬로 123", "02-1234-5678", 37.541, 127.079, "병원"),
+        Institution(2, "마음곰 심리상담센터", "서울 광진구 능동로 456", "02-2345-6789", 37.543, 127.081, "상담소"),
+        Institution(3, "강북곰정형외과", "서울 강북구 도봉로 789", "02-3456-7890", 37.542, 127.078, "병원")
+    )
+    InstitutionCard(institutions[0])
 }
