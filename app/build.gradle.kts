@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    id("kotlin-kapt")
     alias(libs.plugins.secrets.gradle.plugin)
 }
 
@@ -66,6 +67,8 @@ dependencies {
     implementation(libs.naver.map.compose)
     implementation(libs.androidx.databinding.runtime)
     implementation(libs.play.services.location)
+    implementation(libs.jsoup)
+    implementation(libs.androidx.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -92,7 +95,17 @@ dependencies {
     implementation(libs.retrofit.kotlin.serialization.converter)
     implementation(libs.kotlinx.serialization.json)
 
+
     //Naver Map
     implementation("com.naver.maps:map-sdk:3.21.0")
     implementation ("com.google.accompanist:accompanist-permissions:0.34.0")
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    // Gson
+    implementation(libs.gson)
+>>>>>>> main
 }

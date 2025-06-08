@@ -1,0 +1,70 @@
+[
+  {
+    "itemId": 1,
+    "questionText": "장소나 위치를 혼동한다"
+  },
+  {
+    "itemId": 2,
+    "questionText": "숫자를 셀 때 손가락를 이용한다"
+  },
+  {
+    "itemId": 3,
+    "questionText": "좌우 개념을 자주 혼동한다"
+  },
+  {
+    "itemId": 4,
+    "questionText": "스스로 먼저 얘기하는 것이 어렵다"
+  },
+  {
+    "itemId": 5,
+    "questionText": "무관심하고 뭔가를 해보려는 동기가 없다"
+  },
+  {
+    "itemId": 6,
+    "questionText": "글자나 숫자를 아무리 배워도 익힐 수 없다"
+  },
+  {
+    "itemId": 7,
+    "questionText": "공상을 하거나 생각 속에 빠져 멍해 보일 때가 있다"
+  },
+  {
+    "itemId": 8,
+    "questionText": "교과서를 읽고 그 뜻을 잘 이해하지 못한다"
+  },
+  {
+    "itemId": 9,
+    "questionText": "같은 질문을 반복 할 때가 많다"
+  },
+  {
+    "itemId": 10,
+    "questionText": "손으로 하는 일이 어색하고 서툴 때가 많다"
+  },
+  {
+    "itemId": 11,
+    "questionText": "특정 글자나 단어를 생각해 내는 데 어려움이 많다"
+  },
+  {
+    "itemId": 12,
+    "questionText": "처음에 글자나 숫자를 배울 때 자주 거꾸로 쓴 적이 있다"
+  },
+  {
+    "itemId": 13,
+    "questionText": "받아쓰기를 잘 못한다"
+  },
+  {
+    "itemId": 14,
+    "questionText": "빨리 마칠 수 있다 공부나 과제를 질질 끄는 편이다"
+  },
+  {
+    "itemId": 15,
+    "questionText": "책을 읽을 때 글자를 빼놓고 읽거나 글자를 바꾸어서 읽는다"
+  },
+  {
+    "itemId": 16,
+    "questionText": "자기 생각들 글고 잘 옮기지 못한다"
+  },
+  {
+    "itemId": 17,
+    "questionText": "맞춤범을 자주 틀린다"
+  }
+] 
