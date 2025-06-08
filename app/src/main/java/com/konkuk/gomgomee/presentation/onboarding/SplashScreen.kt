@@ -1,39 +1,41 @@
 package com.konkuk.gomgomee.presentation.onboarding
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.konkuk.gomgomee.ui.theme.Green400
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.konkuk.gomgomee.R
+import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
-    modifier: Modifier = Modifier,
-    onNavigateToSignUp: () -> Unit
+    navController: NavController,
+    modifier: Modifier = Modifier
 ) {
-    Column(
+    LaunchedEffect(Unit) {
+        delay(2000)
+        navController.navigate("login") {
+            popUpTo("splash") { inclusive = true }
+        }
+    }
+
+    Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Green400),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .background(Color(0xFF6FAB8E))
     ) {
-        Text(
-            text = "스플래시 화면"
+        Image(
+            painter = painterResource(id = R.drawable.ic_bear_splash),
+            contentDescription = "앱 로고",
+            modifier = Modifier
+                .size(200.dp)
+                .align(Alignment.Center)
         )
-        Button(
-            onClick = {
-                onNavigateToSignUp()
-            }
-        ) {
-            Text(
-                text = "회원가입으로 이동"
-            )
-        }
     }
 }
