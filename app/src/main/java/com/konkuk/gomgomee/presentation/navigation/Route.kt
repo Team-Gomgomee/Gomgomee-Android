@@ -1,5 +1,7 @@
 package com.konkuk.gomgomee.presentation.navigation
 
+import com.konkuk.gomgomee.type.DisorderType
+
 sealed class Route(
     val route: String
 ) {
@@ -11,7 +13,9 @@ sealed class Route(
 
     data object Home: Route(route = "home")
 
-    data object HomeDetail: Route(route = "homedetail")
+    data object HomeDetail: Route(route = "homeDetail/{type}") {
+        fun createRoute(type: DisorderType): String = "homeDetail/${type.name}"
+    }
 
     data object Diagnosis: Route(route = "diagnosis")
 

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Gomgomee</string>
+
+    <!-- home -->
+    <string name="home_screen_title">곰곰이가 알려주는\n학습장애 관련 지식</string>
+    <string name="home_gomgomee_image_description">home gomgomee image</string>
 </resources>

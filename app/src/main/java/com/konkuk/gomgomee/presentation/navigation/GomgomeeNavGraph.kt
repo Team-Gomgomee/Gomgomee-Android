@@ -3,6 +3,7 @@ package com.konkuk.gomgomee.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
@@ -19,6 +20,7 @@ import com.konkuk.gomgomee.presentation.mypage.MyPageScreen
 import com.konkuk.gomgomee.presentation.onboarding.LoginScreen
 import com.konkuk.gomgomee.presentation.onboarding.SignUpScreen
 import com.konkuk.gomgomee.presentation.onboarding.SplashScreen
+
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistResultScreen
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistResultViewModel
 import com.konkuk.gomgomee.presentation.diagnosis.ChecklistItem
@@ -27,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.konkuk.gomgomee.presentation.mypage.TestHistoryScreen
 import com.konkuk.gomgomee.presentation.mypage.FavoriteInstitutionsScreen
 import com.konkuk.gomgomee.presentation.mypage.FeedbackScreen
+import com.konkuk.gomgomee.type.DisorderType
 
 @Composable
 fun GomgomeeNavGraph(
@@ -36,7 +39,7 @@ fun GomgomeeNavGraph(
     val context = LocalContext.current
     NavHost(
         navController = navController,
-        startDestination = Route.Splash.route
+        startDestination = Route.Home.route
     ) {
         composable(route = Route.Splash.route) {
             SplashScreen(
@@ -58,8 +61,9 @@ fun GomgomeeNavGraph(
 
         composable(route = Route.Home.route) {
             HomeScreen(
-                onNavigateToHomeDetail = {
-                    navController.navigate(Route.HomeDetail.route)
+                modifier = modifier,
+                navigateToHomeDetail = {
+                    navController.navigate(Route.HomeDetail.createRoute(it))
                 }
             )
         }
@@ -71,7 +75,9 @@ fun GomgomeeNavGraph(
         }
 
         composable(route = Route.FindCare.route) {
-            FindCareScreen()
+            FindCareScreen(
+                modifier = modifier
+            )
         }
 
         composable(route = Route.MyPage.route) {
@@ -99,8 +105,20 @@ fun GomgomeeNavGraph(
             FeedbackScreen(navController = navController)
         }
 
-        composable(route = Route.HomeDetail.route) {
-            HomeDetailScreen()
+        composable(
+            route = Route.HomeDetail.route,
+            arguments = listOf(
+                navArgument("type") {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val type = backStackEntry.arguments!!.getString("type")!!
+            val disorderType = DisorderType.valueOf(type)
+
+            HomeDetailScreen(
+                disorderType = disorderType
+            )
         }
 
         composable(route = Route.Checklist.route) {
