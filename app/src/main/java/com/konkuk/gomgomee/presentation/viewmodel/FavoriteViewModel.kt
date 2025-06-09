@@ -12,45 +12,44 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
-    private val userNo: Int = application
-        .getSharedPreferences("app_prefs",Context.MODE_PRIVATE)
-        .getInt("current_user_no",-1)
 
     private val dao = AppDatabase.getDatabase(application).favoriteDao()
-    private val repository = FavoriteRepository(dao, userNo)
+    private val repository = FavoriteRepository(dao)
 
     private val _favorites = MutableStateFlow<List<Institution>>(emptyList())
     val favorites: StateFlow<List<Institution>> = _favorites
 
+    private fun getCurrentUserNo(): Int {
+        return getApplication<Application>()
+            .getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            .getInt("current_user_no", -1)
+    }
+
     fun loadFavorites() {
         viewModelScope.launch {
-            _favorites.value = repository.getFavorites()
+            val userNo = getCurrentUserNo()
+            _favorites.value = repository.getFavorites(userNo)
         }
     }
 
     suspend fun isFavorite(institutionId: Int): Boolean {
-        val prefs = getApplication<Application>()
-            .getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        val userNo = prefs.getInt("current_user_no", -1)
-
+        val userNo = getCurrentUserNo()
         return repository.isFavorite(userNo, institutionId)
     }
 
-    suspend fun addFavorite(institution: Institution) {
-        val prefs = getApplication<Application>()
-            .getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        val userNo = prefs.getInt("current_user_no", -1)
-
-        repository.add(institution, userNo)
-        loadFavorites()
+    fun addFavorite(institution: Institution) {
+        viewModelScope.launch {
+            val userNo = getCurrentUserNo()
+            repository.add(institution, userNo)
+            loadFavorites()
+        }
     }
 
-    suspend fun removeFavorite(institutionId: Int) {
-        val prefs = getApplication<Application>()
-            .getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        val userNo = prefs.getInt("current_user_no", -1)
-
-        repository.remove(institutionId, userNo)
-        loadFavorites()
+    fun removeFavorite(institutionId: Int) {
+        viewModelScope.launch {
+            val userNo = getCurrentUserNo()
+            repository.remove(institutionId, userNo)
+            loadFavorites()
+        }
     }
 }

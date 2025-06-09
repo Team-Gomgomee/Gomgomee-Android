@@ -4,12 +4,9 @@ import com.konkuk.gomgomee.data.local.dao.FavoriteDao
 import com.konkuk.gomgomee.data.local.entity.FavoriteEntity
 import com.konkuk.gomgomee.presentation.findcare.Institution
 
-class FavoriteRepository(
-    private val favoriteDao: FavoriteDao,
-    private val userNo: Int
-) {
+class FavoriteRepository(private val favoriteDao: FavoriteDao) {
 
-    suspend fun getFavorites(): List<Institution> {
+    suspend fun getFavorites(userNo: Int): List<Institution> {
         return favoriteDao.getFavoritesByUser(userNo).map { it.toInstitution() }
     }
 
@@ -26,7 +23,7 @@ class FavoriteRepository(
     }
 
     private fun Institution.toEntity(userId: Int) = FavoriteEntity(
-        userNo = userNo,
+        userNo = userId,
         institutionId = institutionId,
         name = name,
         address = address,

@@ -42,14 +42,12 @@ fun InstitutionCard(
     var isFavorite by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
-    val userNo = remember {
-        context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-            .getInt("current_user_no", -1)
-    }
+
+    val userNo = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        .getInt("current_user_no", -1)
 
 
-
-    LaunchedEffect(inst.institutionId,userNo) {
+    LaunchedEffect(inst.institutionId) {
         isFavorite = viewModel.isFavorite(inst.institutionId)
     }
 
