@@ -32,7 +32,7 @@ fun UpperScreen(modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.Bottom
     ) {
         Text(
-            text = "곰곰이랑\n병원 · 심리센터 찾아보기 !",
+            text = "곰곰이랑\n병원 위치 찾아보기 !",
             fontSize = 23.sp,
             color = Color.Black,
             fontWeight = FontWeight.Bold

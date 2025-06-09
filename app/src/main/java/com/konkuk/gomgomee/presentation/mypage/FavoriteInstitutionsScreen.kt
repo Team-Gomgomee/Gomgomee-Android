@@ -37,7 +37,7 @@ fun FavoriteInstitutionsScreen(
             .padding(24.dp)
     ) {
         Text(
-            text = "즐겨찾기한 기관",
+            text = "즐겨찾기한 병원",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
