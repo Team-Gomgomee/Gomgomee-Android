@@ -49,7 +49,7 @@ fun MyPageScreen(
         )
 
         MenuButton(
-            text = "내가 즐겨찾기한 병원-심리센터 보기",
+            text = "내가 즐겨찾기한 병원 모아보기",
             onClick = { navController.navigate(Route.FavoriteInstitutions.route) }
         )
 
