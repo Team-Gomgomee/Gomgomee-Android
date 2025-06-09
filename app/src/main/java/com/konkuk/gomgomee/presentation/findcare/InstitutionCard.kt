@@ -1,6 +1,8 @@
 package com.konkuk.gomgomee.presentation.findcare
 
+import android.content.Context
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,87 +11,88 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.konkuk.gomgomee.presentation.viewmodel.FavoriteViewModel
 import com.konkuk.gomgomee.ui.theme.Green200
+import kotlinx.coroutines.launch
 
 @Composable
 fun InstitutionCard(
     inst: Institution,
+    viewModel: FavoriteViewModel,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = Modifier
+    val scope = rememberCoroutineScope()
+    var isFavorite by remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+    val userNo = remember {
+        context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            .getInt("current_user_no", -1)
+    }
+
+
+
+    LaunchedEffect(inst.institutionId,userNo) {
+        isFavorite = viewModel.isFavorite(inst.institutionId)
+    }
+
+    Box(
+        modifier = modifier
             .padding(10.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(Green200)
-            .fillMaxWidth(1f)
+            .fillMaxWidth()
     ) {
-        // 병원명 + 분류
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+        Button(
+            onClick = {
+                scope.launch {
+                    if (isFavorite) {
+                        viewModel.removeFavorite(inst.institutionId)
+                    } else {
+                        viewModel.addFavorite(inst)
+                    }
+                    isFavorite = !isFavorite
+                }
+            },
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(8.dp)
         ) {
-            Text(
-                text = inst.name,
-                fontSize = 18.sp,
-                color = Color.Black,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = inst.category,
-                fontSize = 14.sp,
-                color = Color.Gray
-            )
-            Spacer(modifier = Modifier.weight(1f)) // ⭐ 나머지 요소 밀어냄
-
-            IconButton(
-                onClick = { /* 즐겨찾기 토글 로직 여기에 */ }
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Star, // or Icons.Outlined.Star
-                    contentDescription = "즐겨찾기",
-                    tint = Color.Red // or Color.Gray
-                )
-            }
+            Text(if (isFavorite) "즐겨찾기 해제" else "즐겨찾기 등록")
         }
 
-        Spacer(modifier = Modifier.height(4.dp))
-        //전화번호
-        Text(
-            text = "${inst.phone}",
-            fontSize = 14.sp,
-            color = Color.DarkGray
-        )
-        // 주소
-        Text(
-            text = inst.address,
-            fontSize = 14.sp,
-            color = Color.DarkGray
-        )
-    }
-}
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = inst.name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = inst.category, fontSize = 14.sp, color = Color.Gray)
+            }
 
-@Preview
-@Composable
-private fun a() {
-    val institutions = listOf(
-        Institution(1, "서울곰병원", "서울 성동구 뚝섬로 123", "02-1234-5678", 37.541, 127.079, "병원"),
-        Institution(2, "마음곰 심리상담센터", "서울 광진구 능동로 456", "02-2345-6789", 37.543, 127.081, "상담소"),
-        Institution(3, "강북곰정형외과", "서울 강북구 도봉로 789", "02-3456-7890", 37.542, 127.078, "병원")
-    )
-    InstitutionCard(institutions[0])
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(text = inst.phone ?: "전화번호 없음", fontSize = 14.sp, color = Color.DarkGray)
+            Text(text = inst.address, fontSize = 14.sp, color = Color.DarkGray)
+        }
+    }
 }
