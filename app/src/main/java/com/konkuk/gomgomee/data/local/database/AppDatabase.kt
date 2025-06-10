@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.konkuk.gomgomee.data.local.dao.ChecklistItemDao
 import com.konkuk.gomgomee.data.local.dao.ChecklistResultDao
+import com.konkuk.gomgomee.data.local.dao.FavoriteDao
 import com.konkuk.gomgomee.data.local.dao.TestQuestionDao
 import com.konkuk.gomgomee.data.local.dao.TestSessionDao
 import com.konkuk.gomgomee.data.local.dao.UserDao
@@ -17,6 +18,7 @@ import com.konkuk.gomgomee.data.local.entity.UserEntity
 import com.konkuk.gomgomee.data.local.entity.InstitutionEntity
 import com.konkuk.gomgomee.data.local.dao.InstitutionDao
 import com.konkuk.gomgomee.data.local.dao.FavoriteInstitutionDao
+import com.konkuk.gomgomee.data.local.entity.FavoriteEntity
 import com.konkuk.gomgomee.data.local.entity.FavoriteInstitutionEntity
 
 @Database(
@@ -27,9 +29,10 @@ import com.konkuk.gomgomee.data.local.entity.FavoriteInstitutionEntity
         TestQuestionEntity::class,
         TestSessionEntity::class,
         InstitutionEntity::class,
-        FavoriteInstitutionEntity::class
+        FavoriteInstitutionEntity::class,
+        FavoriteEntity::class
     ],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -40,6 +43,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun testSessionDao(): TestSessionDao
     abstract fun institutionDao(): InstitutionDao
     abstract fun favoriteInstitutionDao(): FavoriteInstitutionDao
+    abstract fun favoriteDao():FavoriteDao
 
     companion object {
         @Volatile
