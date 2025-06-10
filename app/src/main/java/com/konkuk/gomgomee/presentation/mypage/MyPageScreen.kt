@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,12 +28,15 @@ import androidx.navigation.NavController
 import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.ui.theme.White
 import com.konkuk.gomgomee.util.modifier.noRippleClickable
+import com.konkuk.gomgomee.util.webview.openWebView
 
 @Composable
 fun MyPageScreen(
     navController: NavController,
     onLogout: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -64,7 +68,9 @@ fun MyPageScreen(
 
         MenuButton(
             text = "서비스 피드백하기",
-            onClick = { navController.navigate(Route.Feedback.route) }
+            onClick = {
+                openWebView(context, "https://docs.google.com/forms/d/e/1FAIpQLSdaKFp1FZz0WXELrYF24t0xoVulUnGFygJ-KHsIVRAlGN0VSg/viewform?usp=header")
+            }
         )
 
         MenuButton(
