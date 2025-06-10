@@ -47,13 +47,13 @@ fun TestHistoryScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(White)
-            .padding(16.dp)
+            .padding(start = 20.dp, end = 20.dp, top = 50.dp)
     ) {
         Text(
             text = "테스트 기록",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 16.dp)
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Medium,
+            modifier = Modifier.padding(top = 18.dp, bottom = 16.dp)
         )
 
         // 탭 레이아웃

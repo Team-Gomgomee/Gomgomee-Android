@@ -78,7 +78,7 @@ fun SignUpScreen(
         )
 
         // 아이디
-        Text("아이디", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("아이디", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = userId,
             onValueChange = { userId = it },
@@ -93,7 +93,7 @@ fun SignUpScreen(
         )
 
         // 이름
-        Text("이름", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("이름", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = name,
             onValueChange = { name = it },
@@ -108,7 +108,7 @@ fun SignUpScreen(
         )
 
         // 비밀번호
-        Text("비밀번호", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("비밀번호", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -124,7 +124,7 @@ fun SignUpScreen(
         )
 
         // 나이
-        Text("나이", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("나이", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = age,
             onValueChange = { age = it },
@@ -139,7 +139,7 @@ fun SignUpScreen(
         )
 
         // 거주지
-        Text("거주지", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("거주지", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = address,
             onValueChange = { address = it },
@@ -154,7 +154,7 @@ fun SignUpScreen(
         )
 
         // 특이사항
-        Text("특이사항", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("특이사항", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = remarks,
             onValueChange = { remarks = it },
@@ -200,7 +200,7 @@ fun SignUpScreen(
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF6FAB8E),
-                contentColor = Color.Black
+                contentColor = Color.White
             )
         ) {
             Text("회원가입하기")

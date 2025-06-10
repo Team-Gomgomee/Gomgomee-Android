@@ -42,7 +42,7 @@ fun HomeScreen(
         modifier = modifier
             .fillMaxSize()
             .background(White)
-            .padding(start = 20.dp, end = 20.dp, top = 50.dp)
+            .padding(start = 20.dp, end = 20.dp, top = 36.dp)
     ) {
         Row(
             modifier = Modifier
