@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,10 +20,16 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.konkuk.gomgomee.data.local.entity.FavoriteEntity
 import com.konkuk.gomgomee.presentation.viewmodel.FavoriteViewModel
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.compose.*
+import com.naver.maps.map.compose.ExperimentalNaverMapApi
+import com.naver.maps.map.compose.LocationTrackingMode
+import com.naver.maps.map.compose.MapProperties
+import com.naver.maps.map.compose.Marker
+import com.naver.maps.map.compose.NaverMap
+import com.naver.maps.map.compose.rememberCameraPositionState
+import com.naver.maps.map.compose.rememberFusedLocationSource
+import com.naver.maps.map.compose.rememberMarkerState
 import java.io.InputStreamReader
 
 @OptIn(ExperimentalNaverMapApi::class, ExperimentalPermissionsApi::class)
@@ -89,7 +94,7 @@ fun NaverMapScreen(
                 viewModel = viewModel, // 전달
                 modifier = Modifier
                     .align(Alignment.TopCenter)
-                    .padding(10.dp)
+                    .padding(20.dp)
             )
         }
     }

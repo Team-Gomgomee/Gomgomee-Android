@@ -9,10 +9,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -26,10 +29,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.konkuk.gomgomee.presentation.viewmodel.FavoriteViewModel
+import com.konkuk.gomgomee.ui.theme.Gray100
 import com.konkuk.gomgomee.ui.theme.Green200
+import com.konkuk.gomgomee.ui.theme.Red
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 import kotlinx.coroutines.launch
 
 @Composable
@@ -53,44 +60,73 @@ fun InstitutionCard(
 
     Box(
         modifier = modifier
-            .padding(10.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(Green200)
             .fillMaxWidth()
     ) {
-        Button(
-            onClick = {
-                scope.launch {
-                    if (isFavorite) {
-                        viewModel.removeFavorite(inst.institutionId)
-                    } else {
-                        viewModel.addFavorite(inst)
-                    }
-                    isFavorite = !isFavorite
-                }
-            },
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(8.dp)
-        ) {
-            Text(if (isFavorite) "즐겨찾기 해제" else "즐겨찾기 등록")
-        }
-
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.Top
             ) {
-                Text(text = inst.name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(text = inst.category, fontSize = 14.sp, color = Color.Gray)
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .wrapContentHeight()
+                ) {
+                    Text(
+                        text = inst.name,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
+
+                    Spacer(modifier = Modifier.height(4.dp))
+
+                    Text(
+                        text = inst.category,
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .padding(start = 8.dp)
+                        .noRippleClickable {
+                            scope.launch {
+                                if (isFavorite) {
+                                    viewModel.removeFavorite(inst.institutionId)
+                                } else {
+                                    viewModel.addFavorite(inst)
+                                }
+                                isFavorite = !isFavorite
+                            }
+                        }
+                ) {
+                    Icon(
+                        imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        contentDescription = if (isFavorite) "즐겨찾기 해제" else "즐겨찾기 등록",
+                        tint = if (isFavorite) Red else Gray100
+                    )
+                }
             }
 
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(text = inst.phone ?: "전화번호 없음", fontSize = 14.sp, color = Color.DarkGray)
-            Text(text = inst.address, fontSize = 14.sp, color = Color.DarkGray)
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = inst.phone ?: "전화번호 없음",
+                fontSize = 14.sp,
+                color = Color.DarkGray
+            )
+            Text(
+                text = inst.address,
+                fontSize = 14.sp,
+                color = Color.DarkGray
+            )
         }
     }
 }
