@@ -63,11 +63,23 @@ class AreaTestViewModel(application: Application) : AndroidViewModel(application
 
         try {
             // 해당 영역의 모든 문제 가져오기
-            val dbQuestions = questionRepository.getQuestionsByDomain(domain).first()
+            var dbQuestions = questionRepository.getQuestionsByDomain(domain).first()
             
             if (dbQuestions.isEmpty()) {
                 Log.w(TAG, "No questions found for domain: $domain")
-                throw Exception("해당 영역의 문제가 없습니다.")
+                val reader = com.konkuk.gomgomee.data.util.JsonDataReader(getApplication())
+                val allJsonQuestions = reader.readTestQuestions()
+
+                val filteredQuestions = allJsonQuestions.filter { it.domain == domain }
+
+                if (filteredQuestions.isEmpty()) {
+                    throw Exception("JSON에도 $domain 영역의 문제가 없습니다.")
+                }
+
+                questionRepository.insertAll(filteredQuestions)
+                Log.d(TAG, "Inserted ${filteredQuestions.size} questions for domain $domain from JSON.")
+
+                dbQuestions = questionRepository.getQuestionsByDomain(domain).first()
             }
             
             // 세션 생성 및 저장
