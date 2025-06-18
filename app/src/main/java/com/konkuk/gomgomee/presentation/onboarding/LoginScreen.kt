@@ -35,6 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.presentation.viewmodel.UserViewModel
+import com.konkuk.gomgomee.ui.theme.Green400
 import com.konkuk.gomgomee.ui.theme.White
 import com.konkuk.gomgomee.util.modifier.noRippleClickable
 
@@ -142,7 +143,7 @@ fun LoginScreen(
                 .fillMaxWidth()
                 .height(56.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .background(Color(0xFF6FAB8E))
+                .background(Green400)
                 .noRippleClickable {
                     when {
                         userId.isBlank() -> Toast.makeText(context, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
@@ -171,7 +172,7 @@ fun LoginScreen(
                 .clip(RoundedCornerShape(12.dp))
                 .border(
                     width = 1.dp,
-                    color = Color(0xFF6FAB8E),
+                    color = Green400,
                     shape = RoundedCornerShape(12.dp)
                 )
                 .noRippleClickable {
@@ -181,7 +182,7 @@ fun LoginScreen(
         ) {
             Text(
                 text = "회원가입하기",
-                color = Color(0xFF6FAB8E),
+                color = Green400,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 lineHeight = 16.sp

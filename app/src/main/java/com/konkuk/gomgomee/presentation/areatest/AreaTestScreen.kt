@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,6 +19,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -34,6 +36,7 @@ import com.konkuk.gomgomee.presentation.areatest.model.MediaType
 import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.ui.theme.*
 import com.konkuk.gomgomee.util.context.toast
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 import kotlinx.coroutines.launch
 
 @Composable
@@ -146,11 +149,24 @@ fun AreaTestScreen(
                     }
                     MediaType.AUDIO -> {
                         // 오디오 재생 버튼
-                        Button(
-                            onClick = { /* 오디오 재생 로직 */ },
-                            modifier = Modifier.fillMaxWidth()
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(40.dp)
+                                .clip(RoundedCornerShape(20.dp))
+                                .background(Green400)
+                                .noRippleClickable {
+                                    // 음성 관련 기능 추가
+                                },
+                            contentAlignment = Alignment.Center
                         ) {
-                            Text("음성 듣기")
+                            Text(
+                                text = "음성 듣기",
+                                color = White,
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                lineHeight = 14.sp
+                            )
                         }
                     }
                     else -> {}
@@ -174,9 +190,18 @@ fun AreaTestScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 // 이전 버튼
-                IconButton(
-                    onClick = { if (currentQuestionIndex > 0) currentQuestionIndex-- },
-                    enabled = currentQuestionIndex > 0
+                Box(
+                    modifier = Modifier
+                        .then(
+                            if (currentQuestionIndex > 0) {
+                                Modifier.noRippleClickable {
+                                    currentQuestionIndex--
+                                }
+                            } else {
+                                Modifier
+                            }
+                        )
+                        .padding(8.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
@@ -192,41 +217,58 @@ fun AreaTestScreen(
                     enter = fadeIn(),
                     exit = fadeOut()
                 ) {
-                    Button(
-                        onClick = { 
-                            scope.launch {
-                                try {
-                                    viewModel.finishTest()
-                                    navController.navigate(
-                                        "area_test_result/${viewModel.questions.size}/${viewModel.currentSession?.correctCount ?: 0}"
-                                    ) {
-                                        popUpTo(Route.AreaTest.route) {
-                                            inclusive = true
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Green400)
+                            .noRippleClickable {
+                                scope.launch {
+                                    try {
+                                        viewModel.finishTest()
+                                        navController.navigate(
+                                            "area_test_result/${viewModel.questions.size}/${viewModel.currentSession?.correctCount ?: 0}"
+                                        ) {
+                                            popUpTo(Route.AreaTest.route) {
+                                                inclusive = true
+                                            }
                                         }
+                                    } catch (e: Exception) {
+                                        context.toast("결과를 저장하는데 실패했습니다.")
                                     }
-                                } catch (e: Exception) {
-                                    context.toast("결과를 저장하는데 실패했습니다.")
                                 }
                             }
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.primary
-                        )
+                            .padding(vertical = 12.dp, horizontal = 20.dp),
+                        contentAlignment = Alignment.Center
                     ) {
-                        Text("테스트 완료", fontSize = 16.sp)
+                        Text(
+                            text = "테스트 완료",
+                            fontSize = 16.sp,
+                            color = Color.White
+                        )
                     }
                 }
 
                 // 다음 버튼
-                IconButton(
-                    onClick = { if (currentQuestionIndex < viewModel.questions.size - 1) currentQuestionIndex++ },
-                    enabled = currentQuestionIndex < viewModel.questions.size - 1
+                Box(
+                    modifier = Modifier
+                        .then(
+                            if (currentQuestionIndex < viewModel.questions.size - 1) {
+                                Modifier.noRippleClickable {
+                                    currentQuestionIndex++
+                                }
+                            } else {
+                                Modifier
+                            }
+                        )
+                        .padding(8.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowForward,
                         contentDescription = "다음 문제",
-                        tint = if (currentQuestionIndex < viewModel.questions.size - 1) 
-                              MaterialTheme.colorScheme.primary else Color.Gray
+                        tint = if (currentQuestionIndex < viewModel.questions.size - 1)
+                            MaterialTheme.colorScheme.primary
+                        else
+                            Color.Gray
                     )
                 }
             }
@@ -251,15 +293,15 @@ private fun ChoiceGrid(
                     .fillMaxWidth()
                     .border(
                         width = 1.dp,
-                        color = if (isSelected) MaterialTheme.colorScheme.primary else Color.LightGray,
+                        color = if (isSelected) Green500 else Color.LightGray,
                         shape = RoundedCornerShape(8.dp)
                     )
                     .background(
-                        color = if (isSelected) MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
+                        color = if (isSelected) Green500.copy(alpha = 0.1f)
                         else Color.White,
                         shape = RoundedCornerShape(8.dp)
                     )
-                    .clickable { onChoiceSelected(index) }
+                    .noRippleClickable { onChoiceSelected(index) }
                     .padding(16.dp),
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically
@@ -273,7 +315,7 @@ private fun ChoiceGrid(
                         else -> "${index + 1}. "
                     } + choice.text,
                     fontSize = 16.sp,
-                    color = if (isSelected) MaterialTheme.colorScheme.primary else Color.DarkGray
+                    color = if (isSelected) Green500 else Color.DarkGray
                 )
             }
         }

@@ -26,7 +26,12 @@ import androidx.navigation.NavController
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.ui.theme.White
 import android.app.Application
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import com.konkuk.gomgomee.ui.theme.Gray100
+import com.konkuk.gomgomee.ui.theme.Green400
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 
 // 체크박스 관련 색상 정의
 private val CheckboxCheckedColor = Color(0xFF4CAF50)
@@ -124,30 +129,38 @@ fun ChecklistScreen(
             }
         }
 
+        val isEnabled = viewModel.isAllItemsAnswered
+
         // 결과 보기 버튼
-        Button(
-            onClick = { 
-                navController.currentBackStackEntry?.savedStateHandle?.set(
-                    "checklistItems",
-                    viewModel.checklistItems
-                )
-                navController.navigate("checklist_result")
-            },
-            enabled = viewModel.isAllItemsAnswered,
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary,
-                disabledContainerColor = Color.Gray
-            )
+                .height(56.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(
+                    if (isEnabled) Green400 else Gray100
+                )
+                .then(
+                    if (isEnabled) {
+                        Modifier.noRippleClickable {
+                            navController.currentBackStackEntry?.savedStateHandle?.set(
+                                "checklistItems",
+                                viewModel.checklistItems
+                            )
+                            navController.navigate("checklist_result")
+                        }
+                    } else Modifier
+                ),
+            contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "결과 보러가기",
                 fontSize = 18.sp,
+                color = Color.White,
                 modifier = Modifier.padding(vertical = 8.dp)
             )
         }
+
     }
 }
 

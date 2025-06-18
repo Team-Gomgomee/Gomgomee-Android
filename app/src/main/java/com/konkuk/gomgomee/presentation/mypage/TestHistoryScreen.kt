@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.local.entity.TestSessionEntity
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 import kotlinx.coroutines.launch
 
 @Composable
@@ -137,6 +138,9 @@ fun AreaTestHistoryTab(viewModel: TestHistoryViewModel) {
             items(areaTestSessions) { session ->
                 AreaTestSessionItem(session)
             }
+            item {
+                Spacer(modifier = Modifier.height(20.dp))
+            }
         }
     }
 }
@@ -162,7 +166,7 @@ fun ChecklistResultItem(result: ChecklistResultEntity) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { expanded = !expanded },
+                    .noRippleClickable { expanded = !expanded },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -228,7 +232,7 @@ fun AreaTestSessionItem(session: TestSessionEntity) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { expanded = !expanded },
+                    .noRippleClickable { expanded = !expanded },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {

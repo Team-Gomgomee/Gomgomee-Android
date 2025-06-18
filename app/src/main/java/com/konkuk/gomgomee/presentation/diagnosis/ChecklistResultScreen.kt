@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -18,6 +19,8 @@ import androidx.navigation.NavController
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.ui.theme.White
 import com.konkuk.gomgomee.presentation.navigation.Route
+import com.konkuk.gomgomee.ui.theme.Green400
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 
 @Composable
 fun ChecklistResultScreen(
@@ -115,27 +118,29 @@ fun ChecklistResultScreen(
         Spacer(modifier = Modifier.weight(1f))
 
         // 하단 버튼
-        Button(
-            onClick = { 
-                // DiagnosisScreen으로 돌아가기
-                navController.navigate(Route.Diagnosis.route) {
-                    // 체크리스트와 결과 화면을 백스택에서 제거
-                    popUpTo(Route.Diagnosis.route) {
-                        inclusive = false
-                    }
-                }
-            },
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
-            )
+                .height(56.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(Green400)
+                .noRippleClickable {
+                    // DiagnosisScreen으로 돌아가기
+                    navController.navigate(Route.Diagnosis.route) {
+                        // 체크리스트와 결과 화면을 백스택에서 제거
+                        popUpTo(Route.Diagnosis.route) {
+                            inclusive = false
+                        }
+                    }
+                },
+            contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "확인 완료",
-                fontSize = 18.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
+                color = White,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 16.sp
             )
         }
     }
