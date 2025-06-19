@@ -1,0 +1,2360 @@
+[
+  {
+    "institutionId": 1,
+    "name": "(복지)예사랑병원",
+    "address": "부산광역시 서구 옥천로130번길 38, (아미동2가)",
+    "phone": "248-9000",
+    "latitude": 35.0973247,
+    "longitude": 129.0133103,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 2,
+    "name": "(의)고담의료재단마더스병원",
+    "address": "울산광역시 남구 화합로 107, (달동)",
+    "phone": "052-270-7000",
+    "latitude": 35.5344,
+    "longitude": 129.3405,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 3,
+    "name": "(의)동남의료재단 동남병원",
+    "address": "경상남도 김해시 가야로51번길 42, (삼계동)",
+    "phone": "055-331-0454",
+    "latitude": 35.2728583,
+    "longitude": 128.8692375,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 4,
+    "name": "(의)아나의료재단 강릉아나병원",
+    "address": "강원특별자치도 강릉시 용지로 129-0,  (옥천동)",
+    "phone": "033-610-1100",
+    "latitude": 37.7604484,
+    "longitude": 128.9029668,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 5,
+    "name": "21C한일병원",
+    "address": "경상남도 거제시 사등면 지석로 70, 70",
+    "phone": "055-634-0900",
+    "latitude": 34.9015685,
+    "longitude": 128.5206528,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 6,
+    "name": "BH병원",
+    "address": "부산광역시 남구 수영로 165, (대연동)",
+    "phone": "051-633-6665",
+    "latitude": 35.1348845,
+    "longitude": 129.084618,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 7,
+    "name": "M병원",
+    "address": "대구광역시 북구 팔달로 147, (노원동3가)",
+    "phone": "053-359-3771",
+    "latitude": 35.8893868,
+    "longitude": 128.5662077,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 8,
+    "name": "강릉율곡병원",
+    "address": "강원특별자치도 강릉시 동해대로3304번길 11, (난곡동)",
+    "phone": "033-655-1133",
+    "latitude": 37.7864983,
+    "longitude": 128.8740332,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 9,
+    "name": "강서필병원",
+    "address": "서울특별시 강서구 강서로17길 24, (화곡동)",
+    "phone": "02-2608-8855",
+    "latitude": 37.5330123,
+    "longitude": 126.8443479,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 10,
+    "name": "경기도립정신병원",
+    "address": "경기도 용인시 기흥구 중부대로 940, 새로운경기도립정신병원 (상하동)",
+    "phone": "031-300-6200",
+    "latitude": 37.2504431,
+    "longitude": 127.1555927,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 11,
+    "name": "고성성심병원",
+    "address": "경상남도 고성군 회화면 남해안대로 3963-21, (회화면)",
+    "phone": "055-673-8511",
+    "latitude": 35.0808378,
+    "longitude": 128.3724194,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 12,
+    "name": "고양정신병원",
+    "address": "경기도 고양시 덕양구 통일로1102번길 46, (내유동)",
+    "phone": "031-969-0885",
+    "latitude": 37.7114709,
+    "longitude": 126.8545927,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 13,
+    "name": "공주참병원",
+    "address": "충청남도 공주시 우금티로 428, 1,2,4층 (금학동)",
+    "phone": "041-881-6100",
+    "latitude": 36.4341309,
+    "longitude": 127.1143146,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 14,
+    "name": "곽호순병원",
+    "address": "대구광역시 서구 통학로 31, (내당동)",
+    "phone": "053-572-7770",
+    "latitude": 35.8629484,
+    "longitude": 128.5639573,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 15,
+    "name": "광주미래병원",
+    "address": "광주광역시 북구 두리봉길 59, (각화동)",
+    "phone": "062-260-2900",
+    "latitude": 35.1808271,
+    "longitude": 126.9330223,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 16,
+    "name": "광주소망병원",
+    "address": "광주광역시 동구 천변좌로 700, (용산동)",
+    "phone": "062-227-7775",
+    "latitude": 35.1216609,
+    "longitude": 126.9308713,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 17,
+    "name": "광주시립정신병원",
+    "address": "광주광역시 광산구 삼도로 84-3, (삼거동)",
+    "phone": "062-949-5200",
+    "latitude": 35.1630553,
+    "longitude": 126.6671025,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 18,
+    "name": "광주제일병원",
+    "address": "광주광역시 남구 회재로 1299, (백운동, 광주제일병원)",
+    "phone": "062-676-6700",
+    "latitude": 35.1371362,
+    "longitude": 126.9013501,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 19,
+    "name": "괴정병원",
+    "address": "부산광역시 사하구 낙동대로 248, 4,8,9,10층 (괴정동, 우리메디칼센터)",
+    "phone": "051-205-2611",
+    "latitude": 35.0995551,
+    "longitude": 128.9898938,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 20,
+    "name": "국립공주병원",
+    "address": "충청남도 공주시 고분티로 623-21, (오곡동, 국립공주병원)",
+    "phone": "041-850-5700",
+    "latitude": 36.4018088,
+    "longitude": 127.1106466,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 21,
+    "name": "국립나주병원",
+    "address": "전라남도 나주시 산포면 세남로 1328-31, (산포면)",
+    "phone": "061-330-4108",
+    "latitude": 35.0091954,
+    "longitude": 126.8257732,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 22,
+    "name": "국립법무병원",
+    "address": "충청남도 공주시 반포면 반포초교길 253, (공주치료감호소)",
+    "phone": "041-840-5400",
+    "latitude": 36.412336,
+    "longitude": 127.2382786,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 23,
+    "name": "국립부곡병원",
+    "address": "경상남도 창녕군 부곡면 부곡로 145, (부곡면)",
+    "phone": "055-536-6440",
+    "latitude": 35.435493,
+    "longitude": 128.6120258,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 24,
+    "name": "국립정신건강센터",
+    "address": "서울특별시 광진구 용마산로 127, (중곡동, 국립정신건강센터)",
+    "phone": "02-2204-0114",
+    "latitude": 37.5650897,
+    "longitude": 127.0856522,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 25,
+    "name": "국립춘천병원",
+    "address": "강원특별자치도 춘천시 동산면 영서로 824, (동산면)",
+    "phone": "033-260-3000",
+    "latitude": 37.7713654,
+    "longitude": 127.7664334,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 26,
+    "name": "기독건강병원",
+    "address": "광주광역시 동구 화산로 225,  (용산동)",
+    "phone": "062-234-8575",
+    "latitude": 35.1168365,
+    "longitude": 126.9205495,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 27,
+    "name": "김포다은병원",
+    "address": "경기도 김포시 돌문로 111, (사우동)",
+    "phone": "031-996-1338",
+    "latitude": 37.6227398,
+    "longitude": 126.7119141,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 28,
+    "name": "김포예사랑병원",
+    "address": "경기도 김포시 중봉1로 12, 이삼메디칼센타 2(일부), 4~7층 (감정동)",
+    "phone": "031-997-7204",
+    "latitude": 37.6227868,
+    "longitude": 126.6992942,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 29,
+    "name": "김포한누리병원",
+    "address": "경기도 김포시 월곶면 김포대로 2515-26, (월곶면)",
+    "phone": "031-981-3000",
+    "latitude": 37.700559,
+    "longitude": 126.5686573,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 30,
+    "name": "남원성일병원",
+    "address": "전북특별자치도 남원시 사매면 춘향로 822-129, (사매면)",
+    "phone": "063-634-8898",
+    "latitude": 35.4755294,
+    "longitude": 127.3695781,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 31,
+    "name": "내안에병원",
+    "address": "강원특별자치도 원주시 남원로 562-5, (개운동)",
+    "phone": "033-733-1199",
+    "latitude": 37.3341896,
+    "longitude": 127.9489161,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 32,
+    "name": "노아병원",
+    "address": "경상남도 양산시 상북면 수서로 349-17, (상북면)",
+    "phone": "055-912-0000",
+    "latitude": 35.4420197,
+    "longitude": 129.0384924,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 33,
+    "name": "늘푸른병원",
+    "address": "경기도 고양시 덕양구 원당로 139, (주교동)",
+    "phone": "031-967-9966",
+    "latitude": 37.6636208,
+    "longitude": 126.8401206,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 34,
+    "name": "다나병원",
+    "address": "서울특별시 도봉구 해등로 129, (창동)",
+    "phone": "02-942-8000",
+    "latitude": 37.6550487,
+    "longitude": 127.0404341,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 35,
+    "name": "다대자연병원",
+    "address": "부산광역시 사하구 장평로 1, (장림동)",
+    "phone": "051-204-5004",
+    "latitude": 35.0686092,
+    "longitude": 128.9771391,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 36,
+    "name": "다사랑병원",
+    "address": "광주광역시 서구 풍서우로 224,  (벽진동)",
+    "phone": "062-380-3800",
+    "latitude": 35.1293776,
+    "longitude": 126.8381886,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 37,
+    "name": "다사랑중앙병원",
+    "address": "경기도 의왕시 등칙골1길 22, (오전동)",
+    "phone": "031-340-5000",
+    "latitude": 37.3527987,
+    "longitude": 126.9738196,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 38,
+    "name": "다움병원",
+    "address": "부산광역시 금정구 체육공원로 608, (두구동)",
+    "phone": "051-508-0011",
+    "latitude": 35.2948146,
+    "longitude": 129.1118972,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 39,
+    "name": "다원병원",
+    "address": "인천광역시 계양구 장제로 857, (임학동)",
+    "phone": "032-543-7114",
+    "latitude": 37.5439747,
+    "longitude": 126.7373373,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 40,
+    "name": "다정한병원",
+    "address": "전라남도 나주시 산포면 매성길 61, (산포면)",
+    "phone": "061-330-8000",
+    "latitude": 35.0358893,
+    "longitude": 126.7994728,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 41,
+    "name": "대구정신병원",
+    "address": "대구광역시 달성군 화원읍 명천로 58, 대구광역시 시립희망원, 대구정신병원",
+    "phone": "053-630-3000",
+    "latitude": 35.8053917,
+    "longitude": 128.5094375,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 42,
+    "name": "대동병원",
+    "address": "대구광역시 동구 화랑로 169, (효목동)",
+    "phone": "053-663-1000",
+    "latitude": 35.8765527,
+    "longitude": 128.6437937,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 43,
+    "name": "대연성모병원",
+    "address": "부산광역시 남구 황령대로353번길 66, (대연동)",
+    "phone": "051-621-2312",
+    "latitude": 35.1481294,
+    "longitude": 129.098745,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 44,
+    "name": "대전광역시온마음병원",
+    "address": "대전광역시 유성구 진잠옛로135번길 87,  (학하동)",
+    "phone": "042-823-9101",
+    "latitude": 36.3315194,
+    "longitude": 127.3067821,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 45,
+    "name": "더블유진병원",
+    "address": "경기도 부천시 원미구 신흥로 244, 지하1층,1~5층 (중동)",
+    "phone": "032-321-1433",
+    "latitude": 37.5054465,
+    "longitude": 126.7759897,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 46,
+    "name": "더힐러스병원",
+    "address": "부산광역시 동구 범일로 112, (범일동)",
+    "phone": "051-715-1144",
+    "latitude": 35.1399429,
+    "longitude": 129.0596592,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 47,
+    "name": "덕계성심병원",
+    "address": "경상남도 양산시 월라2길 45, 덕계성심병원 (덕계동)",
+    "phone": "055-365-7575",
+    "latitude": 35.3640589,
+    "longitude": 129.1496922,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 48,
+    "name": "동래나눔과행복병원",
+    "address": "부산광역시 연제구 중앙대로 1239, (거제동)",
+    "phone": "051-507-7011",
+    "latitude": 35.1979049,
+    "longitude": 129.0785744,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 49,
+    "name": "동안성병원",
+    "address": "경기도 안성시 일죽면 금일로 1-38, (일죽면)",
+    "phone": "031-673-3800",
+    "latitude": 37.0563602,
+    "longitude": 127.473441,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 50,
+    "name": "동양의료재단연세사랑병원",
+    "address": "경상남도 창원시 진해구 행암로 76, (장천동)",
+    "phone": "055-540-7700",
+    "latitude": 35.1287636,
+    "longitude": 128.7010514,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 51,
+    "name": "동원병원",
+    "address": "경기도 동두천시 탑신로 522, (탑동동)",
+    "phone": "031-870-0701",
+    "latitude": 37.9000563,
+    "longitude": 127.1360859,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 52,
+    "name": "라엘마음병원",
+    "address": "경기도 고양시 덕양구 중앙로 628, 예일프라자 2층(202호제외),6층(607,608),7층호 (화정동)",
+    "phone": "031-978-5454",
+    "latitude": 37.6275514,
+    "longitude": 126.8289315,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 53,
+    "name": "루카스병원",
+    "address": "경기도 부천시 소사구 경인로 88, 지하1,1층,3~6층 (송내동)",
+    "phone": "032-310-0100",
+    "latitude": 37.4835983,
+    "longitude": 126.764904,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 54,
+    "name": "마음애병원",
+    "address": "충청남도 천안시 서북구 검은들3길 60, 리치프라자 (불당동)",
+    "phone": "041-566-5119",
+    "latitude": 36.8098753,
+    "longitude": 127.110175,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 55,
+    "name": "마음편한병원",
+    "address": "인천광역시 계양구 아나지로 380, 해룡빌딩 1~5층 (작전동)",
+    "phone": "032-207-7070",
+    "latitude": 37.5251761,
+    "longitude": 126.7344336,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 56,
+    "name": "마인드병원",
+    "address": "대전광역시 서구 대덕대로242번길 48-0, 6~9층 (둔산동)",
+    "phone": "042-528-6550",
+    "latitude": 36.354118,
+    "longitude": 127.3822592,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 57,
+    "name": "마인드웰병원",
+    "address": "서울특별시 중랑구 망우로 403, 삼부빌딩 5~7층 (망우동)",
+    "phone": "02-433-1195",
+    "latitude": 37.5994218,
+    "longitude": 127.0968533,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 58,
+    "name": "맑은마음병원",
+    "address": "충청남도 공주시 금벽로 351, (신관동)",
+    "phone": "041-852-7979",
+    "latitude": 36.4714918,
+    "longitude": 127.126454,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 59,
+    "name": "메타메디병원",
+    "address": "경기도 화성시 동탄원천로 338-7, 동탄V프라자 3~7층 (능동)",
+    "phone": "031-8003-5800",
+    "latitude": 37.2172623,
+    "longitude": 127.0588438,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 60,
+    "name": "멘토스병원",
+    "address": "서울특별시 동대문구 한천로 49, (답십리동)",
+    "phone": "02-2214-5100",
+    "latitude": 37.5665552,
+    "longitude": 127.061626,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 61,
+    "name": "모아병원",
+    "address": "인천광역시 미추홀구 미추홀대로 730, 고려웨딩홀 1층일부~2층 (주안동)",
+    "phone": "032-508-7513",
+    "latitude": 37.4625922,
+    "longitude": 126.6807916,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 62,
+    "name": "미래병원",
+    "address": "전북특별자치도 김제시 금구면 낙산1길 74-1, (금구면)",
+    "phone": "063-540-8800",
+    "latitude": 35.8071714,
+    "longitude": 127.0004724,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 63,
+    "name": "미주병원",
+    "address": "대구광역시 달서구 당산로 138, (성당동)",
+    "phone": "053-629-8119",
+    "latitude": 35.8491657,
+    "longitude": 128.5468355,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 64,
+    "name": "민들레병원",
+    "address": "경기도 파주시 탄현면 소리개길 74-17, 민들레병원",
+    "phone": "031-947-6400",
+    "latitude": 37.7889959,
+    "longitude": 126.7097224,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 65,
+    "name": "밀양우리병원",
+    "address": "경상남도 밀양시 중앙로 114, (가곡동)",
+    "phone": "055-355-8100",
+    "latitude": 35.4763775,
+    "longitude": 128.7664701,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 66,
+    "name": "밝은마음병원",
+    "address": "부산광역시 해운대구 해운대로 575, 2~5층 (우동, 국제빌딩)",
+    "phone": "051-746-7272",
+    "latitude": 35.1615007,
+    "longitude": 129.1543774,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 67,
+    "name": "밝은마음병원",
+    "address": "전라남도 나주시 남평읍 세남로 1566-3, (남평읍)",
+    "phone": "061-331-9900",
+    "latitude": 35.0272979,
+    "longitude": 126.834746,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 68,
+    "name": "베드로병원",
+    "address": "강원특별자치도 춘천시 공지로 270-0, (효자동)",
+    "phone": "033-255-0085",
+    "latitude": 37.8659705,
+    "longitude": 127.7353695,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 69,
+    "name": "베스트병원",
+    "address": "대구광역시 달서구 달구벌대로 1690, 5,6,7,8,9층 (두류동)",
+    "phone": "053-657-2000",
+    "latitude": 35.8549359,
+    "longitude": 128.5508744,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 70,
+    "name": "베이직병원",
+    "address": "서울특별시 도봉구 삼양로 610, 지하1층층 지상1,2,3,4호 (쌍문동, 산수디앤씨)",
+    "phone": "02-990-2999",
+    "latitude": 37.6574714,
+    "longitude": 127.0139101,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 71,
+    "name": "보령엘피스병원",
+    "address": "충청남도 보령시 옥마로 277, (화산동)",
+    "phone": "041-934-1522",
+    "latitude": 36.3555676,
+    "longitude": 126.6214983,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 72,
+    "name": "보은병원",
+    "address": "전라남도 화순군 도곡면 고인돌1로 282-14, (도곡면)",
+    "phone": "061-370-3000",
+    "latitude": 34.994261,
+    "longitude": 126.9229568,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 73,
+    "name": "봄내병원",
+    "address": "강원특별자치도 춘천시 춘천로 180, (효자동)",
+    "phone": "033-255-8515",
+    "latitude": 37.8762275,
+    "longitude": 127.7340805,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 74,
+    "name": "부산시립정신병원",
+    "address": "부산광역시 사상구 학감대로39번길 104-36, (학장동)",
+    "phone": "051-312-2288",
+    "latitude": 35.132849,
+    "longitude": 128.995075,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 75,
+    "name": "부여청담병원",
+    "address": "충청남도 부여군 부여읍 삼충로648번길 41, (부여읍)",
+    "phone": "041-833-2089",
+    "latitude": 36.3284171,
+    "longitude": 126.9784112,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 76,
+    "name": "부천사랑병원",
+    "address": "경기도 부천시 원미구 장말로 373, 한국몬테소리빌딩 지하1층, 1층일부, 2~7층, 장말로372번길 373, 한국몬테소리빌딩 지하1층, 1층일부, 2~7층, 장말로372번길 20 1층 (심곡동)",
+    "phone": "032-678-0114",
+    "latitude": 37.4902454,
+    "longitude": 126.7835161,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 77,
+    "name": "부천한병원",
+    "address": "경기도 부천시 원미구 부천로 170, 4~7층 (춘의동)",
+    "phone": "032-668-1119",
+    "latitude": 37.4994254,
+    "longitude": 126.7865045,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 78,
+    "name": "블레스병원",
+    "address": "인천광역시 서구 청마로167번안길 17, 선혜프라자 2~5층 (당하동)",
+    "phone": "563-1175",
+    "latitude": 37.5928633,
+    "longitude": 126.6748001,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 79,
+    "name": "사천동희병원",
+    "address": "경상남도 사천시 사천읍 구암두문로 74, (사천읍)",
+    "phone": "055-852-2250",
+    "latitude": 35.0883623,
+    "longitude": 128.0943098,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 80,
+    "name": "사회복지법인 동향원 부설 반구대병원",
+    "address": "울산광역시 울주군 두동면 천전각석길 11, (두동면)",
+    "phone": "052-264-9225",
+    "latitude": 35.6179271,
+    "longitude": 129.1687963,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 81,
+    "name": "사회복지법인 성신원 동대전정신병원",
+    "address": "대전광역시 동구 옥천로 315-0,  (삼정동)",
+    "phone": "042-272-8882",
+    "latitude": 36.3230134,
+    "longitude": 127.4710687,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 82,
+    "name": "사회복지법인천성원 대전한일병원",
+    "address": "대전광역시 대덕구 대화1길 2, (대화동)",
+    "phone": "042-620-8114",
+    "latitude": 36.3667905,
+    "longitude": 127.4130935,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 83,
+    "name": "사회복지법인한마음 한마음정신병원",
+    "address": "대전광역시 서구 삼보실길 123-0,  (장안동)",
+    "phone": "042-582-9700",
+    "latitude": 36.2245035,
+    "longitude": 127.3341954,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 84,
+    "name": "상주제일병원",
+    "address": "경상북도 상주시 내서면 영남제일로 3659, (내서면)",
+    "phone": "054-530-9000",
+    "latitude": 36.4376763,
+    "longitude": 128.0032625,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 85,
+    "name": "새마음병원",
+    "address": "강원특별자치도 원주시 문막읍 귀문로 1217,",
+    "phone": "033-731-3111",
+    "latitude": 37.265117,
+    "longitude": 127.825575,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 86,
+    "name": "새샘병원",
+    "address": "경기도 화성시 떡전골로 112-13, (진안동)",
+    "phone": "031-307-7997",
+    "latitude": 37.2087395,
+    "longitude": 127.0334466,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 87,
+    "name": "새희망병원",
+    "address": "인천광역시 남동구 남동대로922번길 54, 새희망병원 (간석동)",
+    "phone": "431-2555",
+    "latitude": 37.4648587,
+    "longitude": 126.7114993,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 88,
+    "name": "서대구대동병원",
+    "address": "대구광역시 달서구 달구벌대로 1577, 서대구 대동병원 (죽전동)",
+    "phone": "053-662-1000",
+    "latitude": 35.8512912,
+    "longitude": 128.5390609,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 89,
+    "name": "서울명병원",
+    "address": "서울특별시 동대문구 고산자로 421, (용두동)",
+    "phone": "965-2800",
+    "latitude": 37.5773943,
+    "longitude": 127.0379409,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 90,
+    "name": "서울특별시 백암정신병원",
+    "address": "경기도 용인시 처인구 백암면 용천로71번길 30, (백암면)",
+    "phone": "031-332-3194",
+    "latitude": 37.1221637,
+    "longitude": 127.3648715,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 91,
+    "name": "서울특별시은평병원",
+    "address": "서울특별시 은평구 백련산로 90, (응암동)",
+    "phone": "300-8114",
+    "latitude": 37.594014,
+    "longitude": 126.923851,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 92,
+    "name": "서울특별시축령정신병원",
+    "address": "경기도 남양주시 수동면 외방로172번길 58, (수동면)",
+    "phone": "031-592-6661",
+    "latitude": 37.7387759,
+    "longitude": 127.3094646,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 93,
+    "name": "서천사랑병원",
+    "address": "충청남도 서천군 판교면 대백제로 2078, (판교면)",
+    "phone": "041-951-8114",
+    "latitude": 36.1687808,
+    "longitude": 126.6926458,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 94,
+    "name": "선병원",
+    "address": "전북특별자치도 임실군 덕치면 사곡1길 9-8, (덕치면)",
+    "phone": "063-643-7575",
+    "latitude": 35.5161375,
+    "longitude": 127.1812413,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 95,
+    "name": "성남사랑의병원",
+    "address": "경기도 성남시 수정구 성남대로 1270-1, 성남대로 1262, 11-12층  (태평동)",
+    "phone": "031-756-3024",
+    "latitude": 37.4432866,
+    "longitude": 127.1275055,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 96,
+    "name": "성동병원",
+    "address": "대구광역시 북구 칠곡중앙대로99길 21, (관음동)",
+    "phone": "053-325-0009",
+    "latitude": 35.9407577,
+    "longitude": 128.5477949,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 97,
+    "name": "성심병원",
+    "address": "경상북도 안동시 정백이골길 36-15,  (안막동)",
+    "phone": "054-843-7887",
+    "latitude": 36.5844449,
+    "longitude": 128.7349902,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 98,
+    "name": "성은병원",
+    "address": "경기도 안산시 단원구 원포공원1로 19, 원포빌딩 121,122,401,501호 (초지동)",
+    "phone": "031-484-6500",
+    "latitude": 37.3003796,
+    "longitude": 126.8124498,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 99,
+    "name": "성은의료재단 연산병원",
+    "address": "부산광역시 연제구 배산북로 50, (연산동, 배산북로 47)",
+    "phone": "051-866-5050",
+    "latitude": 35.1783372,
+    "longitude": 129.094698,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 100,
+    "name": "성주제일병원",
+    "address": "경상북도 성주군 성주읍 성주순환로 274, (성주읍)",
+    "phone": "054-933-0712",
+    "latitude": 35.9190891,
+    "longitude": 128.2917489,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 101,
+    "name": "성지병원",
+    "address": "서울특별시 금천구 가산로 122, (가산동)",
+    "phone": "02-867-7056",
+    "latitude": 37.4766009,
+    "longitude": 126.8928939,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 102,
+    "name": "성지하임병원",
+    "address": "충청남도 논산시 연산면 한전2길 52, (연산면)",
+    "phone": "041-734-9100",
+    "latitude": 36.2052468,
+    "longitude": 127.1852906,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 103,
+    "name": "세광병원",
+    "address": "울산광역시 울주군 삼남읍 반구대로 15, (삼남읍)",
+    "phone": "055-381-8275",
+    "latitude": 35.4992656,
+    "longitude": 129.0908491,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 104,
+    "name": "세미한병원",
+    "address": "전북특별자치도 김제시 백구면 영상3길 25-0, (백구면)",
+    "phone": "063-548-7575",
+    "latitude": 35.8745037,
+    "longitude": 127.0001918,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 105,
+    "name": "송추정신병원(성람재단)",
+    "address": "경기도 양주시 장흥면 가마골로258번길 122, (장흥면)",
+    "phone": "031-826-1300",
+    "latitude": 37.7412952,
+    "longitude": 126.9837412,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 106,
+    "name": "송파미소병원",
+    "address": "서울특별시 송파구 오금로 513, 위례빌딩 지하1~2층, 지상2~8층 (거여동)",
+    "phone": "02-1661-9299",
+    "latitude": 37.4932277,
+    "longitude": 127.1458927,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 107,
+    "name": "수성중동병원",
+    "address": "대구광역시 수성구 수성로 268, 1층 102호, 2층~8층 (중동)",
+    "phone": "053-766-8700",
+    "latitude": 35.8494037,
+    "longitude": 128.6134431,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 108,
+    "name": "순천은병원",
+    "address": "전라남도 순천시 낙안면 읍성로 302, (낙안면)",
+    "phone": "061-752-8575",
+    "latitude": 34.9130565,
+    "longitude": 127.3245705,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 109,
+    "name": "신동환병원",
+    "address": "충청남도 홍성군 홍성읍 홍성천길 214, 두리프라자 4-6층",
+    "phone": "041-631-7541",
+    "latitude": 36.6010151,
+    "longitude": 126.6673469,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 110,
+    "name": "신세계병원",
+    "address": "전북특별자치도 김제시 금산면 구성5길 84-15, (금산면)",
+    "phone": "063-545-8700",
+    "latitude": 35.7447837,
+    "longitude": 127.00789,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 111,
+    "name": "신애정신병원",
+    "address": "경상북도 김천시 어모면 신애길 89, (어모면)",
+    "phone": "054-420-7100",
+    "latitude": 36.211218,
+    "longitude": 128.053812,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 112,
+    "name": "신창사랑병원",
+    "address": "광주광역시 광산구 풍영정길 147, (신창동)",
+    "phone": "062-960-7500",
+    "latitude": 35.1830865,
+    "longitude": 126.8504658,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 113,
+    "name": "아람병원",
+    "address": "경상남도 양산시 덕계2길 11-15, (덕계동)",
+    "phone": "055-364-0078",
+    "latitude": 35.369577,
+    "longitude": 129.1467101,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 114,
+    "name": "아주다남병원",
+    "address": "경기도 수원시 장안구 정자천로 187, (정자동, 롯데프라자 4층)",
+    "phone": "031-269-7578",
+    "latitude": 37.2965695,
+    "longitude": 126.9954474,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 115,
+    "name": "아주편한병원",
+    "address": "경기도 수원시 장안구 경수대로 1111, (파장동, 경기도건축사회관)",
+    "phone": "031-269-5665",
+    "latitude": 37.3104783,
+    "longitude": 126.9908506,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 116,
+    "name": "아하브병원(의료법인 백양의료재단)",
+    "address": "부산광역시 북구 만덕고개길 84, 지하1~2층, 지상1~5층, 7층일부 (만덕동)",
+    "phone": "051-333-8600",
+    "latitude": 35.2117162,
+    "longitude": 129.0489295,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 117,
+    "name": "안강중앙병원",
+    "address": "경상북도 경주시 안강읍 안강중앙로 150-3, (안강읍)",
+    "phone": "054-763-8000",
+    "latitude": 35.9928346,
+    "longitude": 129.2169,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 118,
+    "name": "안산연세병원",
+    "address": "경기도 안산시 상록구 광덕1로 386, 303,401~406,408,501,603~607,7층호 (이동)",
+    "phone": "031-415-7515",
+    "latitude": 37.3084611,
+    "longitude": 126.8524502,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 119,
+    "name": "양산병원",
+    "address": "경상남도 양산시 모래들1길 91, (주진동)",
+    "phone": "055-389-1234",
+    "latitude": 35.4007904,
+    "longitude": 129.14755,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 120,
+    "name": "여주세민병원",
+    "address": "경기도 여주시 가남읍 경충대로 924, (가남읍)",
+    "phone": "031-883-7585",
+    "latitude": 37.1785162,
+    "longitude": 127.5661513,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 121,
+    "name": "여주순영병원",
+    "address": "경기도 여주시 가남읍 경충대로 924, (가남읍)",
+    "phone": "031-883-7585",
+    "latitude": 37.1785162,
+    "longitude": 127.5661513,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 122,
+    "name": "연세서울병원",
+    "address": "경기도 안산시 상록구 선암로 40, (본오동, 드들요양병원)",
+    "phone": "031-415-1010",
+    "latitude": 37.2884903,
+    "longitude": 126.8631353,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 123,
+    "name": "연세서울병원",
+    "address": "경기도 고양시 일산동구 중앙로 1200, 삼희골드프라자 5,6,7,9층 902호 (마두동)",
+    "phone": "031-907-9920",
+    "latitude": 37.6538167,
+    "longitude": 126.7772085,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 124,
+    "name": "연세하늘병원",
+    "address": "경기도 의정부시 평화로 704, (가능동, 대원빌딩)",
+    "phone": "031-836-7341",
+    "latitude": 37.7546699,
+    "longitude": 127.0436912,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 125,
+    "name": "열경의료재단동부허병원",
+    "address": "대구광역시 동구 화랑로 81, 동부허병원 (효목동)",
+    "phone": "053-749-0000",
+    "latitude": 35.8725071,
+    "longitude": 128.6356375,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 126,
+    "name": "열린성애병원",
+    "address": "충청남도 아산시 음봉면 음봉로681번길 76, (음봉면)",
+    "phone": "041-543-3580",
+    "latitude": 36.838682,
+    "longitude": 127.080138,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 127,
+    "name": "영주삼봉병원",
+    "address": "경상북도 영주시 꽃동산로 43, (가흥동)",
+    "phone": "054-634-7600",
+    "latitude": 36.8132917,
+    "longitude": 128.6197875,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 128,
+    "name": "예사랑병원",
+    "address": "충청북도 청주시 상당구 2순환로2031번길 6-9,  (방서동)",
+    "phone": "043-298-7337",
+    "latitude": 36.5979138,
+    "longitude": 127.5037975,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 129,
+    "name": "예인병원",
+    "address": "인천광역시 남동구 논고개로 71, 가산타워 7~10층 1001,1002호 (논현동)",
+    "phone": "426-1800",
+    "latitude": 37.3980272,
+    "longitude": 126.7268514,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 130,
+    "name": "오산신경정신병원",
+    "address": "경기도 오산시 가장산업동로 69-27, 가,나,다동 (궐동)",
+    "phone": "031-373-1254",
+    "latitude": 37.1656759,
+    "longitude": 127.0438767,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 131,
+    "name": "온빛병원",
+    "address": "대구광역시 동구 반야월북로2길 16-1, (율암동)",
+    "phone": "053-267-8000",
+    "latitude": 35.8783363,
+    "longitude": 128.7026714,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 132,
+    "name": "온사랑병원",
+    "address": "부산광역시 금정구 서동로 197-1, (서동)",
+    "phone": "051-555-0808",
+    "latitude": 35.2143421,
+    "longitude": 129.1081538,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 133,
+    "name": "온세병원",
+    "address": "경기도 남양주시 평내로29번길 49, 10층 (평내동, M2프라자)",
+    "phone": "594-7912",
+    "latitude": 37.6458624,
+    "longitude": 127.2356564,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 134,
+    "name": "용인정신병원",
+    "address": "경기도 용인시 기흥구 중부대로 940, (상하동, 용인정신병원)",
+    "phone": "031-288-0114",
+    "latitude": 37.2504431,
+    "longitude": 127.1555927,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 135,
+    "name": "우리마음병원",
+    "address": "경기도 구리시 안골로57번길 33, (수택동)",
+    "phone": "031-554-0070",
+    "latitude": 37.5988162,
+    "longitude": 127.1368953,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 136,
+    "name": "우리병원",
+    "address": "부산광역시 사상구 사상로 237, 1,3,4,5층 (괘법동)",
+    "phone": "051-323-6613",
+    "latitude": 35.1661174,
+    "longitude": 128.9824301,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 137,
+    "name": "우리병원",
+    "address": "경상남도 함안군 칠서면 삼칠로 1213, (칠서면)",
+    "phone": "055-589-9800",
+    "latitude": 35.3873737,
+    "longitude": 128.492916,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 138,
+    "name": "울산기독병원",
+    "address": "울산광역시 울주군 두동면 남명리1길 34-49, 울산기독병원",
+    "phone": "052-263-5111",
+    "latitude": 35.7123596,
+    "longitude": 129.2068875,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 139,
+    "name": "원병원",
+    "address": "인천광역시 미추홀구 인하로 372, 지하1~2, 1~5층 (주안동, 남영빌딩)",
+    "phone": "032-547-7110",
+    "latitude": 37.4480547,
+    "longitude": 126.6896782,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 140,
+    "name": "위드병원",
+    "address": "대구광역시 달서구 명덕로 23, 2~7층 (두류동)",
+    "phone": "053-522-1275",
+    "latitude": 35.8605719,
+    "longitude": 128.574215,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 141,
+    "name": "은혜병원",
+    "address": "인천광역시 서구 심곡로132번길 22, (심곡동)",
+    "phone": "562-5101",
+    "latitude": 37.5455326,
+    "longitude": 126.684595,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 142,
+    "name": "의령사랑병원",
+    "address": "경상남도 의령군 의령읍 의합대로 105-8, 105",
+    "phone": "055-600-2000",
+    "latitude": 35.3261451,
+    "longitude": 128.2832085,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 143,
+    "name": "의료법인 계요의료재단 계요병원",
+    "address": "경기도 의왕시 오전로 15, 계요병원 (왕곡동)",
+    "phone": "031-455-3333",
+    "latitude": 37.3479536,
+    "longitude": 126.9811648,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 144,
+    "name": "의료법인 길정의료재단 길정병원",
+    "address": "부산광역시 사상구 학감대로39번길 116, (학장동, A동 지하1~ 지상4층, B동 지상1~2층, D동 지상1~지상4층)",
+    "phone": "051-320-6450",
+    "latitude": 35.132207,
+    "longitude": 128.99575,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 145,
+    "name": "의료법인 길정의료재단 대남병원",
+    "address": "부산광역시 사상구 학감대로39번길 116, (학장동)",
+    "phone": "051-324-2227",
+    "latitude": 35.132207,
+    "longitude": 128.99575,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 146,
+    "name": "의료법인 노은의료재단 도은병원",
+    "address": "충청북도 진천군 문백면 문진로 88-56, 도은병원",
+    "phone": "043-930-2000",
+    "latitude": 36.7584981,
+    "longitude": 127.4484665,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 147,
+    "name": "의료법인 다원의료재단 영동제일병원",
+    "address": "충청북도 영동군 양강면 양정죽촌로 53-12, (양강면)",
+    "phone": "043-745-3004",
+    "latitude": 36.1601602,
+    "longitude": 127.7697902,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 148,
+    "name": "의료법인 덕산의료재단 한마음병원",
+    "address": "경상남도 사천시 향촌4길 127, (향촌동, 한마음병원)",
+    "phone": "055-832-3311",
+    "latitude": 34.9350153,
+    "longitude": 128.0979487,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 149,
+    "name": "의료법인 동숙의료재단 벧엘기독병원",
+    "address": "충청북도 괴산군 문광면 흑석2길 20-148, 벧엘기독병원",
+    "phone": "043-833-1004",
+    "latitude": 36.7486969,
+    "longitude": 127.8236456,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 150,
+    "name": "의료법인 동영의료재단 상록병원",
+    "address": "부산광역시 동래구 충렬대로 426, (안락동)",
+    "phone": "051-555-8009",
+    "latitude": 35.1962377,
+    "longitude": 129.1048824,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 151,
+    "name": "의료법인 민현의료재단 미래로병원",
+    "address": "경상북도 구미시 여헌로 30,  (인의동)",
+    "phone": "054-442-0046",
+    "latitude": 36.1041302,
+    "longitude": 128.4254909,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 152,
+    "name": "의료법인 벽삼의료재단 우리세명병원",
+    "address": "경상북도 경산시 화랑로8길 26,  (갑제동)",
+    "phone": "053-819-9500",
+    "latitude": 35.81886,
+    "longitude": 128.77184,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 153,
+    "name": "의료법인 사랑나무의료재단 서수원병원",
+    "address": "경기도 수원시 권선구 오목천로152번길 68, 골든프라자 4층 (고색동)",
+    "phone": "031-221-2222",
+    "latitude": 37.2414027,
+    "longitude": 126.9780197,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 154,
+    "name": "의료법인 삼정의료재단 삼정병원",
+    "address": "인천광역시 계양구 장제로 800, (계산동)",
+    "phone": "032-543-7530",
+    "latitude": 37.5391678,
+    "longitude": 126.7349767,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 155,
+    "name": "의료법인 성심의료재단 늘푸른병원",
+    "address": "경상북도 상주시 함창읍 경서로 8-8, (함창읍)",
+    "phone": "054-555-8275",
+    "latitude": 36.5815688,
+    "longitude": 128.1935859,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 156,
+    "name": "의료법인 송인의료재단 대성그린병원",
+    "address": "경상북도 안동시 임하면 고곡길 236, (임하면)",
+    "phone": "054-821-7282",
+    "latitude": 36.4864183,
+    "longitude": 128.8409486,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 157,
+    "name": "의료법인 순영의료재단 순영병원",
+    "address": "경상남도 사천시 축동면 서삼로 1110-35, (축동면)",
+    "phone": "055-854-6000",
+    "latitude": 35.0934984,
+    "longitude": 128.0450662,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 158,
+    "name": "의료법인 승민의료재단 화성초록병원",
+    "address": "경기도 화성시 양감면 사격장길 133-25, (양감면)",
+    "phone": "031-352-0885",
+    "latitude": 37.0898759,
+    "longitude": 126.9569294,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 159,
+    "name": "의료법인 안동의료재단 용상안동병원",
+    "address": "경상북도 안동시 전거리길 57, (용상동)",
+    "phone": "054-820-1111",
+    "latitude": 36.5600981,
+    "longitude": 128.7437806,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 160,
+    "name": "의료법인 안흥의료재단 영남병원",
+    "address": "경상북도 포항시 북구 장량로 36, (장성동)",
+    "phone": "054-727-7780",
+    "latitude": 36.0824295,
+    "longitude": 129.3843039,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 161,
+    "name": "의료법인 연강의료재단 연강병원",
+    "address": "제주특별자치도 제주시 죽성서길 6, (오등동)",
+    "phone": "064-726-7900",
+    "latitude": 33.4612171,
+    "longitude": 126.5332439,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 162,
+    "name": "의료법인 연강의료재단 연강참병원",
+    "address": "제주특별자치도 제주시 서광로 175, 아세아빌딩  B-101,301,401,501호 (용담일동)",
+    "phone": "064-759-9641",
+    "latitude": 33.5003202,
+    "longitude": 126.5151861,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 163,
+    "name": "의료법인 요섭의료재단 감람원병원",
+    "address": "충청북도 옥천군 청성면 청성로 654-1, (청성면)",
+    "phone": "732-2070",
+    "latitude": 36.311961,
+    "longitude": 127.7620838,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 164,
+    "name": "의료법인 음성소망의료재단 음성소망병원",
+    "address": "충청북도 음성군 생극면 일생로 518-0, (생극면)",
+    "phone": "043-878-4111",
+    "latitude": 37.0317925,
+    "longitude": 127.5770237,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 165,
+    "name": "의료법인 의명의료재단 마음편한병원",
+    "address": "대전광역시 중구 중교로 32, (대흥동)",
+    "phone": "042-222-2921",
+    "latitude": 36.3250393,
+    "longitude": 127.4235269,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 166,
+    "name": "의료법인 의명의료재단 마음편한병원",
+    "address": "충청북도 보은군 보은읍 뱃들로 53-0, (보은읍)",
+    "phone": "043-542-3100",
+    "latitude": 36.4864623,
+    "longitude": 127.724531,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 167,
+    "name": "의료법인 정도의료재단 아미고병원",
+    "address": "경기도 화성시 마도면 화성로 848-16, (마도면)",
+    "phone": "031-366-7585",
+    "latitude": 37.2044702,
+    "longitude": 126.7822524,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 168,
+    "name": "의료법인 정빈의료재단 아산병원",
+    "address": "충청남도 아산시 배방읍 휴대세교길 101, (배방읍)",
+    "phone": "041-548-9851",
+    "latitude": 36.7771698,
+    "longitude": 127.1046658,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 169,
+    "name": "의료법인 정진의료재단 영화병원",
+    "address": "인천광역시 남동구 소래역로 42, 소래타워 302호, 6~10층 (논현동)",
+    "phone": "442-2020",
+    "latitude": 37.4008343,
+    "longitude": 126.7349648,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 170,
+    "name": "의료법인 진주의료재단 새진주정신병원",
+    "address": "경상남도 진주시 문산읍 제곡길98번길 36, 지하1, 1~4층",
+    "phone": "055-761-7582",
+    "latitude": 35.153151,
+    "longitude": 128.1737761,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 171,
+    "name": "의료법인 진주의료재단 진주정신병원",
+    "address": "경상남도 진주시 문산읍 제곡길98번길 49-6, (문산읍)",
+    "phone": "055-761-7582",
+    "latitude": 35.1527151,
+    "longitude": 128.1767465,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 172,
+    "name": "의료법인 창민의료재단 제천병원",
+    "address": "충청북도 제천시 북부로13길 94-0, 제천병원",
+    "phone": "043-640-6100",
+    "latitude": 37.1238807,
+    "longitude": 128.1819131,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 173,
+    "name": "의료법인 춘천서인병원",
+    "address": "강원특별자치도 춘천시 동산면 새술막길 315-77, 315",
+    "phone": "033-261-0999",
+    "latitude": 37.77075,
+    "longitude": 127.72795,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 174,
+    "name": "의료법인 한길사랑의료재단 한길병원",
+    "address": "전북특별자치도 완주군 봉동읍 낙평장기로 43-0, (봉동읍)",
+    "phone": "063-260-9900",
+    "latitude": 35.9356012,
+    "longitude": 127.1625526,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 175,
+    "name": "의료법인 해동의료재단 청도메타병원",
+    "address": "경상북도 청도군 청도읍 고수산복길 198, (청도읍)",
+    "phone": "054-370-9900",
+    "latitude": 35.6331498,
+    "longitude": 128.7507958,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 176,
+    "name": "의료법인 해안의료재단 해안1병원",
+    "address": "경상북도 의성군 의성읍 경북대로 5732, (의성읍)",
+    "phone": "054-834-6660",
+    "latitude": 36.3536926,
+    "longitude": 128.6812267,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 177,
+    "name": "의료법인 행복한의료재단 경남도립정신병원",
+    "address": "경상남도 사천시 축동면 서삼로 1110-35, (축동면)",
+    "phone": "055-786-8400",
+    "latitude": 35.0934984,
+    "longitude": 128.0450662,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 178,
+    "name": "의료법인 현대소망의료재단 현대병원",
+    "address": "충청북도 음성군 생극면 일생로 516-0,",
+    "phone": "043-878-4341",
+    "latitude": 37.0312485,
+    "longitude": 127.5766023,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 179,
+    "name": "의료법인 혜강의료재단 혜강병원",
+    "address": "충청남도 천안시 동남구 대흥로 288, 화정빌딩 지하2층~지상6층 (성황동)",
+    "phone": "041-555-8275",
+    "latitude": 36.813351,
+    "longitude": 127.1495902,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 180,
+    "name": "의료법인 혜광의료재단 충북병원",
+    "address": "충청북도 청주시 서원구 현도면 우록4길 151-0, (현도면)",
+    "phone": "043-260-8200",
+    "latitude": 36.507225,
+    "longitude": 127.444998,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 181,
+    "name": "의료법인 효원의료재단 주례자연병원",
+    "address": "부산광역시 사상구 학장로 325, (주례동)",
+    "phone": "051-324-1004",
+    "latitude": 35.1495627,
+    "longitude": 128.9996328,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 182,
+    "name": "의료법인 희망나눔의료재단 휴성심병원",
+    "address": "경기도 군포시 당정역로4번길 11, 유영타운 B01,105,301,401~405,501~502호 (당정동)",
+    "phone": "031-477-9797",
+    "latitude": 37.3437159,
+    "longitude": 126.9495166,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 183,
+    "name": "의료법인거명의료재단 영광기독신하병원",
+    "address": "전라남도 영광군 영광읍 천년로 1351-15, (영광읍)",
+    "phone": "061-353-9000",
+    "latitude": 35.2682288,
+    "longitude": 126.4928048,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 184,
+    "name": "의료법인경산의료재단 해광병원",
+    "address": "경상남도 김해시 김해대로2492번길 54-28, (삼정동)",
+    "phone": "055-311-1678",
+    "latitude": 35.2259468,
+    "longitude": 128.9041638,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 185,
+    "name": "의료법인경애의료재단 담양참사랑병원",
+    "address": "전라남도 담양군 대덕면 용산로 369, (대덕면)",
+    "phone": "061-381-7582",
+    "latitude": 35.23662,
+    "longitude": 127.0812244,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 186,
+    "name": "의료법인고담의료재단마야병원",
+    "address": "경상북도 영천시 북안면 내서로 55-25, (북안면)",
+    "phone": "054-336-3311",
+    "latitude": 35.9109578,
+    "longitude": 129.0151237,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 187,
+    "name": "의료법인고산의료재단칠곡시몬병원",
+    "address": "경상북도 칠곡군 왜관읍 금남5길 62, (왜관읍)",
+    "phone": "054-976-0401",
+    "latitude": 35.926402,
+    "longitude": 128.4128595,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 188,
+    "name": "의료법인다나의료재단구로다나병원",
+    "address": "서울특별시 구로구 개봉로 126, 구로다나병원빌딩 (개봉동)",
+    "phone": "02-2613-8001",
+    "latitude": 37.4969841,
+    "longitude": 126.8567727,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 189,
+    "name": "의료법인대종의료재단부곡온천병원",
+    "address": "경상남도 창녕군 부곡면 원앙로 72, (부곡면)",
+    "phone": "055-536-4858",
+    "latitude": 35.4420721,
+    "longitude": 128.5798276,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 190,
+    "name": "의료법인동승의료재단동승병원",
+    "address": "경상북도 영천시 동강포길 87,  (도남동)",
+    "phone": "054-330-7700",
+    "latitude": 35.932613,
+    "longitude": 128.92964,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 191,
+    "name": "의료법인배성의료재단 배성병원",
+    "address": "대구광역시 북구 검단로 140, (검단동)",
+    "phone": "053-383-2700",
+    "latitude": 35.9081446,
+    "longitude": 128.6224195,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 192,
+    "name": "의료법인벧엘의료재단 부산정신병원",
+    "address": "부산광역시 사하구 하신중앙로3번나길 10, (장림동, 부산정신병원)",
+    "phone": "051-263-8891",
+    "latitude": 35.0769853,
+    "longitude": 128.9623279,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 193,
+    "name": "의료법인보람의료재단보람병원",
+    "address": "인천광역시 계양구 오조산로 11, (작전동)",
+    "phone": "032-542-0114",
+    "latitude": 37.5318896,
+    "longitude": 126.7379338,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 194,
+    "name": "의료법인부여의료재단 부여다사랑병원",
+    "address": "충청남도 부여군 장암면 충절로1713번길 16, (장암면)",
+    "phone": "041-832-7261",
+    "latitude": 36.2288645,
+    "longitude": 126.8695501,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 195,
+    "name": "의료법인상록의료재단화정병원",
+    "address": "경기도 고양시 일산동구 중산로157번길 49, 대산타운 106~109, 110, 201~205, 301, 401, 501, 601호 (중산동)",
+    "phone": "031-979-7572",
+    "latitude": 37.6840969,
+    "longitude": 126.779218,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 196,
+    "name": "의료법인성산의료재단새빛병원",
+    "address": "경상북도 경주시 원효로 93-1,  (노동동)",
+    "phone": "054-741-2300",
+    "latitude": 35.8423401,
+    "longitude": 129.2111142,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 197,
+    "name": "의료법인성은의료재단참조은병원",
+    "address": "전북특별자치도 정읍시 새암길 29-11, (수성동)",
+    "phone": "063-538-9730",
+    "latitude": 35.5678006,
+    "longitude": 126.8524347,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 198,
+    "name": "의료법인세화의료재단 나주효사랑병원",
+    "address": "전라남도 나주시 금천면 영산로 5891-9, 나주효사랑병원",
+    "phone": "061-330-1700",
+    "latitude": 35.03562,
+    "longitude": 126.7706473,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 199,
+    "name": "의료법인연희의료재단해남혜민병원",
+    "address": "전라남도 해남군 옥천면 해남로 583-52, (옥천면)",
+    "phone": "061-533-8455",
+    "latitude": 34.5827083,
+    "longitude": 126.6431375,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 200,
+    "name": "의료법인영은의료재단김천신경정신병원",
+    "address": "경상북도 김천시 아홉사리길 140-49,  (응명동)",
+    "phone": "054-432-5040",
+    "latitude": 36.148379,
+    "longitude": 128.1147395,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 201,
+    "name": "의료법인영은의료재단하나병원",
+    "address": "경상북도 청도군 청도읍 청도신기길 78-10, (청도읍)",
+    "phone": "054-373-0911",
+    "latitude": 35.649373,
+    "longitude": 128.7454158,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 202,
+    "name": "의료법인영파의료재단 마음향기병원",
+    "address": "부산광역시 금정구 금샘로 56, (장전동)",
+    "phone": "051-516-1220",
+    "latitude": 35.2306373,
+    "longitude": 129.0770761,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 203,
+    "name": "의료법인예경의료재단예경병원",
+    "address": "경상남도 창원시 마산합포구 중앙서1길 25, (대성동2가, 예경노인병원)",
+    "phone": "055-249-5555",
+    "latitude": 35.1937767,
+    "longitude": 128.5620809,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 204,
+    "name": "의료법인완주의료재단한마음화산병원",
+    "address": "전북특별자치도 완주군 화산면 운제로 100, (한마음화산병원)",
+    "phone": "063-260-1300",
+    "latitude": 36.0120432,
+    "longitude": 127.2246847,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 205,
+    "name": "의료법인유민의료재단산울림병원",
+    "address": "경상북도 칠곡군 왜관읍 금남3길 99-1, (왜관읍)",
+    "phone": "054-976-2580",
+    "latitude": 35.9304185,
+    "longitude": 128.4110241,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 206,
+    "name": "의료법인은혜의료재단 은혜병원",
+    "address": "세종특별자치시 연서면 효교로 135-16, 은혜병원",
+    "phone": "044-868-5004",
+    "latitude": 36.5726904,
+    "longitude": 127.2373357,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 207,
+    "name": "의료법인인본의료재단해운대자명병원",
+    "address": "부산광역시 해운대구 해운대로469번가길 75, (우동)",
+    "phone": "051-780-5566",
+    "latitude": 35.1676968,
+    "longitude": 129.1460683,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 208,
+    "name": "의료법인인혜의료재단가나병원",
+    "address": "부산광역시 남구 유엔평화로 156, (용당동)",
+    "phone": "051-624-6666",
+    "latitude": 35.1221797,
+    "longitude": 129.0971157,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 209,
+    "name": "의료법인주현의료재단사상중앙병원",
+    "address": "부산광역시 사상구 삼덕로5번길 85, (삼락동)",
+    "phone": "051-305-7001",
+    "latitude": 35.1784013,
+    "longitude": 128.9782163,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 210,
+    "name": "의료법인지석의료재단 신세계효병원",
+    "address": "전북특별자치도 김제시 금산면 구성5길 84-15, (금산면)",
+    "phone": "063-545-8100",
+    "latitude": 35.7447837,
+    "longitude": 127.00789,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 211,
+    "name": "의료법인진주의료재단진주성남병원",
+    "address": "경상남도 진주시 문산읍 문산로 831, (문산읍)",
+    "phone": "055-790-0001",
+    "latitude": 35.156763,
+    "longitude": 128.2015812,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 212,
+    "name": "의료법인청아의료재단동서병원",
+    "address": "경상남도 창원시 마산회원구 내서읍 호원로 265, (동서병원)",
+    "phone": "055-230-1800",
+    "latitude": 35.2571337,
+    "longitude": 128.5212256,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 213,
+    "name": "의료법인태훈의료재단새희망병원",
+    "address": "경상북도 영주시 반지미로 275-17, 새희망병원",
+    "phone": "054-639-8800",
+    "latitude": 36.8247,
+    "longitude": 128.59565,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 214,
+    "name": "의료법인통영의료재단통영정신병원",
+    "address": "경상남도 통영시 도산면 남해안대로 1820, (도산면)",
+    "phone": "055-640-1988",
+    "latitude": 34.9125232,
+    "longitude": 128.360517,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 215,
+    "name": "의료법인한길사랑의료재단현대사랑병원",
+    "address": "경상남도 창원시 마산합포구 진북면 동삼길 314-25, (진북면)",
+    "phone": "055-240-8002",
+    "latitude": 35.132314,
+    "longitude": 128.4476484,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 216,
+    "name": "의료법인한성재단동아메디병원",
+    "address": "대구광역시 수성구 지산로 77, (지산동, (지상1~6층))",
+    "phone": "053-780-3000",
+    "latitude": 35.8277672,
+    "longitude": 128.6336105,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 217,
+    "name": "의료법인혜원의료재단혜원성모병원",
+    "address": "경상북도 칠곡군 약목면 관호7길 41, (약목면)",
+    "phone": "054-979-7115",
+    "latitude": 36.0034013,
+    "longitude": 128.3841244,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 218,
+    "name": "의료법인휴사랑의료재단 보성제일병원",
+    "address": "전라남도 보성군 보성읍 송재로 59-2, (보성읍)",
+    "phone": "061-853-7700",
+    "latitude": 34.7632134,
+    "longitude": 127.0732119,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 219,
+    "name": "의정부힐링스병원",
+    "address": "경기도 의정부시 청사로48번길 19, 4층일부, 9~12층 (금오동)",
+    "phone": "031-853-9222",
+    "latitude": 37.7530556,
+    "longitude": 127.0709609,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 220,
+    "name": "이룸병원",
+    "address": "경기도 부천시 오정구 수도로 93, 태양빌딩 2층,4층,5층 (내동)",
+    "phone": "032-674-5567",
+    "latitude": 37.5157867,
+    "longitude": 126.7759172,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 221,
+    "name": "이즈병원",
+    "address": "대구광역시 달성군 다사읍 달구벌대로 893, 6~12층",
+    "phone": "053-656-8381",
+    "latitude": 35.8571674,
+    "longitude": 128.4665367,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 222,
+    "name": "이천더블유소망병원",
+    "address": "경기도 이천시 호법면 중부대로 797-26, 이천더블유소망병원",
+    "phone": "031-637-7400",
+    "latitude": null,
+    "longitude": null,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 223,
+    "name": "이천소망병원",
+    "address": "경기도 이천시 호법면 중부대로 797-26, (호법면)",
+    "phone": "031-637-7400",
+    "latitude": 37.2452334,
+    "longitude": 127.4216625,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 224,
+    "name": "인성병원",
+    "address": "경상북도 포항시 북구 장량로 98-10,  (장성동)",
+    "phone": "054-230-7700",
+    "latitude": 36.0809294,
+    "longitude": 129.3911748,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 225,
+    "name": "인천바오로병원",
+    "address": "인천광역시 부평구 장제로 145, (부평동)",
+    "phone": "032-525-7080",
+    "latitude": 37.4988372,
+    "longitude": 126.7296622,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 226,
+    "name": "인천우리병원",
+    "address": "인천광역시 미추홀구 석바위로53번길 8, (주안동)",
+    "phone": "032-715-5300",
+    "latitude": 37.4612752,
+    "longitude": 126.6790019,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 227,
+    "name": "인천정병원",
+    "address": "인천광역시 남동구 남동대로 931, 3~6층 (간석동)",
+    "phone": "032-424-7555",
+    "latitude": 37.4654848,
+    "longitude": 126.7075113,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 228,
+    "name": "인천참사랑병원",
+    "address": "인천광역시 서구 원창로240번길 9, (가정동)",
+    "phone": "032-571-9111",
+    "latitude": 37.5165985,
+    "longitude": 126.6761609,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 229,
+    "name": "인화병원",
+    "address": "경기도 포천시 소흘읍 광릉수목원로 745, (소흘읍)",
+    "phone": "031-514-9988",
+    "latitude": 37.7716027,
+    "longitude": 127.1565366,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 230,
+    "name": "장유누가병원",
+    "address": "경상남도 김해시 대청로104번길 80-1, (대청동)",
+    "phone": "055-330-4000",
+    "latitude": 35.187715,
+    "longitude": 128.8056806,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 231,
+    "name": "재단법인한국산업보건환경연구소부설 해상병원",
+    "address": "서울특별시 영등포구 신길로 173, (신길동)",
+    "phone": "02-844-6119",
+    "latitude": 37.5076024,
+    "longitude": 126.9107282,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 232,
+    "name": "전북특별자치도마음사랑병원",
+    "address": "전북특별자치도 완주군 소양면 소양로 465-23, (소양면)",
+    "phone": "063-240-2100",
+    "latitude": 35.8602668,
+    "longitude": 127.2553035,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 233,
+    "name": "제이원병원",
+    "address": "대구광역시 서구 국채보상로 232, 1~5층 (평리동)",
+    "phone": "053-573-0119",
+    "latitude": 35.8704672,
+    "longitude": 128.5565618,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 234,
+    "name": "제이팍마음병원",
+    "address": "경기도 남양주시 경춘로 1260, 하나프라자 2,3,5층 207,208,307,308,5층호 (평내동)",
+    "phone": "031-511-9494",
+    "latitude": 37.6466749,
+    "longitude": 127.2348242,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 235,
+    "name": "주사랑병원",
+    "address": "충청북도 청주시 상당구 가덕면 보청대로 4673-61, 주사랑병원",
+    "phone": "043-286-0692",
+    "latitude": 36.5529718,
+    "longitude": 127.5393285,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 236,
+    "name": "지성병원",
+    "address": "인천광역시 미추홀구 아암대로 109, (용현동, 5, 6, 7, 8층)",
+    "phone": "032-862-5544",
+    "latitude": 37.4520472,
+    "longitude": 126.6322704,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 237,
+    "name": "지혜병원",
+    "address": "서울특별시 동대문구 천호대로 421, (장안동)",
+    "phone": "02-499-9955",
+    "latitude": null,
+    "longitude": null,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 238,
+    "name": "참다남병원",
+    "address": "대전광역시 중구 보문로 254,  (대흥동)",
+    "phone": "042-222-0122",
+    "latitude": 36.3252927,
+    "longitude": 127.4226193,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 239,
+    "name": "창평우리병원",
+    "address": "전라남도 담양군 대덕면 차동길 2-62, (대덕면)",
+    "phone": "061-380-7000",
+    "latitude": 35.2524083,
+    "longitude": 127.006925,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 240,
+    "name": "천안중앙병원",
+    "address": "충청남도 천안시 서북구 동서대로 129-16, (성정동)",
+    "phone": "041-561-0245",
+    "latitude": 36.8271927,
+    "longitude": 127.1379146,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 241,
+    "name": "천주의성요한병원",
+    "address": "광주광역시 북구 태봉로 32, (유동)",
+    "phone": "062-510-3102",
+    "latitude": 35.1609132,
+    "longitude": 126.9038192,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 242,
+    "name": "청송진보병원",
+    "address": "경상북도 청송군 진보면 경동로 4003, (진보면)",
+    "phone": "054-874-7717",
+    "latitude": 36.5357901,
+    "longitude": 129.0266045,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 243,
+    "name": "청심병원",
+    "address": "광주광역시 동구 동산길 14-2, (운림동)",
+    "phone": "062-225-6007",
+    "latitude": 35.1307887,
+    "longitude": 126.9456841,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 244,
+    "name": "청우병원",
+    "address": "경기도 의정부시 평화로 647, 미건메디컬프라자 B02,202,401,501호 (의정부동)",
+    "phone": "031-840-6500",
+    "latitude": 37.7497206,
+    "longitude": 127.0446218,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 245,
+    "name": "청평우리병원",
+    "address": "경기도 가평군 청평면 경춘로 791-11, (청평면)",
+    "phone": "031-585-5115",
+    "latitude": 37.7371846,
+    "longitude": 127.415475,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 246,
+    "name": "축령복음병원",
+    "address": "경기도 남양주시 수동면 외방로172번길 58, (수동면)",
+    "phone": "031-592-6661",
+    "latitude": 37.7387759,
+    "longitude": 127.3094646,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 247,
+    "name": "춘천예현병원",
+    "address": "강원특별자치도 춘천시 서면 샛말길 122-11, 122",
+    "phone": "033-264-9885",
+    "latitude": 37.8513108,
+    "longitude": 127.6173423,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 248,
+    "name": "카프성모병원",
+    "address": "경기도 고양시 일산동구 일산로 86, (백석동, 한국음주문화센터)",
+    "phone": "031-810-9200",
+    "latitude": 37.6451694,
+    "longitude": 126.7911331,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 249,
+    "name": "큰빛병원",
+    "address": "울산광역시 남구 문수로457번길 5, (신정동)",
+    "phone": "052-272-2505",
+    "latitude": 35.5334081,
+    "longitude": 129.3031359,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 250,
+    "name": "큰빛웅촌병원",
+    "address": "울산광역시 울주군 웅촌면 웅촌로 685, (웅촌면)",
+    "phone": "225-0834",
+    "latitude": 35.4875077,
+    "longitude": 129.2206966,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 251,
+    "name": "평촌중앙병원",
+    "address": "경기도 안양시 동안구 평촌대로223번길 49, 아트타워빌딩 3층, 4층 (호계동)",
+    "phone": "031-387-0114",
+    "latitude": 37.3903589,
+    "longitude": 126.9530776,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 252,
+    "name": "포항인성병원",
+    "address": "경상북도 포항시 북구 새천년대로 560-0,  (죽도동)",
+    "phone": "054-245-7000",
+    "latitude": 36.0240393,
+    "longitude": 129.3524984,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 253,
+    "name": "하나병원",
+    "address": "경기도 수원시 팔달구 행궁로 102, (교동, 교동대한빌딩1층∼8층, 지하1,2층)",
+    "phone": "031-8005-9111",
+    "latitude": 37.2734726,
+    "longitude": 127.0156476,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 254,
+    "name": "하동우리들병원",
+    "address": "경상남도 하동군 금남면 섬진강대로 957, (금남면)",
+    "phone": "055-883-7575",
+    "latitude": 34.9958188,
+    "longitude": 127.8102616,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 255,
+    "name": "한사랑병원",
+    "address": "경상남도 김해시 강동로 65, (강동)",
+    "phone": "055-722-7000",
+    "latitude": 35.2199847,
+    "longitude": 128.876471,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 256,
+    "name": "한서중앙병원",
+    "address": "경기도 의정부시 평화로 447, (의정부동)",
+    "phone": "031-875-7878",
+    "latitude": 37.7319114,
+    "longitude": 127.0477863,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 257,
+    "name": "합천고려병원",
+    "address": "경상남도 합천군 대양면 대야로 737-20, 2호",
+    "phone": "055-933-1006",
+    "latitude": 35.5530403,
+    "longitude": 128.161281,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 258,
+    "name": "해주병원",
+    "address": "인천광역시 강화군 하점면 창후로 286, (하점면)",
+    "phone": "032-933-7114",
+    "latitude": 37.7690475,
+    "longitude": 126.358645,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 259,
+    "name": "형주병원",
+    "address": "경상남도 양산시 상북면 양산대로 1870-64, 1870",
+    "phone": "055-375-7575",
+    "latitude": 35.4294707,
+    "longitude": 129.0708358,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 260,
+    "name": "호암병원",
+    "address": "충청북도 충주시 예성로 16,  (호암동)",
+    "phone": "043-852-3800",
+    "latitude": 36.9604022,
+    "longitude": 127.9284373,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 261,
+    "name": "홍성한국병원",
+    "address": "충청남도 홍성군 홍성읍 대내길 97, 홍성한국병원",
+    "phone": "041-634-2088",
+    "latitude": 36.6124526,
+    "longitude": 126.6754637,
+    "category": "정신병원"
+  },
+  {
+    "institutionId": 262,
+    "name": "희망병원",
+    "address": "전북특별자치도 김제시 금구면 낙산1길 74-1, (금구면)",
+    "phone": "063-540-8855",
+    "latitude": 35.8071714,
+    "longitude": 127.0004724,
+    "category": "정신병원"
+  }
+]
