@@ -3,7 +3,6 @@ package com.konkuk.gomgomee.data.util
 import android.content.Context
 import android.util.Log
 import com.konkuk.gomgomee.data.local.database.AppDatabase
-import com.konkuk.gomgomee.data.local.entity.UserEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -32,11 +31,6 @@ class DataInitializer(private val context: Context) {
                     Log.d(TAG, "Read ${testQuestions.size} test questions from JSON")
                     database.testQuestionDao().insertQuestions(testQuestions)
 
-                    // 기관 정보 초기화
-                    val institutions = jsonDataReader.readInstitutions()
-                    Log.d(TAG, "Read ${institutions.size} institutions from JSON")
-                    database.institutionDao().insertInstitutions(institutions)
-
                     // 사용자 정보 초기화
                     val users = jsonDataReader.readUsers()
                     Log.d(TAG, "Read ${users.size} users from JSON")
@@ -59,35 +53,4 @@ class DataInitializer(private val context: Context) {
         }
     }
 
-    // 초기 데이터만 재초기화 (사용자 데이터는 유지)
-    suspend fun reinitializeInitialData() {
-        Log.d(TAG, "Starting reinitialization of initial data...")
-        withContext(Dispatchers.IO) {
-            try {
-                // 초기 데이터만 삭제
-                database.checklistItemDao().deleteAllItems()
-                database.testQuestionDao().deleteAllQuestions()
-                database.institutionDao().deleteAllInstitutions()
-                Log.d(TAG, "Existing initial data deleted")
-
-                // 새로운 초기 데이터 삽입
-                val checklistItems = jsonDataReader.readChecklistItems()
-                database.checklistItemDao().insertItems(checklistItems)
-                Log.d(TAG, "${checklistItems.size} checklist items reinitialized")
-
-                val testQuestions = jsonDataReader.readTestQuestions()
-                database.testQuestionDao().insertQuestions(testQuestions)
-                Log.d(TAG, "${testQuestions.size} test questions reinitialized")
-
-                val institutions = jsonDataReader.readInstitutions()
-                database.institutionDao().insertInstitutions(institutions)
-                Log.d(TAG, "${institutions.size} institutions reinitialized")
-
-                Log.d(TAG, "Initial data reinitialization completed successfully")
-            } catch (e: Exception) {
-                Log.e(TAG, "Error during initial data reinitialization", e)
-                throw e
-            }
-        }
-    }
-} 
+}
