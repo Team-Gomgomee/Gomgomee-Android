@@ -149,6 +149,7 @@ fun AreaTestScreen(
                         }
                     }
                     MediaType.AUDIO -> {
+                        val context = LocalContext.current
                         val mediaPlayer = remember { MediaPlayer() }
                         val audioResId = remember(media.source) {
                             context.resources.getIdentifier(
@@ -158,6 +159,14 @@ fun AreaTestScreen(
                             )
                         }
                         var isPlaying by remember { mutableStateOf(false) }
+                        // 문제 인덱스가 바뀔 때마다 MediaPlayer 정지 및 상태 초기화
+                        LaunchedEffect(currentQuestionIndex) {
+                            if (mediaPlayer.isPlaying) {
+                                mediaPlayer.stop()
+                                mediaPlayer.reset()
+                            }
+                            isPlaying = false
+                        }
                         DisposableEffect(Unit) {
                             onDispose {
                                 mediaPlayer.release()
