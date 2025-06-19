@@ -35,12 +35,4 @@ class JsonDataReader(private val context: Context) {
         return gson.fromJson(jsonString, type)
     }
 
-    fun readInstitutions(): List<InstitutionEntity> {
-        val jsonString = context.assets.open("initial_data/institutions.json")
-            .bufferedReader()
-            .use { it.readText() }
-        
-        val type = object : TypeToken<List<InstitutionEntity>>() {}.type
-        return gson.fromJson(jsonString, type)
-    }
 } 

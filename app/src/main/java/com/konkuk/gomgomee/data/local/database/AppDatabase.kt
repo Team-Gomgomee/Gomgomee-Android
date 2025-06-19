@@ -15,11 +15,7 @@ import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.local.entity.TestQuestionEntity
 import com.konkuk.gomgomee.data.local.entity.TestSessionEntity
 import com.konkuk.gomgomee.data.local.entity.UserEntity
-import com.konkuk.gomgomee.data.local.entity.InstitutionEntity
-import com.konkuk.gomgomee.data.local.dao.InstitutionDao
-import com.konkuk.gomgomee.data.local.dao.FavoriteInstitutionDao
 import com.konkuk.gomgomee.data.local.entity.FavoriteEntity
-import com.konkuk.gomgomee.data.local.entity.FavoriteInstitutionEntity
 
 @Database(
     entities = [
@@ -28,8 +24,6 @@ import com.konkuk.gomgomee.data.local.entity.FavoriteInstitutionEntity
         ChecklistResultEntity::class,
         TestQuestionEntity::class,
         TestSessionEntity::class,
-        InstitutionEntity::class,
-        FavoriteInstitutionEntity::class,
         FavoriteEntity::class
     ],
     version = 4,
@@ -41,8 +35,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun checklistResultDao(): ChecklistResultDao
     abstract fun testQuestionDao(): TestQuestionDao
     abstract fun testSessionDao(): TestSessionDao
-    abstract fun institutionDao(): InstitutionDao
-    abstract fun favoriteInstitutionDao(): FavoriteInstitutionDao
     abstract fun favoriteDao():FavoriteDao
 
     companion object {
