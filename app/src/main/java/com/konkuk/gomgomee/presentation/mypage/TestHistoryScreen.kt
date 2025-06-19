@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import com.konkuk.gomgomee.data.local.entity.ChecklistResultEntity
 import com.konkuk.gomgomee.data.local.entity.TestSessionEntity
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 import kotlinx.coroutines.launch
 
 @Composable
@@ -47,13 +48,13 @@ fun TestHistoryScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(White)
-            .padding(16.dp)
+            .padding(start = 20.dp, end = 20.dp, top = 50.dp)
     ) {
         Text(
             text = "테스트 기록",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 16.dp)
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Medium,
+            modifier = Modifier.padding(top = 18.dp, bottom = 16.dp)
         )
 
         // 탭 레이아웃
@@ -137,6 +138,9 @@ fun AreaTestHistoryTab(viewModel: TestHistoryViewModel) {
             items(areaTestSessions) { session ->
                 AreaTestSessionItem(session)
             }
+            item {
+                Spacer(modifier = Modifier.height(20.dp))
+            }
         }
     }
 }
@@ -162,7 +166,7 @@ fun ChecklistResultItem(result: ChecklistResultEntity) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { expanded = !expanded },
+                    .noRippleClickable { expanded = !expanded },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -228,7 +232,7 @@ fun AreaTestSessionItem(session: TestSessionEntity) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { expanded = !expanded },
+                    .noRippleClickable { expanded = !expanded },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {

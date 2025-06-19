@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.konkuk.gomgomee.data.local.database.AppDatabase
 import com.konkuk.gomgomee.data.local.entity.ChecklistItemEntity
 import com.konkuk.gomgomee.data.repository.ChecklistItemRepository
+import com.konkuk.gomgomee.data.util.JsonDataReader
 import com.konkuk.gomgomee.util.context.toast
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -56,7 +57,14 @@ class ChecklistViewModel(application: Application) : AndroidViewModel(applicatio
                 
                 if (items.isEmpty()) {
                     Log.w(TAG, "No checklist items found in database")
-                    getApplication<Application>().toast("체크리스트 항목을 불러올 수 없습니다.")
+                    val reader = JsonDataReader(getApplication())
+                    val defaultItems = reader.readChecklistItems()
+
+                    repository.insertAll(defaultItems)
+
+                    checklistItems = defaultItems.map {
+                        ChecklistItem(id = it.itemId, question = it.questionText)
+                    }
                     return@launch
                 }
 

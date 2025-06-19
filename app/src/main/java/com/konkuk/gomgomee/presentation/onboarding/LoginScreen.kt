@@ -2,14 +2,30 @@ package com.konkuk.gomgomee.presentation.onboarding
 
 import android.content.Context
 import android.widget.Toast
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -19,6 +35,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.presentation.viewmodel.UserViewModel
+import com.konkuk.gomgomee.ui.theme.Green400
+import com.konkuk.gomgomee.ui.theme.White
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 
 @Composable
 fun LoginScreen(
@@ -119,45 +138,55 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(188.dp))
 
         // 로그인 버튼
-        Button(
-            onClick = {
-                when {
-                    userId.isBlank() -> Toast.makeText(context, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
-                    password.isBlank() -> Toast.makeText(context, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
-                    else -> viewModel.login(userId, password)
-                }
-            },
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp),
-            shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF6FAB8E),
-                contentColor = Color.White
-            )
+                .height(56.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(Green400)
+                .noRippleClickable {
+                    when {
+                        userId.isBlank() -> Toast.makeText(context, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
+                        password.isBlank() -> Toast.makeText(context, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
+                        else -> viewModel.login(userId, password)
+                    }
+                },
+            contentAlignment = Alignment.Center
         ) {
-            Text("로그인하기")
+            Text(
+                text = "로그인하기",
+                color = White,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 16.sp
+            )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // 회원가입 버튼
-        OutlinedButton(
-            onClick = {
-                navController.navigate(Route.SignUp.route)
-            },
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp),
-            shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = Color(0xFF6FAB8E)
-            ),
-            border = ButtonDefaults.outlinedButtonBorder.copy(
-                brush = SolidColor(Color(0xFF6FAB8E))
-            )
+                .height(56.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .border(
+                    width = 1.dp,
+                    color = Green400,
+                    shape = RoundedCornerShape(12.dp)
+                )
+                .noRippleClickable {
+                    navController.navigate(Route.SignUp.route)
+                },
+            contentAlignment = Alignment.Center
         ) {
-            Text("회원가입")
+            Text(
+                text = "회원가입하기",
+                color = Green400,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 16.sp
+            )
         }
     }
 }

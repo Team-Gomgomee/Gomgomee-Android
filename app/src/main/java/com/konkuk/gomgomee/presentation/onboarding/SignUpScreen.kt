@@ -1,12 +1,14 @@
 package com.konkuk.gomgomee.presentation.onboarding
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -18,6 +20,8 @@ import androidx.navigation.NavController
 import com.konkuk.gomgomee.data.local.entity.UserEntity
 import com.konkuk.gomgomee.presentation.navigation.Route
 import com.konkuk.gomgomee.presentation.viewmodel.UserViewModel
+import com.konkuk.gomgomee.ui.theme.White
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 import kotlinx.coroutines.launch
 
 @Composable
@@ -78,7 +82,7 @@ fun SignUpScreen(
         )
 
         // 아이디
-        Text("아이디", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("아이디", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = userId,
             onValueChange = { userId = it },
@@ -93,7 +97,7 @@ fun SignUpScreen(
         )
 
         // 이름
-        Text("이름", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("이름", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = name,
             onValueChange = { name = it },
@@ -108,7 +112,7 @@ fun SignUpScreen(
         )
 
         // 비밀번호
-        Text("비밀번호", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("비밀번호", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -124,7 +128,7 @@ fun SignUpScreen(
         )
 
         // 나이
-        Text("나이", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("나이", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = age,
             onValueChange = { age = it },
@@ -139,7 +143,7 @@ fun SignUpScreen(
         )
 
         // 거주지
-        Text("거주지", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("거주지", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = address,
             onValueChange = { address = it },
@@ -154,7 +158,7 @@ fun SignUpScreen(
         )
 
         // 특이사항
-        Text("특이사항", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("특이사항", fontSize = 14.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 4.dp))
         OutlinedTextField(
             value = remarks,
             onValueChange = { remarks = it },
@@ -169,41 +173,43 @@ fun SignUpScreen(
         )
 
         // 회원가입 버튼
-        Button(
-            onClick = {
-                // 입력 형식 검증
-                when {
-                    userId.isBlank() -> Toast.makeText(context, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
-                    name.isBlank() -> Toast.makeText(context, "이름을 입력해주세요", Toast.LENGTH_SHORT).show()
-                    password.isBlank() -> Toast.makeText(context, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
-                    age.isBlank() -> Toast.makeText(context, "나이를 입력해주세요", Toast.LENGTH_SHORT).show()
-                    !age.all { it.isDigit() } -> Toast.makeText(context, "나이는 숫자만 입력해주세요", Toast.LENGTH_SHORT).show()
-                    else -> {
-                        // 회원가입 처리
-                        val user = UserEntity(
-                            id = userId,
-                            password = password,
-                            name = name,
-                            age = age.toInt(),
-                            address = address.takeIf { it.isNotBlank() },
-                            note = remarks.takeIf { it.isNotBlank() }
-                        )
-                        scope.launch {
-                            viewModel.insert(user)
-                        }
-                    }
-                }
-            },
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp),
-            shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF6FAB8E),
-                contentColor = Color.Black
-            )
+                .height(56.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(Color(0xFF6FAB8E))
+                .noRippleClickable {
+                    when {
+                        userId.isBlank() -> Toast.makeText(context, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
+                        name.isBlank() -> Toast.makeText(context, "이름을 입력해주세요", Toast.LENGTH_SHORT).show()
+                        password.isBlank() -> Toast.makeText(context, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
+                        age.isBlank() -> Toast.makeText(context, "나이를 입력해주세요", Toast.LENGTH_SHORT).show()
+                        !age.all { it.isDigit() } -> Toast.makeText(context, "나이는 숫자만 입력해주세요", Toast.LENGTH_SHORT).show()
+                        else -> {
+                            val user = UserEntity(
+                                id = userId,
+                                password = password,
+                                name = name,
+                                age = age.toInt(),
+                                address = address.takeIf { it.isNotBlank() },
+                                note = remarks.takeIf { it.isNotBlank() }
+                            )
+                            scope.launch {
+                                viewModel.insert(user)
+                            }
+                        }
+                    }
+                },
+            contentAlignment = Alignment.Center
         ) {
-            Text("회원가입하기")
+            Text(
+                text = "회원가입하기",
+                color = White,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 16.sp
+            )
         }
     }
 }

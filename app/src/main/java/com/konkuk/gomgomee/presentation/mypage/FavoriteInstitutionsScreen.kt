@@ -34,13 +34,14 @@ fun FavoriteInstitutionsScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(White)
-            .padding(24.dp)
+            .padding(20.dp)
     ) {
         Text(
             text = "즐겨찾기한 병원",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 16.dp)
+            fontSize = 22.sp,
+            lineHeight = 28.sp,
+            fontWeight = FontWeight.Medium,
+            modifier = Modifier.padding(top = 40.dp, bottom = 20.dp)
         )
 
         if (favoriteInstitutions.isEmpty()) {

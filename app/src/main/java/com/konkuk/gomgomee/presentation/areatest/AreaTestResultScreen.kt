@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -19,7 +20,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.konkuk.gomgomee.R
 import com.konkuk.gomgomee.presentation.navigation.Route
+import com.konkuk.gomgomee.ui.theme.Green400
 import com.konkuk.gomgomee.ui.theme.White
+import com.konkuk.gomgomee.util.modifier.noRippleClickable
 
 @Composable
 fun AreaTestResultScreen(
@@ -124,20 +127,28 @@ fun AreaTestResultScreen(
         Spacer(modifier = Modifier.weight(1f))
 
         // 하단 버튼
-        Button(
-            onClick = { 
-                navController.navigate(Route.Diagnosis.route) {
-                    popUpTo(Route.AreaTest.route) {
-                        inclusive = true
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(Green400)
+                .noRippleClickable {
+                    navController.navigate(Route.Diagnosis.route) {
+                        popUpTo(Route.AreaTest.route) {
+                            inclusive = true
+                        }
                     }
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
-            )
+                },
+            contentAlignment = Alignment.Center
         ) {
-            Text("확인 완료", fontSize = 16.sp)
+            Text(
+                text = "확인 완료",
+                color = White,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 16.sp
+            )
         }
     }
 } 
