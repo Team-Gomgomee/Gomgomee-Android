@@ -1,5 +1,6 @@
 package com.konkuk.gomgomee.presentation.areatest
 
+import android.media.MediaPlayer
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -148,7 +149,20 @@ fun AreaTestScreen(
                         }
                     }
                     MediaType.AUDIO -> {
-                        // 오디오 재생 버튼
+                        val mediaPlayer = remember { MediaPlayer() }
+                        val audioResId = remember(media.source) {
+                            context.resources.getIdentifier(
+                                media.source,
+                                "raw",
+                                context.packageName
+                            )
+                        }
+                        var isPlaying by remember { mutableStateOf(false) }
+                        DisposableEffect(Unit) {
+                            onDispose {
+                                mediaPlayer.release()
+                            }
+                        }
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -156,12 +170,28 @@ fun AreaTestScreen(
                                 .clip(RoundedCornerShape(20.dp))
                                 .background(Green400)
                                 .noRippleClickable {
-                                    // 음성 관련 기능 추가
+                                    if (audioResId != 0) {
+                                        if (mediaPlayer.isPlaying) {
+                                            mediaPlayer.stop()
+                                            mediaPlayer.reset()
+                                            isPlaying = false
+                                        }
+                                        val afd = context.resources.openRawResourceFd(audioResId)
+                                        mediaPlayer.reset()
+                                        mediaPlayer.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                                        afd.close()
+                                        mediaPlayer.prepare()
+                                        mediaPlayer.start()
+                                        isPlaying = true
+                                        mediaPlayer.setOnCompletionListener {
+                                            isPlaying = false
+                                        }
+                                    }
                                 },
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = "음성 듣기",
+                                text = if (isPlaying) "재생 중..." else "음성 듣기",
                                 color = White,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
