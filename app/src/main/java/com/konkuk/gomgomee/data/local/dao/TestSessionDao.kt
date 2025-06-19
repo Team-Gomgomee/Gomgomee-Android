@@ -9,10 +9,10 @@ interface TestSessionDao {
     @Query("SELECT * FROM test_session")
     fun getAllSessions(): Flow<List<TestSessionEntity>>
     
-    @Query("SELECT * FROM test_session WHERE userNo = :userNo ORDER BY startedAt DESC")
+    @Query("SELECT * FROM test_session WHERE userNo = :userNo AND finishedAt IS NOT NULL ORDER BY startedAt DESC")
     fun getSessionsByUser(userNo: Int): Flow<List<TestSessionEntity>>
     
-    @Query("SELECT * FROM test_session WHERE userNo = :userNo AND domain = :domain ORDER BY startedAt DESC")
+    @Query("SELECT * FROM test_session WHERE userNo = :userNo AND domain = :domain AND finishedAt IS NOT NULL ORDER BY startedAt DESC")
     fun getSessionsByUserAndDomain(userNo: Int, domain: String): Flow<List<TestSessionEntity>>
     
     @Query("SELECT * FROM test_session WHERE sessionId = :sessionId")
