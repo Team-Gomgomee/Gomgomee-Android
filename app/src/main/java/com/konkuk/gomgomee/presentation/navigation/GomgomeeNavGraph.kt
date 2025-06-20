@@ -85,7 +85,7 @@ fun GomgomeeNavGraph(
                 navController = navController,
                 onLogout = {
                     navController.navigate(Route.Login.route) {
-                        popUpTo(Route.Home.route) {
+                        popUpTo(navController.graph.startDestinationId) {
                             inclusive = true
                         }
                     }
